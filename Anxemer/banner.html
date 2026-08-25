@@ -1,0 +1,993 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+   CORE SYSTEM
+============================================================ */
+  .bds24h-site {
+    --g1: #16C04A;
+    --g2: #0F7F2F;
+    --ink: #0f172a;
+    --muted: #64748b;
+    --line: #E2E8F0;
+    --pearl: #F0F4F1;
+    --panel: #ffffff;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .bds24h-site,
+  .bds24h-site * {
+    font-family: 'Inter', system-ui, sans-serif !important;
+  }
+
+  .bds24h-site * {
+    box-sizing: border-box;
+  }
+
+  .bds24h-site h1,
+  .bds24h-site h2,
+  .bds24h-site h3 {
+    margin: 0;
+  }
+
+  .bds24h-site .wrap {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ============================================================
+   BANNER WRAPPER
+============================================================ */
+  .bds-banner {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    background: #F2F6F2;
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0 0;
+  }
+
+  .bds-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 92% -5%, rgba(22, 192, 74, 0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 400px 300px at 5% 100%, rgba(15, 127, 47, 0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .bds-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(15, 127, 47, .035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 127, 47, .035) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+  }
+
+  /* ============================================================
+   BANNER HERO
+============================================================ */
+  .bds-banner-grid {
+    display: grid;
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bds-eyebrow,
+  .bds-eyebrow *,
+  .bds24h-site .bds-eyebrow,
+  .bds24h-site .bds-eyebrow * {
+    color: #C94010 !important;
+    -webkit-text-fill-color: #C94010 !important;
+  }
+
+  .bds-eyebrow .dot,
+  .bds24h-site .bds-eyebrow .dot {
+    color: #C94010 !important;
+    -webkit-text-fill-color: #C94010 !important;
+  }
+
+  .bds-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(4px, 1vw, 8px);
+    background: #fdf5f2 !important;
+    color: #C94010 !important;
+    -webkit-text-fill-color: #C94010 !important;
+    font-size: clamp(8.5px, 2.6vw, 12px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    padding: clamp(4px, 1.2vw, 7px) clamp(8px, 2.5vw, 16px);
+    border-radius: 30px;
+    margin-bottom: 14px;
+    border: 1.5px solid #0f8f35;
+    box-shadow: 0 2px 8px rgba(15, 123, 45, .12);
+    animation: eyebrowFloat 3.6s ease-in-out infinite;
+    will-change: transform;
+    white-space: nowrap;
+    width: fit-content;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  @keyframes eyebrowShimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes eyebrowFloat {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    30% {
+      transform: translateY(-4px) rotate(-0.4deg);
+    }
+
+    70% {
+      transform: translateY(-1.5px) rotate(0.4deg);
+    }
+  }
+
+  .bds-eyebrow .dot {
+    color: #FF4D1A !important;
+    font-size: 8px;
+    display: inline-block;
+    flex-shrink: 0;
+    animation: dotPulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes dotPulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: .9;
+      filter: drop-shadow(0 0 3px #FF4D1A);
+    }
+
+    50% {
+      transform: scale(1.3);
+      opacity: 1;
+      filter: drop-shadow(0 0 6px #FF6B3A);
+    }
+  }
+
+  .bds-eyebrow-text {
+    display: inline-flex;
+    gap: 0.22em;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    color: #FF4D1A !important;
+    -webkit-text-fill-color: #FF4D1A !important;
+    animation: textGather 1.1s cubic-bezier(.16, 1, .3, 1) both;
+  }
+
+  .bds-eyebrow-text span {
+    display: inline-block;
+    color: #FF4D1A !important;
+    -webkit-text-fill-color: #FF4D1A !important;
+    animation: wordWave 2.8s ease-in-out infinite;
+  }
+
+  .bds-eyebrow-text span:nth-child(1) {
+    animation-delay: 0.0s;
+  }
+
+  .bds-eyebrow-text span:nth-child(2) {
+    animation-delay: 0.18s;
+  }
+
+  .bds-eyebrow-text span:nth-child(3) {
+    animation-delay: 0.36s;
+  }
+
+  .bds-eyebrow-text span:nth-child(4) {
+    animation-delay: 0.54s;
+  }
+
+  .bds-eyebrow-text span:nth-child(5) {
+    animation-delay: 0.72s;
+  }
+
+  .bds-eyebrow-text span:nth-child(6) {
+    animation-delay: 0.90s;
+  }
+
+  .bds-eyebrow-text span:nth-child(7) {
+    animation-delay: 1.08s;
+  }
+
+  .bds-eyebrow-text span:nth-child(8) {
+    animation-delay: 1.26s;
+  }
+
+  @keyframes textGather {
+    0% {
+      opacity: 0;
+      transform: translateY(8px) scale(0.95);
+      letter-spacing: 0.25em;
+      filter: blur(4px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      letter-spacing: 0.1em;
+      filter: blur(0);
+    }
+  }
+
+  @keyframes wordWave {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  .bds-banner h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: #0d1f0f;
+    margin: 0 0 14px;
+    letter-spacing: -0.03em;
+  }
+
+  .bds-banner h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #16c04a, #0f7f2f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bds-banner .sub {
+    color: #334155;
+    font-size: 15px;
+    margin: 0 0 24px;
+    max-width: 520px;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .bds-cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .bds-btn-primary {
+    background: linear-gradient(135deg, #16c04a, #0e6d27);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 26px;
+    font-weight: 700;
+    font-size: 14.5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(22, 192, 74, .32);
+    transition: all .22s ease;
+    cursor: pointer;
+  }
+
+  .bds-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(22, 192, 74, .38);
+    color: #fff;
+  }
+
+  .bds-btn-outline {
+    background: #fff;
+    color: #0f7f2f;
+    border: 2px solid #16c04a;
+    border-radius: 10px;
+    padding: 12px 26px;
+    font-weight: 700;
+    font-size: 14.5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all .22s ease;
+    cursor: pointer;
+  }
+
+  .bds-btn-outline:hover {
+    background: #f0faf3;
+    transform: translateY(-2px);
+    color: #0f7f2f;
+  }
+
+  /* ============================================================
+   VISUAL PANEL
+============================================================ */
+  .bds-visual {
+    position: relative;
+    height: 330px;
+  }
+
+  .bds-visual-main {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  }
+
+  .bds-visual-main svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .bds-floatcard {
+    position: absolute;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 13px 18px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, .13);
+    z-index: 3;
+    white-space: nowrap;
+  }
+
+  .bds-floatcard.c1 {
+    top: -14px;
+    left: -14px;
+  }
+
+  .bds-floatcard.c2 {
+    bottom: -14px;
+    right: -14px;
+  }
+
+  .bds-floatcard .fn {
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .bds-floatcard.c1 .fn {
+    color: #0f7f2f;
+  }
+
+  .bds-floatcard.c2 .fn {
+    color: #FF7F2A;
+  }
+
+  .bds-floatcard .fl {
+    font-size: 9.5px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-top: 4px;
+    font-weight: 700;
+  }
+
+  .bds-pulse {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #16c04a;
+    display: inline-block;
+    margin-right: 6px;
+    animation: bdspulse 2s infinite;
+  }
+
+  @keyframes bdspulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(22, 192, 74, .65);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(22, 192, 74, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(22, 192, 74, 0);
+    }
+  }
+
+  /* ============================================================
+   CATEGORY LABEL
+============================================================ */
+  .bds-catbar-label {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: #64748b;
+  }
+
+  .bds-catbar-label::before,
+  .bds-catbar-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ============================================================
+   CATEGORY GRID - HARMONIOUS COLOR SYSTEM
+============================================================ */
+  .bds-catgrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    position: relative;
+    z-index: 4;
+    padding-bottom: 28px;
+  }
+
+  .bds-catcard {
+    position: relative;
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 18px 12px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .25s ease, border-color .25s ease;
+    border: 1.5px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1.5px #e2e8f0;
+  }
+
+  .bds-catcard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+    opacity: 0;
+    transition: opacity .25s;
+  }
+
+  .bds-catcard:hover {
+    transform: translateY(-5px) scale(1.025);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .bds-catcard:hover::before {
+    opacity: 1;
+  }
+
+  /* Icon wrapper */
+  .bds-cat-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+    position: relative;
+  }
+
+  .bds-cat-icon-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .28) 0%, transparent 60%);
+  }
+
+  .bds-cat-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Badge */
+  .bds-cat-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 8px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 6px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* Title */
+  .bds-cat-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #0f172a;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* --- THEME 1: TRONG KCN (4 mục: Xanh lá tươi sáng) --- */
+  .bds-catcard.theme-kcn .bds-cat-icon-wrap {
+    background: linear-gradient(135deg, #22c55e, #15803d);
+  }
+
+  .bds-catcard.theme-kcn::before {
+    background: linear-gradient(90deg, #22c55e, #15803d);
+  }
+
+  .bds-catcard.theme-kcn:hover {
+    border-color: rgba(34, 197, 94, .4);
+    box-shadow: 0 18px 40px rgba(34, 197, 94, .16);
+  }
+
+  .bds-catcard.theme-kcn .bds-cat-badge {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  /* --- THEME 2: NGOÀI KCN (4 mục: Xanh đậm #157041) --- */
+  .bds-catcard.theme-ngoai .bds-cat-icon-wrap {
+    background: linear-gradient(135deg, #0f6b3a, #0a4d28);
+  }
+
+  .bds-catcard.theme-ngoai::before {
+    background: linear-gradient(90deg, #0f6b3a, #0a4d28);
+  }
+
+  .bds-catcard.theme-ngoai:hover {
+    border-color: rgba(15, 107, 58, .5);
+    box-shadow: 0 18px 40px rgba(15, 107, 58, .22);
+  }
+
+  .bds-catcard.theme-ngoai .bds-cat-badge {
+    background: rgba(10, 77, 40, .14);
+    color: #0a4d28;
+  }
+
+  /* --- THEME 3: DỰ ÁN, QUỸ ĐẤT & KCN (4 mục: Cam Nổi bật dưới cùng) --- */
+  .bds-catcard.theme-hot .bds-cat-icon-wrap {
+    background: linear-gradient(135deg, #f97316, #c2410c);
+  }
+
+  .bds-catcard.theme-hot::before {
+    background: linear-gradient(90deg, #f97316, #c2410c);
+  }
+
+  .bds-catcard.theme-hot:hover {
+    border-color: rgba(249, 115, 22, .45);
+    box-shadow: 0 18px 40px rgba(249, 115, 22, .2);
+  }
+
+  .bds-catcard.theme-hot .bds-cat-badge {
+    background: #ffedd5;
+    color: #c2410c;
+  }
+
+  /* ============================================================
+   RESPONSIVE
+============================================================ */
+  @media(max-width:1100px) {
+    .bds-catgrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media(max-width:900px) {
+    .bds-banner-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bds-visual {
+      display: none;
+    }
+
+    .bds-catgrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bds-banner h1 {
+      font-size: 30px;
+    }
+  }
+
+  @media(max-width:600px) {
+    .bds-banner h1 {
+      font-size: 24px;
+    }
+
+    .bds-banner {
+      padding: 28px 0 0;
+    }
+
+    .bds-catgrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .bds-catcard {
+      padding: 14px 8px 12px;
+    }
+
+    .bds-cat-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+    }
+
+    .bds-cat-icon-wrap svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
+
+<div class="bds24h-site">
+  <section class="bds-banner">
+    <div class="wrap">
+
+      <div class="bds-banner-grid">
+        <div>
+          <div class="bds-eyebrow">
+            <span class="dot">&#11044;</span>
+            <span class="bds-eyebrow-text">
+              <span>Trang</span>
+              <span>tin</span>
+              <span>chuyên</span>
+              <span>bất</span>
+              <span>động</span>
+              <span>sản</span>
+              <span>công</span>
+              <span>nghiệp</span>
+            </span>
+          </div>
+          <h1>Mua bán – cho thuê <em>bất động sản khu công nghiệp</em> trên toàn quốc</h1>
+          <p class="sub">Tìm quỹ đất, dự án KCN, nhà máy và mặt bằng sản xuất phù hợp — thông tin rõ ràng, kết nối trực
+            tiếp với nguồn cung uy tín.</p>
+          <div class="bds-cta-row">
+            <a href="https://batdongsancongnghiep24h.vn/kho-xuong/" class="bds-btn-primary">Khám phá nguồn cung</a>
+            <a href="https://batdongsancongnghiep24h.vn/dat-cong-nghiep/" class="bds-btn-outline">Xem quỹ đất khu công nghiệp</a>
+          </div>
+        </div>
+
+        <div class="bds-visual">
+          <div class="bds-visual-main">
+            <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" role="img">
+              <defs>
+                <linearGradient id="gSky2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e8f5ea" />
+                  <stop offset="100%" stop-color="#f0f9f1" />
+                </linearGradient>
+                <linearGradient id="gGreen2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#22d55f" />
+                  <stop offset="100%" stop-color="#0f7f2f" />
+                </linearGradient>
+                <linearGradient id="gBlue2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#60a5fa" />
+                  <stop offset="100%" stop-color="#1d4ed8" />
+                </linearGradient>
+                <linearGradient id="gOrange2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fb923c" />
+                  <stop offset="100%" stop-color="#c2410c" />
+                </linearGradient>
+                <filter id="fShadow2" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.14)" />
+                </filter>
+              </defs>
+              <rect width="520" height="340" fill="url(#gSky2)" />
+              <ellipse cx="260" cy="295" rx="230" ry="30" fill="#c8e6c9" opacity="0.5" />
+              <!-- Building 1: Kho xuong -->
+              <g filter="url(#fShadow2)">
+                <polygon points="60,220 140,200 200,215 120,235" fill="#b2dfdb" />
+                <polygon points="60,220 120,235 120,285 60,270" fill="#e0f2f1" />
+                <polygon points="120,235 200,215 200,265 120,285" fill="#b2dfdb" />
+                <polygon points="60,220 140,200 200,215 120,235" fill="#26a69a" />
+                <polygon points="80,218 160,198 160,188 80,208" fill="url(#gGreen2)" />
+                <text x="130" y="257" text-anchor="middle" font-size="8" font-weight="700" fill="#00695c">KHO
+                  XUONG</text>
+                <text x="130" y="268" text-anchor="middle" font-size="7" fill="#00695c">TRONG KCN</text>
+                <rect x="105" y="252" width="14" height="20" rx="2" fill="#00695c" opacity="0.6" />
+                <rect x="121" y="252" width="14" height="20" rx="2" fill="#00695c" opacity="0.6" />
+              </g>
+              <!-- Building 2: Nha may -->
+              <g filter="url(#fShadow2)">
+                <polygon points="185,190 265,165 325,182 245,207" fill="#90caf9" />
+                <polygon points="185,190 245,207 245,275 185,258" fill="#e3f2fd" />
+                <polygon points="245,207 325,182 325,250 245,275" fill="#90caf9" />
+                <polygon points="185,190 265,165 325,182 245,207" fill="#42a5f5" />
+                <polygon points="205,188 270,166 270,148 205,170" fill="url(#gBlue2)" />
+                <rect x="255" y="135" width="8" height="30" rx="3" fill="#546e7a" />
+                <ellipse cx="259" cy="135" rx="5" ry="3" fill="#78909c" />
+                <rect x="195" y="210" width="10" height="12" rx="1" fill="#1565c0" opacity="0.5" />
+                <rect x="209" y="210" width="10" height="12" rx="1" fill="#1565c0" opacity="0.5" />
+                <rect x="223" y="210" width="10" height="12" rx="1" fill="#1565c0" opacity="0.5" />
+                <rect x="255" y="210" width="10" height="12" rx="1" fill="#1565c0" opacity="0.5" />
+                <rect x="269" y="210" width="10" height="12" rx="1" fill="#1565c0" opacity="0.5" />
+                <text x="255" y="248" text-anchor="middle" font-size="8" font-weight="700" fill="#0d47a1">NHA MAY</text>
+                <text x="255" y="258" text-anchor="middle" font-size="7" fill="#0d47a1">SAN XUAT</text>
+              </g>
+              <!-- Building 3: Van phong -->
+              <g filter="url(#fShadow2)">
+                <polygon points="335,175 415,152 460,168 380,191" fill="#ffcc80" />
+                <polygon points="335,175 380,191 380,260 335,244" fill="#fff9c4" />
+                <polygon points="380,191 460,168 460,237 380,260" fill="#ffcc80" />
+                <polygon points="335,175 415,152 460,168 380,191" fill="#ffa726" />
+                <polygon points="348,174 415,152 415,140 348,162" fill="url(#gOrange2)" />
+                <rect x="344" y="195" width="9" height="8" rx="1" fill="#e65100" opacity="0.5" />
+                <rect x="356" y="195" width="9" height="8" rx="1" fill="#e65100" opacity="0.5" />
+                <rect x="344" y="207" width="9" height="8" rx="1" fill="#e65100" opacity="0.5" />
+                <rect x="356" y="207" width="9" height="8" rx="1" fill="#e65100" opacity="0.5" />
+                <rect x="344" y="219" width="9" height="8" rx="1" fill="#e65100" opacity="0.5" />
+                <rect x="356" y="219" width="9" height="8" rx="1" fill="#e65100" opacity="0.5" />
+                <rect x="390" y="192" width="9" height="8" rx="1" fill="#e65100" opacity="0.45" />
+                <rect x="403" y="190" width="9" height="8" rx="1" fill="#e65100" opacity="0.45" />
+                <rect x="390" y="204" width="9" height="8" rx="1" fill="#e65100" opacity="0.45" />
+                <rect x="403" y="202" width="9" height="8" rx="1" fill="#e65100" opacity="0.45" />
+                <text x="415" y="228" text-anchor="middle" font-size="8" font-weight="700" fill="#bf360c">VAN
+                  PHONG</text>
+                <text x="415" y="238" text-anchor="middle" font-size="7" fill="#bf360c">DAU TU KCN</text>
+              </g>
+              <!-- Road -->
+              <path d="M50 300 Q170 285 260 295 Q360 305 470 288" fill="none" stroke="#cfd8dc" stroke-width="18" />
+              <path d="M50 300 Q170 285 260 295 Q360 305 470 288" fill="none" stroke="#fff" stroke-width="2"
+                stroke-dasharray="12 8" />
+              <!-- Trees -->
+              <circle cx="50" cy="250" r="14" fill="#66bb6a" opacity="0.85" />
+              <circle cx="50" cy="240" r="10" fill="#81c784" opacity="0.85" />
+              <rect x="48" y="260" width="4" height="10" fill="#795548" opacity="0.85" />
+              <circle cx="155" cy="258" r="12" fill="#66bb6a" opacity="0.85" />
+              <circle cx="155" cy="249" r="9" fill="#81c784" opacity="0.85" />
+              <circle cx="475" cy="245" r="13" fill="#66bb6a" opacity="0.85" />
+              <circle cx="475" cy="236" r="9" fill="#81c784" opacity="0.85" />
+              <!-- Status tags -->
+              <g transform="translate(110, 185)">
+                <rect x="-28" y="-11" width="56" height="20" rx="10" fill="url(#gGreen2)" />
+                <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="800" fill="#fff">CHO THUE</text>
+              </g>
+              <g transform="translate(248, 155)">
+                <rect x="-34" y="-11" width="68" height="20" rx="10" fill="url(#gBlue2)" />
+                <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="800" fill="#fff">BAN XUONG</text>
+              </g>
+              <g transform="translate(405, 138)">
+                <rect x="-42" y="-11" width="84" height="20" rx="10" fill="url(#gOrange2)" />
+                <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="800" fill="#fff">CHUYEN NHUONG</text>
+              </g>
+              <!-- Footer -->
+              <rect x="0" y="315" width="520" height="25" fill="rgba(255,255,255,0.7)" />
+              <text x="20" y="330" font-size="9" font-weight="700" fill="#64748b" letter-spacing="1.5">VIETNAM
+                INDUSTRIAL REAL ESTATE PORTAL</text>
+              <circle cx="485" cy="327" r="5" fill="#16c04a" />
+              <text x="494" y="331" font-size="8.5" font-weight="700" fill="#16c04a">LIVE</text>
+            </svg>
+          </div>
+          <div class="bds-floatcard c1">
+            <div class="fn">12+</div>
+            <div class="fl">Danh mục sản phẩm</div>
+          </div>
+          <div class="bds-floatcard c2">
+            <div class="fn"><span class="bds-pulse"></span>24/7</div>
+            <div class="fl">Hỗ trợ giao dịch</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bds-catbar-label">Khám phá danh mục sản phẩm</div>
+
+      <div class="bds-catgrid">
+
+        <!-- CẶP 1: KHO XƯỞNG CHO THUÊ (XANH LÁ) -->
+        <!-- Card 1: Kho xưởng cho thuê trong KCN (Xanh lá) -->
+        <a href="https://batdongsancongnghiep24h.vn/kho-xuong/?kcn=trong&type=cho-thue" class="bds-catcard theme-kcn">
+          <span class="bds-cat-badge">Trong KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Nhà kho Logistics cửa cuốn + kệ chứa hàng -->
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3L2 8v13h20V8L12 3zm6 16h-4v-5h-4v5H6v-9.5l6-3 6 3V19zm-3-8h-6v2h6v-2z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Kho xưởng cho thuê trong KCN</div>
+        </a>
+
+        <!-- Card 2: Kho xưởng cho thuê ngoài KCN (Xanh lá) -->
+        <a href="https://batdongsancongnghiep24h.vn/kho-xuong/?kcn=ngoai&type=cho-thue" class="bds-catcard theme-kcn">
+          <span class="bds-cat-badge">Ngoài KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Kho bãi logistics ngoại vi độc lập -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Kho xưởng cho thuê ngoài KCN</div>
+        </a>
+
+        <!-- CẶP 2: NHÀ XƯỞNG BÁN (XANH LÁ) -->
+        <!-- Card 3: Nhà xưởng bán trong KCN (Xanh lá) -->
+        <a href="https://batdongsancongnghiep24h.vn/kho-xuong/?kcn=trong&type=chuyen-nhuong" class="bds-catcard theme-kcn">
+          <span class="bds-cat-badge">Trong KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Xưởng thép tiền chế + biểu tượng bàn giao -->
+            <svg viewBox="0 0 24 24">
+              <path d="M22 21H2V10l7-3v4l7-3v4l6-3v14zM8 18H6v-3h2v3zm4 0h-2v-3h2v3zm4 0h-2v-3h2v3zm4 0h-2v-3h2v3z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Nhà xưởng bán trong KCN</div>
+        </a>
+
+        <!-- Card 4: Nhà xưởng bán ngoài KCN (Xanh lá) -->
+        <a href="https://batdongsancongnghiep24h.vn/kho-xuong/?kcn=ngoai&type=chuyen-nhuong" class="bds-catcard theme-kcn">
+          <span class="bds-cat-badge">Ngoài KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Xưởng sản xuất độc lập có quyền sở hữu -->
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3L2 12h3v8h14v-8h3L12 3zm1 15h-2v-4h2v4zm4 0h-2v-6h2v6zm-8 0H7v-2h2v2z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Nhà xưởng bán ngoài KCN</div>
+        </a>
+
+        <!-- CẶP 3: ĐẤT CÔNG NGHIỆP (XANH ĐẬM #157041) -->
+        <!-- Card 5: Đất cho thuê trong KCN (Xanh đậm) -->
+        <a href="https://batdongsancongnghiep24h.vn/dat-cong-nghiep/?kcn=trong&type=cho-thue" class="bds-catcard theme-ngoai">
+          <span class="bds-cat-badge">Trong KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Bản đồ phân lô đất công nghiệp quy hoạch -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Đất cho thuê trong KCN</div>
+        </a>
+
+        <!-- Card 6: Đất công nghiệp ngoài KCN (Xanh đậm) -->
+        <a href="https://batdongsancongnghiep24h.vn/dat-cong-nghiep/?kcn=ngoai&type=chuyen-nhuong" class="bds-catcard theme-ngoai">
+          <span class="bds-cat-badge">Ngoài KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Thửa đất diện tích lớn / SKC ngoài KCN -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Đất công nghiệp ngoài KCN</div>
+        </a>
+
+        <!-- CẶP 4: NHÀ MÁY CHUYỂN NHƯỢNG (XANH ĐẬM #157041) -->
+        <!-- Card 7: Nhà máy trong KCN cần chuyển nhượng (Xanh đậm) -->
+        <a href="https://batdongsancongnghiep24h.vn/kho-xuong/?kcn=trong&type=chuyen-nhuong&kw=nhà+máy" class="bds-catcard theme-ngoai">
+          <span class="bds-cat-badge">Trong KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Nhà máy sản xuất dây chuyền công nghiệp -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M4 19h16v2H4zm14-4.5c0-.83-.67-1.5-1.5-1.5H15v-3c0-.83-.67-1.5-1.5-1.5H12V4.5C12 3.67 11.33 3 10.5 3h-5C4.67 3 4 3.67 4 4.5V17h14v-2.5zM6 5h4v3.5H6V5zm0 5.5h4V14H6v-3.5zm7 1.5h2v2h-2v-2z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Nhà máy trong KCN cần chuyển nhượng</div>
+        </a>
+
+        <!-- Card 8: Nhà máy ngoài KCN cần chuyển nhượng (Xanh đậm) -->
+        <a href="https://batdongsancongnghiep24h.vn/kho-xuong/?kcn=ngoai&type=chuyen-nhuong&kw=nhà+máy" class="bds-catcard theme-ngoai">
+          <span class="bds-cat-badge">Ngoài KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Nhà máy khuôn viên độc lập chuyển nhượng -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm0-4H6v-2h6v2zm0-4H6V7h6v2zm6 8h-4V7h4v10z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Nhà máy ngoài KCN cần chuyển nhượng</div>
+        </a>
+
+        <!-- 4 MỤC MÀU CAM DƯỚI CÙNG -->
+        <!-- Card 9: Quỹ đất khu công nghiệp 5 - 20ha (Màu cam) -->
+        <a href="https://batdongsancongnghiep24h.vn/dat-cong-nghiep/?type=chuyen-nhuong&area=50000-200000" class="bds-catcard theme-hot">
+          <span class="bds-cat-badge">5 – 20 ha</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Đại quỹ đất / Thước đo quy mô hecta -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Quỹ đất khu công nghiệp 5 – 20 hecta cần chuyển nhượng</div>
+        </a>
+
+        <!-- Card 10: Dự án cụm khu công nghiệp cần chuyển nhượng (Màu cam) -->
+        <a href="https://batdongsancongnghiep24h.vn/kcn/?kw=cụm+công+nghiệp" class="bds-catcard theme-hot">
+          <span class="bds-cat-badge">Dự án Cụm</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Quần thể Dự án đầu tư Cụm công nghiệp -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Dự án cụm khu công nghiệp cần chuyển nhượng</div>
+        </a>
+
+        <!-- Card 11: Dự án M & A (Màu cam) -->
+        <a href="https://batdongsancongnghiep24h.vn/dat-cong-nghiep/?kw=M%26A" class="bds-catcard theme-hot">
+          <span class="bds-cat-badge">M &amp; A</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Bắt tay chiến lược hợp tác / Mua bán sáp nhập M&A -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Dự án M &amp; A</div>
+        </a>
+
+        <!-- Card 12: Danh sách khu công nghiệp (Màu cam - Đưa xuống dưới cùng) -->
+        <a href="https://batdongsancongnghiep24h.vn/kcn/" class="bds-catcard theme-hot">
+          <span class="bds-cat-badge">KCN</span>
+          <div class="bds-cat-icon-wrap">
+            <!-- Icon: Master plan KCN / Cụm công nghiệp chuẩn hóa -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 14H6v-4h5v4zm0-6H6V7h5v4zm7 6h-5v-4h5v4zm0-6h-5V7h5v4z" />
+            </svg>
+          </div>
+          <div class="bds-cat-title">Danh sách khu công nghiệp</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</div>
