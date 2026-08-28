@@ -173,10 +173,13 @@ a { color: inherit; text-decoration: none; }
 
 .cta-widget { background: #0d3559; border-top: 3px solid #0F7F2F; color: #fff; border-radius: 8px; padding: 22px 20px; text-align: center; }
 .cta-widget h3 { color: #fff; border-bottom: none; font-size: 18px; margin-bottom: 6px; padding-bottom: 0; text-transform: uppercase; font-family: 'Oswald', sans-serif; letter-spacing: 0.5px; }
-.cta-widget p { font-size: 13px; color: #d1e2f3; margin: 0 0 16px; line-height: 1.5; }
-.cta-btn { display: block; width: 100%; padding: 11px; background: #D9531E; color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase; border-radius: 4px; margin-bottom: 10px; text-align: center; transition: opacity 0.2s; }
-.cta-btn:hover { opacity: 0.9; }
-.cta-btn.alt { background: #0F7F2F; border: none; margin-bottom: 10px; }
+.cta-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; height: 44px; padding: 0 14px; background: #0F7F2F; color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase; border-radius: 8px; margin-bottom: 10px; text-align: center; text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); border: none; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
+.cta-btn:hover { background: #0c6826; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15, 127, 47, 0.35); color: #fff; }
+.cta-btn.alt { background: #0068FF; margin-bottom: 10px; }
+.cta-btn.alt:hover { background: #0052cc; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 104, 255, 0.35); color: #fff; }
+.cta-btn.facebook { background: #1877f2; margin-bottom: 0; }
+.cta-btn.facebook:hover { background: #1464cc; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35); color: #fff; }
+.cta-btn:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
 
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .tag { display: inline-block; background: #f0fdf4; border: 1px solid #d1fae5; color: var(--navy); font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
@@ -192,8 +195,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         $loai_bai = 'Tin tức BĐS';
     }
     $ten_tac_gia   = get_field('ten_tac_gia');
-    if (!$ten_tac_gia || $ten_tac_gia === 'Ban Bien Tap BDS24H') {
-        $ten_tac_gia = 'Ban Biên Tập BDS24H';
+    if (!$ten_tac_gia || $ten_tac_gia === 'Ban Bien Tap BDS24H' || $ten_tac_gia === 'Ban Biên Tập BDS24H') {
+        $ten_tac_gia = 'Ban Biên Tập BatdongsanKhuCongNghiep.vn';
     }
     $chuyen_san    = get_field('chuyen_san');
     if (!$chuyen_san || $chuyen_san === 'Tin tuc & Phan tich BDS Cong nghiep') {
@@ -394,7 +397,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     <p><?php echo esc_html($cta_desc); ?></p>
                     <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>" class="cta-btn">📞 Gọi Hotline: <?php echo esc_html($hotline); ?></a>
                     <a href="<?php echo esc_url($link_zalo); ?>" target="_blank" rel="noopener" class="cta-btn alt">💬 Chat Zalo tư vấn</a>
-                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener" class="cta-btn" style="background:#1877f2;color:#ffffff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:0;"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage</a>
+                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener" class="cta-btn facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage</a>
                 </div>
 
                 <?php if ($bai_lien_quan) : ?>

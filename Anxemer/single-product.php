@@ -95,43 +95,71 @@ get_header(); ?>
     .kx-logo-brand {
         display: flex;
         flex-direction: column;
-        line-height: 1.05;
+        line-height: 1.08;
     }
     .kx-brand-sub {
-        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        font-size: 11.5px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13.5px;
         font-weight: 800;
-        color: #0f5999;
+        color: #0072bc;
         letter-spacing: -0.2px;
         line-height: 1.15;
     }
     .kx-brand-main {
-        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        font-size: 13.5px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 17px;
         font-weight: 900;
-        color: #c4161c;
+        color: #ea2429;
         text-transform: uppercase;
         letter-spacing: 0.2px;
         line-height: 1.1;
         white-space: nowrap;
     }
     .kx-brand-vn {
-        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        color: #0f5999;
-        font-size: 11px;
+        font-family: 'Montserrat', sans-serif;
+        color: #0072bc;
+        font-size: 13.5px;
         font-weight: 800;
         text-transform: lowercase;
     }
     .kx-logo-slogan {
-        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        font-size: 8.5px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11.5px;
         font-style: italic;
         font-weight: 700;
-        color: #0f5999;
-        letter-spacing: 0.2px;
-        margin-top: 2px;
+        color: #0072bc;
+        letter-spacing: 0.15px;
+        margin-top: 3.5px;
         line-height: 1.2;
         white-space: nowrap;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+    @media (max-width: 1024px) {
+        .kx-logo-icon { height: 48px; }
+        .kx-brand-sub { font-size: 13px; }
+        .kx-brand-main { font-size: 16px; }
+        .kx-brand-vn { font-size: 13px; }
+        .kx-logo-slogan { font-size: 11px; display: block; }
+    }
+    @media (max-width: 768px) {
+        .kx-header-inner { padding: 10px 12px; }
+        .kx-logo-main { gap: 8px; }
+        .kx-logo-icon { height: 44px; }
+        .kx-brand-sub { font-size: 12.5px; }
+        .kx-brand-main { font-size: 15.5px; }
+        .kx-brand-vn { font-size: 12.5px; }
+        .kx-logo-slogan { font-size: 10.5px; display: block; margin-top: 3px; }
+    }
+    @media (max-width: 480px) {
+        .kx-header-inner { padding: 8px 10px; }
+        .kx-logo-main { gap: 7px; }
+        .kx-logo-icon { height: 40px; }
+        .kx-brand-sub { font-size: 12px; }
+        .kx-brand-main { font-size: 14.5px; }
+        .kx-brand-vn { font-size: 12px; }
+        .kx-logo-slogan { font-size: 10px; display: block; margin-top: 2.5px; }
     }
     .kx-nav-list {
         display: flex;
@@ -481,9 +509,10 @@ get_header(); ?>
         font-weight: 700;
         text-decoration: none;
         cursor: pointer;
-        transition: all .2s;
+        transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
         margin-bottom: 10px;
         border: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
     .kxd-price-box .cta-btn.primary {
         background: var(--kxd-green);
@@ -492,6 +521,8 @@ get_header(); ?>
     .kxd-price-box .cta-btn.primary:hover {
         background: var(--kxd-green-dark);
         transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(15, 127, 47, 0.35);
+        color: #ffffff;
     }
     .kxd-price-box .cta-btn.zalo {
         background: #0068FF;
@@ -500,6 +531,23 @@ get_header(); ?>
     .kxd-price-box .cta-btn.zalo:hover {
         background: #0052cc;
         transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 104, 255, 0.35);
+        color: #ffffff;
+    }
+    .kxd-price-box .cta-btn.facebook {
+        background: #1877f2;
+        color: #ffffff;
+        margin-bottom: 0;
+    }
+    .kxd-price-box .cta-btn.facebook:hover {
+        background: #1464cc;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35);
+        color: #ffffff;
+    }
+    .kxd-price-box .cta-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .kxd-agent-card {
@@ -946,7 +994,7 @@ get_header(); ?>
                             <p>– <strong>Giá tham khảo:</strong> <?php echo esc_html($gia_thue); ?> (<?php echo esc_html($don_vi_tinh); ?>)</p>
                             <p>– <strong>Hiện trạng:</strong> Mặt bằng tiêu chuẩn, sạch đẹp, hệ thống PCCC nghiệm thu, trạm biến áp công suất lớn, nền bê tông chịu tải cao.</p>
                             <p>– <strong>Pháp lý:</strong> Đầy đủ giấy tờ hợp lệ, hỗ trợ ký hợp đồng và bàn giao mặt bằng nhanh chóng.</p>
-                            <p>– <strong>Liên hệ:</strong> BDS24H / Kho Xưởng Đẹp – Hotline/Zalo: <strong>0909 161 824</strong></p>
+                            <p>– <strong>Liên hệ:</strong> BatdongsanKhuCongNghiep.vn – Hotline/Zalo: <strong>0909 161 824</strong></p>
                         <?php endif; ?>
                     </div>
                 </section>
@@ -974,7 +1022,7 @@ get_header(); ?>
                     </div>
                     <div class="ipb-content-grid">
                         <div class="ipb-main-info">
-                            <h3>Liên hệ <span>Phòng Xúc Tiến Đầu Tư</span> BDS24H</h3>
+                            <h3>Liên hệ <span>Phòng Xúc Tiến Đầu Tư</span> Bất Động Sản Khu Công Nghiệp</h3>
                             <p class="ipb-intro-desc">Đầu mối chuyên trách hỗ trợ tìm kiếm kho xưởng, quỹ đất công nghiệp theo tiêu chuẩn riêng và đồng hành hoàn thiện thủ tục pháp lý, cấp phép đầu tư trọn gói.</p>
                             <div class="ipb-feature-list">
                                 <div class="ipb-feature-item">
@@ -1040,16 +1088,16 @@ get_header(); ?>
                         💬 Tư Vấn Nhanh Qua Zalo
                     </a>
                     
-                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" class="cta-btn" style="background:#1877f2;color:#ffffff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;" target="_blank" rel="noopener">
+                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" class="cta-btn facebook" target="_blank" rel="noopener">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage
                     </a>
                 </div>
 
                 <div class="kxd-agent-card">
                     <div class="kxd-agent-head">
-                        <div class="kxd-agent-avatar">BDS</div>
+                        <div class="kxd-agent-avatar">KCN</div>
                         <div>
-                            <h3>BDS24H – Kho Xưởng Đẹp</h3>
+                            <h3>BatdongsanKhuCongNghiep.vn</h3>
                             <p>Chuyên gia tư vấn BĐS Công Nghiệp</p>
                         </div>
                     </div>

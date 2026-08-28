@@ -464,31 +464,78 @@ get_header();
 	}
 
 	.cta {
-		display: block;
-		text-align: center;
-		text-decoration: none;
-		padding: 12px 14px;
-		border-radius: 6px;
-		background: var(--red);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		width: 100%;
+		height: 44px;
+		padding: 0 14px;
+		border-radius: 8px;
+		background: #0F7F2F;
 		color: #fff;
 		font-family: 'Roboto', sans-serif;
-		font-size: 14.5px;
+		font-size: 14px;
 		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 0.3px;
 		margin-top: 10px;
 		margin-bottom: 10px;
-		transition: opacity 0.2s, transform 0.15s;
+		text-decoration: none;
+		transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+		border: none;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 	}
 
-	.cta:hover {
-		opacity: 0.9;
+	.cta:hover, .cta.primary:hover {
+		background: #0c6826;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(15, 127, 47, 0.35);
+		color: #fff;
 	}
 
-	.cta.alt {
-		background: var(--navy);
+	.cta.zalo {
+		background: #0068FF;
 		margin-top: 10px;
 		margin-bottom: 10px;
+	}
+
+	.cta.zalo:hover {
+		background: #0052cc;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 104, 255, 0.35);
+		color: #fff;
+	}
+
+	.cta.facebook {
+		background: #1877f2;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.cta.facebook:hover {
+		background: #1464cc;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35);
+		color: #fff;
+	}
+
+	.cta.brochure {
+		background: #27ae60;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.cta.brochure:hover {
+		background: #219653;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(39, 174, 96, 0.35);
+		color: #fff;
+	}
+
+	.cta:active {
+		transform: translateY(0);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
 	/* MỤC LỤC ĐIỀU HƯỚNG NHANH */
@@ -1246,16 +1293,16 @@ get_header();
 					<div class="price"><?php echo esc_html($gia_thue); ?></div>
 					<div class="unit"><?php echo esc_html($don_vi_tinh); ?></div>
 					
-					<a class="cta" href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>">📞 Nhận tư vấn &amp; khảo sát</a>
-					<a class="cta alt" href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">💬 Chat Zalo tư vấn</a>
-					<a class="cta alt" style="background:#1877f2;color:#ffffff;border:none;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:0;" href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage</a>
+					<a class="cta primary" href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>">📞 Nhận tư vấn &amp; khảo sát</a>
+					<a class="cta zalo" href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">💬 Tư Vấn Nhanh Qua Zalo</a>
+					<a class="cta facebook" href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage</a>
 					
 					<?php if ( $file_brochure ) : ?>
-						<a class="cta alt" style="background:#27ae60;" href="<?php echo esc_url(is_array($file_brochure) ? $file_brochure['url'] : $file_brochure); ?>" target="_blank" download>📄 Tải Brochure PDF</a>
+						<a class="cta brochure" href="<?php echo esc_url(is_array($file_brochure) ? $file_brochure['url'] : $file_brochure); ?>" target="_blank" download>📄 Tải Brochure PDF</a>
 					<?php endif; ?>
 
 					<div class="agent">
-						<strong>Chuyên viên BDS24H</strong>
+						<strong>Chuyên viên BatdongsanKhuCongNghiep.vn</strong>
 						Hotline / Zalo: <?php echo esc_html($hotline); ?><br>
 						Hỗ trợ hồ sơ pháp lý và kết nối chủ đầu tư
 					</div>

@@ -156,7 +156,7 @@ function bds24h_custom_header_render() {
         <div class="kx-header-inner">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="kx-logo">
                 <div class="kx-logo-main">
-                    <img src="https://batdongsancongnghiep24h.vn/wp-content/uploads/2026/08/2-1.png" alt="Bất Động Sản Khu Công Nghiệp" class="kx-logo-icon">
+                    <img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/08/2-1.png" alt="Bất Động Sản Khu Công Nghiệp" class="kx-logo-icon">
                     <div class="kx-logo-brand">
                         <span class="kx-brand-sub">Bất động sản</span>
                         <span class="kx-brand-main">KHU CÔNG NGHIỆP<span class="kx-brand-vn">.vn</span></span>
@@ -463,28 +463,14 @@ function bds24h_custom_header_render() {
                         <a href="<?php echo esc_url(home_url('/kcn/')); ?>">Khu công nghiệp</a>
                     </li>
 
-                    <!-- Tin tức & Pháp luật (Dropdown) -->
-                    <li class="kx-nav-item kx-has-dropdown">
-                        <a href="<?php echo esc_url(home_url('/news-listing/')); ?>" class="kx-nav-link">
-                            Tin tức
-                            <svg class="kx-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-                        </a>
-                        <div class="kx-dropdown-menu">
-                            <a href="<?php echo esc_url(home_url('/news-listing/')); ?>" class="kx-dropdown-item">
-                                <span class="kx-dd-icon">📰</span>
-                                <div class="kx-dd-text">
-                                    <strong>Tin tức thị trường</strong>
-                                    <span>Thông tin & xu hướng BĐS KCN</span>
-                                </div>
-                            </a>
-                            <a href="<?php echo esc_url(home_url('/phap-luat-dau-tu/')); ?>" class="kx-dropdown-item">
-                                <span class="kx-dd-icon">⚖️</span>
-                                <div class="kx-dd-text">
-                                    <strong>Pháp luật đầu tư</strong>
-                                    <span>Quy định & chính sách KCN</span>
-                                </div>
-                            </a>
-                        </div>
+                    <!-- Tin tức -->
+                    <li class="kx-nav-item">
+                        <a href="<?php echo esc_url(home_url('/news-listing/')); ?>">Tin tức</a>
+                    </li>
+
+                    <!-- Pháp luật đầu tư -->
+                    <li class="kx-nav-item">
+                        <a href="<?php echo esc_url(home_url('/phap-luat-dau-tu/')); ?>">Pháp luật đầu tư</a>
                     </li>
 
                     <!-- MORE MENU -->
@@ -502,11 +488,6 @@ function bds24h_custom_header_render() {
 
             <!-- RIGHT ACTIONS -->
             <div class="kx-header-actions">
-                <a href="tel:0909161824" class="kx-menu-hotline-link">
-                    <span class="kx-menu-hotline-icon">☎</span>
-                    <span class="kx-hotline-label">Hotline: </span>
-                    <strong class="kx-hotline-num">0909 161 824</strong>
-                </a>
                 <button type="button" class="kx-mobile-button" aria-label="Mở menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -675,24 +656,8 @@ function bds24h_custom_header_render() {
                 </div>
 
                 <a href="<?php echo esc_url(home_url('/kcn/')); ?>">Khu công nghiệp</a>
-
-                <!-- Accordion Tin tức -->
-                <div class="kx-mob-acc">
-                    <div class="kx-mob-acc-head">
-                        <a href="<?php echo esc_url(home_url('/news-listing/')); ?>">Tin tức</a>
-                        <button type="button" class="kx-mob-toggle" aria-label="Toggle">▼</button>
-                    </div>
-                    <div class="kx-mob-acc-body">
-                        <div class="kx-mob-links">
-                            <a href="<?php echo esc_url(home_url('/news-listing/')); ?>" class="full">📰 Tin tức thị trường</a>
-                            <a href="<?php echo esc_url(home_url('/phap-luat-dau-tu/')); ?>">⚖️ Pháp luật đầu tư</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="kx-mobile-contact">
-                    <a href="tel:0909161824">☎ Hotline: 0909 161 824</a>
-                </div>
+                <a href="<?php echo esc_url(home_url('/news-listing/')); ?>">Tin tức</a>
+                <a href="<?php echo esc_url(home_url('/phap-luat-dau-tu/')); ?>">Pháp luật đầu tư</a>
             </div>
         </div>
     </div>
@@ -917,14 +882,18 @@ function bds24h_global_custom_styles() {
         }
         #kx-header .kx-logo-slogan {
             font-family: 'Montserrat', sans-serif !important;
-            font-size: 8.5px !important;
+            font-size: 10.8px !important;
             font-style: italic !important;
             font-weight: 700 !important;
             color: #0f5999 !important;
-            letter-spacing: 0.2px !important;
-            margin-top: 2px !important;
+            letter-spacing: 0.25px !important;
+            margin-top: 3.5px !important;
             line-height: 1.2 !important;
             white-space: nowrap !important;
+            display: block !important;
+            width: 100% !important;
+            text-align: justify !important;
+            text-align-last: justify !important;
         }
 
         /* NAVIGATION DESKTOP */
@@ -1357,28 +1326,13 @@ function bds24h_global_custom_styles() {
             gap: 8px !important;
             margin-left: auto !important;
         }
-        #kx-header .kx-menu-hotline-link {
-            color: #c4161c !important;
-            font-size: 12px !important;
-            font-weight: 700 !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 5px !important;
-            background: #fff5f5 !important;
-            border: 1px solid #fed7d7 !important;
-            padding: 6px 12px !important;
-            border-radius: 14px !important;
-            text-decoration: none !important;
-            white-space: nowrap !important;
-            flex-shrink: 0 !important;
-            transition: background .15s, transform .15s !important;
+        #kx-header .kx-menu-hotline-link,
+        .kx-menu-hotline-link,
+        .kx-nav-hotline-item,
+        #kx-header .kx-mobile-contact,
+        .kx-mobile-contact {
+            display: none !important;
         }
-        #kx-header .kx-menu-hotline-link:hover {
-            background: #fee2e2 !important;
-            transform: translateY(-1px);
-        }
-        #kx-header .kx-menu-hotline-link strong { font-size: 12px !important; font-weight: 800 !important; }
-        #kx-header .kx-menu-hotline-icon { font-size: 11px; color: #c4161c; }
 
         /* HAMBURGER BUTTON */
         #kx-header .kx-mobile-button {
@@ -1557,23 +1511,40 @@ function bds24h_global_custom_styles() {
            BREAKPOINTS RESPONSIVE
         ========================================================= */
         @media (max-width: 1200px) {
-            #kx-header .kx-logo-slogan { display: none !important; }
             #kx-header .kx-nav-item > a { padding: 0 8px !important; font-size: 13.5px !important; }
             #kx-header .kx-stepped-menu { width: 480px !important; left: -60px !important; }
+            #kx-header .kx-logo-slogan {
+                font-size: 10.5px !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                text-align: justify !important;
+                text-align-last: justify !important;
+            }
         }
 
         @media (max-width: 1024px) {
             #kx-header .kx-navigation { display: none !important; }
-            #kx-header .kx-logo-slogan { display: none !important; }
             #kx-header .kx-header-inner {
                 padding: 0 16px !important;
-                gap: 10px !important;
-                min-height: 64px !important;
+                gap: 12px !important;
+                min-height: 68px !important;
             }
-            #kx-header .kx-logo-icon { height: 38px !important; }
-            #kx-header .kx-brand-sub { font-size: 10px !important; }
-            #kx-header .kx-brand-main { font-size: 13.5px !important; }
-            #kx-header .kx-brand-vn { font-size: 11px !important; }
+            #kx-header .kx-logo-icon { height: 42px !important; }
+            #kx-header .kx-brand-sub { font-size: 10.5px !important; }
+            #kx-header .kx-brand-main { font-size: 14px !important; }
+            #kx-header .kx-brand-vn { font-size: 11.5px !important; }
+            #kx-header .kx-logo-slogan {
+                font-size: 10.2px !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                text-align: justify !important;
+                text-align-last: justify !important;
+                margin-top: 3px !important;
+            }
             #kx-header .kx-header-actions {
                 display: flex !important;
                 align-items: center !important;
@@ -1600,26 +1571,29 @@ function bds24h_global_custom_styles() {
 
         @media (max-width: 768px) {
             #kx-header .kx-header-inner {
-                padding: 0 10px !important;
-                gap: 6px !important;
-                min-height: 60px !important;
+                padding: 0 12px !important;
+                gap: 8px !important;
+                min-height: 64px !important;
             }
-            #kx-header .kx-logo-main { gap: 6px !important; }
-            #kx-header .kx-logo-icon { height: 30px !important; }
-            #kx-header .kx-brand-sub { font-size: 8px !important; }
-            #kx-header .kx-brand-main { font-size: 11px !important; }
-            #kx-header .kx-brand-vn { font-size: 9px !important; }
-            #kx-header .kx-hotline-label { display: none !important; }
-            #kx-header .kx-menu-hotline-link {
-                padding: 4px 8px !important;
-                font-size: 10.5px !important;
-                gap: 4px !important;
+            #kx-header .kx-logo-main { gap: 7px !important; }
+            #kx-header .kx-logo-icon { height: 36px !important; }
+            #kx-header .kx-brand-sub { font-size: 9.5px !important; }
+            #kx-header .kx-brand-main { font-size: 13px !important; }
+            #kx-header .kx-brand-vn { font-size: 10.5px !important; }
+            #kx-header .kx-logo-slogan {
+                font-size: 9.5px !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                text-align: justify !important;
+                text-align-last: justify !important;
+                margin-top: 2.5px !important;
             }
-            #kx-header .kx-menu-hotline-link strong { font-size: 10.5px !important; }
             #kx-header .kx-mobile-button {
-                width: 32px !important;
-                height: 32px !important;
-                min-width: 32px !important;
+                width: 34px !important;
+                height: 34px !important;
+                min-width: 34px !important;
                 padding: 4px !important;
             }
             #kx-header .kx-mobile-button span {
@@ -1631,26 +1605,39 @@ function bds24h_global_custom_styles() {
         @media (max-width: 480px) {
             #kx-header .kx-header-inner {
                 padding: 0 8px !important;
-                gap: 4px !important;
-                min-height: 54px !important;
+                gap: 6px !important;
+                min-height: 58px !important;
             }
-            #kx-header .kx-logo-icon { height: 26px !important; }
-            #kx-header .kx-brand-sub { font-size: 7px !important; }
-            #kx-header .kx-brand-main { font-size: 9.5px !important; }
-            #kx-header .kx-brand-vn { font-size: 8px !important; }
+            #kx-header .kx-logo-icon { height: 32px !important; }
+            #kx-header .kx-brand-sub { font-size: 8.5px !important; }
+            #kx-header .kx-brand-main { font-size: 11.5px !important; }
+            #kx-header .kx-brand-vn { font-size: 9.5px !important; }
+            #kx-header .kx-logo-slogan {
+                font-size: 8.5px !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                text-align: justify !important;
+                text-align-last: justify !important;
+                margin-top: 2px !important;
+            }
             #kx-header .kx-header-actions { gap: 4px !important; }
-            #kx-header .kx-menu-hotline-link {
-                padding: 3px 6px !important;
-                font-size: 9.5px !important;
-            }
-            #kx-header .kx-menu-hotline-link strong { font-size: 9.5px !important; }
         }
 
         @media (max-width: 360px) {
-            #kx-header .kx-menu-hotline-link strong { display: none !important; }
-            #kx-header .kx-menu-hotline-link {
-                padding: 4px 6px !important;
-                font-size: 12px !important;
+            #kx-header .kx-logo-icon { height: 28px !important; }
+            #kx-header .kx-brand-sub { font-size: 7.5px !important; }
+            #kx-header .kx-brand-main { font-size: 10px !important; }
+            #kx-header .kx-brand-vn { font-size: 8.5px !important; }
+            #kx-header .kx-logo-slogan {
+                font-size: 7.5px !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                text-align: justify !important;
+                text-align-last: justify !important;
             }
         }
 
