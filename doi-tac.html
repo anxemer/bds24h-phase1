@@ -1,0 +1,905 @@
+<!-- ============================================================
+     BDS24H - TRANG ĐỐI TÁC & THÀNH VIÊN (CHUẨN ELEMENTOR HTML)
+     - SIÊU NHẸ (~15KB), Paste vào Elementor trong 0.1s không lag
+     - Đầy đủ 50 Đối tác, Bộ lọc Real-time & Tìm kiếm tức thì
+     - Ảnh logo lưu trong thư mục: /wp-content/uploads/partners/
+============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+/* CORE STYLES */
+.bds-dt-root {
+  --navy: #2561a0;
+  --navy-dark: #133560;
+  --orange: #16C04A;
+  --orange-light: #22D462;
+  --green: #157041;
+  --green-dark: #08301c;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #E2E8F0;
+  --bg-light: #F4F6FA;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  background: var(--bg-light);
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.bds-dt-root * { box-sizing: border-box; }
+.bds-dt-root a { text-decoration: none; }
+
+/* HERO BANNER */
+.bds-dt-hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(120% 140% at 12% 0%, #1a4a80 0%, #2561a0 45%, #133560 100%);
+  color: #fff;
+  padding: 70px 20px 90px;
+  text-align: center;
+}
+.bds-dt-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+.bds-dt-hero-inner {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+.bds-dt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 127, 42, 0.4);
+  background: rgba(255, 127, 42, 0.12);
+  border-radius: 30px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #FFA726;
+  margin-bottom: 18px;
+}
+.bds-dt-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FF7F2A;
+  box-shadow: 0 0 8px #FF7F2A;
+}
+.bds-dt-hero h1 {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 1.05;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+.bds-dt-hero h1 span { color: #16C04A; }
+.bds-dt-hero p {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #cbd5e1;
+}
+
+/* STATS */
+.bds-dt-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+.bds-dt-stat-item { text-align: center; }
+.bds-dt-stat-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+}
+.bds-dt-stat-num span { color: #16C04A; }
+.bds-dt-stat-label {
+  margin-top: 6px;
+  font-size: 11.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* MARQUEE LOGO TICKER */
+.bds-dt-ticker {
+  background: #133560;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  overflow: hidden;
+  position: relative;
+}
+.bds-dt-ticker::before, .bds-dt-ticker::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; width: 100px;
+  z-index: 3;
+  pointer-events: none;
+}
+.bds-dt-ticker::before { left: 0; background: linear-gradient(90deg, #133560, transparent); }
+.bds-dt-ticker::after { right: 0; background: linear-gradient(-90deg, #133560, transparent); }
+.bds-dt-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: bdsMarquee 38s linear infinite;
+}
+.bds-dt-track:hover { animation-play-state: paused; }
+@keyframes bdsMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.bds-dt-ticker-card {
+  flex: none;
+  width: 150px;
+  height: 70px;
+  background: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.bds-dt-ticker-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+.bds-dt-ticker-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* MAIN PARTNER DIRECTORY */
+.bds-dt-main {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 50px 20px 40px;
+}
+.bds-dt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+}
+.bds-dt-toolbar-title-sub {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 700;
+}
+.bds-dt-toolbar-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 4px 0 0;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  color: #0f172a;
+}
+.bds-dt-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 14px;
+  width: 100%;
+  max-width: 320px;
+  transition: border-color .2s;
+}
+.bds-dt-search:focus-within {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(22, 192, 74, 0.15);
+}
+.bds-dt-search input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #0f172a;
+  width: 100%;
+  background: transparent;
+}
+
+/* CATEGORY FILTERS */
+.bds-dt-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 30px;
+}
+.bds-dt-filter-btn {
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all .18s ease;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bds-dt-filter-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.bds-dt-filter-btn.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #ffffff;
+}
+.bds-dt-filter-btn .count {
+  font-size: 11px;
+  opacity: .75;
+}
+
+/* GRID OF PARTNER CARDS */
+.bds-dt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.bds-dt-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 16px 16px;
+  text-align: center;
+  transition: all .25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bds-dt-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 14px 30px rgba(37,97,160,.15);
+  transform: translateY(-4px);
+}
+.bds-dt-card-img-wrap {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: #ffffff;
+  border-radius: 6px;
+}
+.bds-dt-card-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(10%);
+  transition: filter .2s;
+}
+.bds-dt-card:hover .bds-dt-card-img-wrap img {
+  filter: grayscale(0%);
+}
+.bds-dt-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: #2561a0;
+  background: #eef4fb;
+  border-radius: 6px;
+  letter-spacing: .5px;
+}
+.bds-dt-card-meta {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+.bds-dt-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bds-dt-card-cat {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* EMPTY STATE */
+.bds-dt-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #64748b;
+  font-size: 14px;
+  display: none;
+}
+
+/* CTA BAND ĐỒNG BỘ #0d3559 */
+.bds-ctaband {
+  background: #0d3559;
+  padding: 42px 0;
+  border-top: 3px solid #0F7F2F;
+  color: #fff;
+  margin-top: 40px;
+}
+.bds-ctaband .wrap {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.bds-ctaband h3 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 4px;
+}
+.bds-ctaband p {
+  color: #d1e2f3;
+  font-size: 14px;
+  margin: 0;
+}
+.bds-cta-btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.bds-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: .2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  color: #fff;
+}
+.bds-cta-btn.hotline { background: #D9531E; }
+.bds-cta-btn.zalo { background: #0F7F2F; }
+.bds-cta-btn.facebook { background: #1877F2; }
+.bds-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  opacity: 0.95;
+}
+
+@media(max-width: 768px) {
+  .bds-dt-grid { grid-template-columns: repeat(2, 1fr); }
+  .bds-dt-stats { gap: 24px; }
+  .bds-dt-stat-num { font-size: 36px; }
+}
+@media(max-width: 480px) {
+  .bds-dt-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="bds-dt-root">
+  <!-- HERO BANNER -->
+  <section class="bds-dt-hero">
+    <div class="bds-dt-hero-inner">
+      <div class="bds-dt-badge">
+        <span class="bds-dt-badge-dot"></span>
+        Mạng lưới hợp tác chiến lược
+      </div>
+      <h1>Thành viên <span>&amp;</span> Đối tác</h1>
+      <p>Hơn 50 tổ chức xúc tiến đầu tư, hiệp hội doanh nghiệp quốc tế, nhà phát triển khu công nghiệp và đơn vị tư vấn cùng đồng hành với BĐS Công Nghiệp 24H.</p>
+
+      <div class="bds-dt-stats">
+        <div class="bds-dt-stat-item">
+          <div class="bds-dt-stat-num"><span>50</span><span>+</span></div>
+          <div class="bds-dt-stat-label">Đối tác &amp; thành viên</div>
+        </div>
+        <div class="bds-dt-stat-item">
+          <div class="bds-dt-stat-num"><span>6</span></div>
+          <div class="bds-dt-stat-label">Châu lục</div>
+        </div>
+        <div class="bds-dt-stat-item">
+          <div class="bds-dt-stat-num"><span>12</span><span>+</span></div>
+          <div class="bds-dt-stat-label">Hiệp hội quốc tế</div>
+        </div>
+        <div class="bds-dt-stat-item">
+          <div class="bds-dt-stat-num"><span>5</span></div>
+          <div class="bds-dt-stat-label">Năm hợp tác</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO TICKER MARQUEE -->
+  <section class="bds-dt-ticker">
+    <div class="bds-dt-track" id="bds-ticker-track"></div>
+  </section>
+
+  <!-- MAIN DIRECTORY -->
+  <section class="bds-dt-main" id="doi-tac">
+    <div class="bds-dt-toolbar">
+      <div>
+        <div class="bds-dt-toolbar-title-sub">Danh mục đối tác</div>
+        <h2 class="bds-dt-toolbar-title">Toàn bộ mạng lưới</h2>
+      </div>
+      <div class="bds-dt-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="bds-partner-search" placeholder="Tìm theo tên đối tác…" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- FILTER BUTTONS -->
+    <div class="bds-dt-filters" id="bds-filter-container">
+      <button class="bds-dt-filter-btn active" data-cat="Tất cả">Tất cả <span class="count" id="count-all">(50)</span></button>
+      <button class="bds-dt-filter-btn" data-cat="Tổ chức quốc tế">Tổ chức quốc tế <span class="count" id="count-tcqt"></span></button>
+      <button class="bds-dt-filter-btn" data-cat="Hiệp hội quốc tế">Hiệp hội quốc tế <span class="count" id="count-hhqt"></span></button>
+      <button class="bds-dt-filter-btn" data-cat="Xúc tiến đầu tư">Xúc tiến đầu tư <span class="count" id="count-xtdt"></span></button>
+      <button class="bds-dt-filter-btn" data-cat="Doanh nghiệp & KCN">Doanh nghiệp &amp; KCN <span class="count" id="count-dnkcn"></span></button>
+      <button class="bds-dt-filter-btn" data-cat="Tư vấn & Kiểm toán">Tư vấn &amp; Kiểm toán <span class="count" id="count-tvkt"></span></button>
+    </div>
+
+    <!-- PARTNER GRID -->
+    <div class="bds-dt-grid" id="bds-partner-grid"></div>
+
+    <div class="bds-dt-empty" id="bds-empty-msg">
+      Không tìm thấy đối tác phù hợp với từ khóa của bạn.
+    </div>
+  </section>
+
+  <!-- CTA BAND (ĐỒNG BỘ #0d3559) -->
+  <section class="bds-ctaband">
+    <div class="wrap">
+      <div>
+        <h3>Bạn cần tìm kho xưởng hoặc quỹ đất KCN theo yêu cầu riêng?</h3>
+        <p>Đội ngũ chuyên viên tư vấn 24/7, cung cấp bảng giá chi tiết, dẫn khảo sát thực địa miễn phí 100%.</p>
+      </div>
+      <div class="bds-cta-btn-group">
+        <a href="tel:0909161824" class="bds-cta-btn hotline">☎ Gọi Hotline: 0909 161 824</a>
+        <a href="https://zalo.me/0909161824" target="_blank" rel="noopener" class="bds-cta-btn zalo">💬 Chat Zalo</a>
+        <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener" class="bds-cta-btn facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff" style="flex-shrink:0;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Fanpage Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function() {
+  // ĐƯỜNG DẪN ẢNH: Upload thư mục 'partners' vào wp-content/uploads/partners/
+  const BASE_PATH = '/wp-content/uploads/partners/';
+  
+  const PARTNERS = [
+    {
+        "id":  1,
+        "name":  "WAIPA",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p01.png"
+    },
+    {
+        "id":  2,
+        "name":  "EuroCham",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p02.png"
+    },
+    {
+        "id":  3,
+        "name":  "AmCham Vietnam",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p03.png"
+    },
+    {
+        "id":  4,
+        "name":  "JETRO",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p04.png"
+    },
+    {
+        "id":  5,
+        "name":  "JCCI",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p05.png"
+    },
+    {
+        "id":  6,
+        "name":  "KOTRA",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p06.png"
+    },
+    {
+        "id":  7,
+        "name":  "KORCHAM",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p07.png"
+    },
+    {
+        "id":  8,
+        "name":  "HKTDC",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p08.png"
+    },
+    {
+        "id":  9,
+        "name":  "NordCham Vietnam",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p09.png"
+    },
+    {
+        "id":  10,
+        "name":  "BBGV",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p10.png"
+    },
+    {
+        "id":  11,
+        "name":  "EVBN",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p11.png"
+    },
+    {
+        "id":  12,
+        "name":  "CEEC",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p12.png"
+    },
+    {
+        "id":  13,
+        "name":  "German Business Association",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p13.png"
+    },
+    {
+        "id":  14,
+        "name":  "BeluxCham",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p14.png"
+    },
+    {
+        "id":  15,
+        "name":  "DBAV",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p15.png"
+    },
+    {
+        "id":  16,
+        "name":  "ICHAM",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p16.png"
+    },
+    {
+        "id":  17,
+        "name":  "CCI France Vietnam",
+        "cat":  "Hiệp hội quốc tế",
+        "file":  "p17.png"
+    },
+    {
+        "id":  18,
+        "name":  "FHKI",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p18.png"
+    },
+    {
+        "id":  19,
+        "name":  "HKEIA",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p19.png"
+    },
+    {
+        "id":  20,
+        "name":  "ATPF",
+        "cat":  "Tổ chức quốc tế",
+        "file":  "p20.png"
+    },
+    {
+        "id":  21,
+        "name":  "Trade Vietnam",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p21.png"
+    },
+    {
+        "id":  22,
+        "name":  "VietLink Law Firm",
+        "cat":  "Tư vấn \u0026 Kiểm toán",
+        "file":  "p22.png"
+    },
+    {
+        "id":  23,
+        "name":  "SaigonTel",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p23.png"
+    },
+    {
+        "id":  24,
+        "name":  "BPG",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p24.png"
+    },
+    {
+        "id":  25,
+        "name":  "GS Holding",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p25.png"
+    },
+    {
+        "id":  26,
+        "name":  "PM3SIP",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p26.png"
+    },
+    {
+        "id":  27,
+        "name":  "HBI",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p27.png"
+    },
+    {
+        "id":  28,
+        "name":  "CNV Group",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p28.png"
+    },
+    {
+        "id":  29,
+        "name":  "Alphaco",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p29.png"
+    },
+    {
+        "id":  30,
+        "name":  "VietinBank",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p30.png"
+    },
+    {
+        "id":  31,
+        "name":  "Viettel Asset",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p31.png"
+    },
+    {
+        "id":  32,
+        "name":  "Hanoi Telecom",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p32.png"
+    },
+    {
+        "id":  33,
+        "name":  "Kinh Bac City",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p33.png"
+    },
+    {
+        "id":  34,
+        "name":  "VCCI",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p34.png"
+    },
+    {
+        "id":  35,
+        "name":  "VAFIE",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p35.png"
+    },
+    {
+        "id":  36,
+        "name":  "Invest Quang Ninh",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p36.png"
+    },
+    {
+        "id":  37,
+        "name":  "PAA Vĩnh Phúc",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p37.png"
+    },
+    {
+        "id":  38,
+        "name":  "HPA Hà Nội",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p38.png"
+    },
+    {
+        "id":  39,
+        "name":  "IPA Đà Nẵng",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p39.png"
+    },
+    {
+        "id":  40,
+        "name":  "iZ Vietnam",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p40.png"
+    },
+    {
+        "id":  41,
+        "name":  "Deloitte",
+        "cat":  "Tư vấn \u0026 Kiểm toán",
+        "file":  "p41.png"
+    },
+    {
+        "id":  42,
+        "name":  "KPMG",
+        "cat":  "Tư vấn \u0026 Kiểm toán",
+        "file":  "p42.png"
+    },
+    {
+        "id":  43,
+        "name":  "PwC",
+        "cat":  "Tư vấn \u0026 Kiểm toán",
+        "file":  "p43.png"
+    },
+    {
+        "id":  44,
+        "name":  "EY",
+        "cat":  "Tư vấn \u0026 Kiểm toán",
+        "file":  "p44.png"
+    },
+    {
+        "id":  45,
+        "name":  "Thanh Hóa ITTPA",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p45.png"
+    },
+    {
+        "id":  46,
+        "name":  "HanoiBA",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p46.png"
+    },
+    {
+        "id":  47,
+        "name":  "Hiệp hội Doanh nghiệp Đà Nẵng",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p47.png"
+    },
+    {
+        "id":  48,
+        "name":  "YBA HCM",
+        "cat":  "Xúc tiến đầu tư",
+        "file":  "p48.png"
+    },
+    {
+        "id":  49,
+        "name":  "Individual Systems",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p49.png"
+    },
+    {
+        "id":  50,
+        "name":  "Vietnam Partner",
+        "cat":  "Doanh nghiệp \u0026 KCN",
+        "file":  "p50.png"
+    }
+];
+
+  let currentCategory = 'Tất cả';
+  let searchQuery = '';
+
+  const gridEl = document.getElementById('bds-partner-grid');
+  const emptyEl = document.getElementById('bds-empty-msg');
+  const searchInput = document.getElementById('bds-partner-search');
+  const filterBtns = document.querySelectorAll('.bds-dt-filter-btn');
+  const tickerTrack = document.getElementById('bds-ticker-track');
+
+  // Update counts
+  const countEls = {
+    'Tất cả': document.getElementById('count-all'),
+    'Tổ chức quốc tế': document.getElementById('count-tcqt'),
+    'Hiệp hội quốc tế': document.getElementById('count-hhqt'),
+    'Xúc tiến đầu tư': document.getElementById('count-xtdt'),
+    'Doanh nghiệp & KCN': document.getElementById('count-dnkcn'),
+    'Tư vấn & Kiểm toán': document.getElementById('count-tvkt')
+  };
+
+  Object.keys(countEls).forEach(function(cat) {
+    if (countEls[cat]) {
+      const cnt = cat === 'Tất cả' ? PARTNERS.length : PARTNERS.filter(function(p) { return p.cat === cat; }).length;
+      countEls[cat].textContent = '(' + cnt + ')';
+    }
+  });
+
+  // Ticker
+  if (tickerTrack) {
+    const tickerList = PARTNERS.slice(0, 20).concat(PARTNERS.slice(0, 20));
+    let tickerHtml = '';
+    tickerList.forEach(function(p) {
+      tickerHtml += '<div class="bds-dt-ticker-card" title="' + p.name + '">' +
+        '<img src="' + BASE_PATH + p.file + '" alt="' + p.name + '" loading="lazy" onerror="this.outerHTML=\'<span class=\\\'bds-dt-card-placeholder\\\'>' + p.name + '</span>\'">' +
+      '</div>';
+    });
+    tickerTrack.innerHTML = tickerHtml;
+  }
+
+  // Render Grid
+  function renderGrid() {
+    const q = searchQuery.toLowerCase().trim();
+    const filtered = PARTNERS.filter(function(p) {
+      const matchCat = (currentCategory === 'Tất cả' || p.cat === currentCategory);
+      const matchSearch = (!q || p.name.toLowerCase().indexOf(q) !== -1 || p.cat.toLowerCase().indexOf(q) !== -1);
+      return matchCat && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      gridEl.innerHTML = '';
+      emptyEl.style.display = 'block';
+      return;
+    }
+
+    emptyEl.style.display = 'none';
+    let html = '';
+    filtered.forEach(function(p) {
+      html += '<div class="bds-dt-card">' +
+        '<div class="bds-dt-card-img-wrap">' +
+          '<img src="' + BASE_PATH + p.file + '" alt="' + p.name + '" loading="lazy" onerror="this.outerHTML=\'<span class=\\\'bds-dt-card-placeholder\\\'>' + p.name + '</span>\'">' +
+        '</div>' +
+        '<div class="bds-dt-card-meta">' +
+          '<div class="bds-dt-card-name" title="' + p.name + '">' + p.name + '</div>' +
+          '<div class="bds-dt-card-cat">' + p.cat + '</div>' +
+        '</div>' +
+      '</div>';
+    });
+    gridEl.innerHTML = html;
+  }
+
+  // Events
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentCategory = this.getAttribute('data-cat');
+      renderGrid();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      searchQuery = e.target.value;
+      renderGrid();
+    });
+  }
+
+  renderGrid();
+})();
+</script>

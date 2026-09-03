@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kho Xưởng Cho Thuê | BDS24H – Tìm Kho Xưởng Sản Xuất TP.HCM & Các Tỉnh</title>
+	<meta name="description" content="Kho xưởng cho thuê tại TP.HCM, Long An, Bình Dương, Đồng Nai. Diện tích đa dạng từ 500m² đến 50.000m². Hỗ trợ xem thực địa và làm hợp đồng nhanh. Hotline 0909 161 824.">
+	<meta name="robots" content="index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<style>
+
+/* PAGE STYLES */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: 'Roboto', 'Inter', sans-serif; background: #F8FAFC; color: #000000; line-height: 1.6; }
+
+:root {
+	--ink: #000000;
+	--paper: #F8FAFC;
+	--panel: #ffffff;
+	--navy: #173B5E;
+	--navy-dk: #102A45;
+	--green: #0F7F2F;
+	--green-dk: #083315;
+	--orange: #D9531E;
+	--orange-dk: #B83E0F;
+	--line: #E2E8F0;
+	--off: #000000;
+}
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* HERO */
+.lp-hero {
+	background:
+		linear-gradient(rgba(23,59,94,.03) 0%, rgba(23,59,94,.01) 100%),
+		linear-gradient(180deg, #fff 0%, #F8FAFC 100%);
+	border-bottom: 1px solid var(--line);
+	padding: 44px 0 36px;
+	position: relative; overflow: visible; z-index: 200;
+}
+.lp-breadcrumb { font-size: 12.5px; color: #000000 !important; margin-bottom: 14px; font-weight: 600; }
+.lp-breadcrumb a { color: #000000 !important; font-weight: 600; text-decoration: none; }
+.lp-breadcrumb a:hover { color: #000000; }
+.lp-hero h1 { font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #000000 !important; margin: 0 0 10px; line-height: 1.2; }
+.lp-hero h1 span { color: #000000 !important; }
+.lp-hero p { font-size: 15.5px; color: #000000 !important; font-weight: 500; max-width: 680px; margin: 0 0 24px; line-height: 1.65; }
+.lp-stats-row { display: flex; gap: 28px; flex-wrap: wrap; }
+.lp-stat { text-align: left; }
+.lp-stat strong { display: block; font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; color: #000000 !important; }
+.lp-stat span { font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: #000000 !important; font-weight: 700; }
+
+/* FILTER BAR */
+.lp-filter {
+	background: #fff; border-bottom: 1px solid var(--line);
+	padding: 16px 0; position: sticky; top: 0; z-index: 50;
+	box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.lp-filter-inner { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.lp-filter-label { font-size: 12.5px; font-weight: 800; color: #000000 !important; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.lp-chip { display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border: 1.5px solid #cbd5e1; border-radius: 20px; font-size: 13px; font-weight: 700; color: #000000 !important; background: #ffffff; cursor: pointer; transition: .15s; white-space: nowrap; }
+.lp-chip:hover { border-color: #000000; color: #000000 !important; }
+.lp-chip.active { background: var(--navy); color: #fff !important; border-color: var(--navy); }
+.lp-sort { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #000000 !important; font-weight: 700; white-space: nowrap !important; }
+.lp-sort-dd { min-width: 170px; }
+.lp-sort-dd .lp-dd-btn { padding: 7px 12px !important; font-size: 13px !important; font-weight: 700 !important; border-radius: 8px !important; border: 1.5px solid #cbd5e1 !important; }
+
+/* SEARCH BOX — PREMIUM CUSTOM */
+.lp-searchbar { background: linear-gradient(135deg,#f6fbf7 0%,#edf7f0 100%); border: 1.5px solid #c8e6d0; border-radius: 16px; padding: 22px 24px; margin: 28px 0 0; box-shadow: 0 8px 32px rgba(15,127,47,0.09), 0 2px 8px rgba(0,0,0,0.04); position: relative; z-index: 300; }
+.lp-searchbar-inner { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr auto; gap: 12px; align-items: end; }
+.lp-sf { position: relative; }
+.lp-sf-label { display: flex; align-items: center; gap: 5px; font-size: 10.5px !important; font-weight: 800 !important; text-transform: uppercase; letter-spacing: .09em; color: #64748b !important; margin-bottom: 7px; }
+.lp-sf-input { width: 100%; background: #fff !important; border: 1.5px solid #e2e8f0 !important; border-radius: 9px !important; padding: 11px 14px !important; font-size: 13.5px !important; font-weight: 500 !important; color: #0f172a !important; outline: none; transition: border-color .18s, box-shadow .18s; font-family: inherit !important; appearance: none; -webkit-appearance: none; }
+.lp-sf-input:focus { border-color: #16c04a !important; box-shadow: 0 0 0 3px rgba(22,192,74,0.12) !important; }
+.lp-sf-input::placeholder { color: #94a3b8 !important; font-weight: 400 !important; }
+/* CUSTOM DROPDOWN */
+.lp-dd { position: relative; }
+.lp-dd-btn { width: 100%; display: flex; align-items: center; gap: 8px; background: #fff !important; border: 1.5px solid #e2e8f0 !important; border-radius: 9px !important; padding: 11px 14px !important; font-size: 13.5px !important; font-weight: 500 !important; color: #0f172a !important; cursor: pointer !important; text-align: left; transition: border-color .18s, box-shadow .18s; white-space: nowrap; box-shadow: none !important; font-family: inherit !important; }
+.lp-dd-btn:hover { border-color: #16c04a !important; }
+.lp-dd.is-open .lp-dd-btn { border-color: #16c04a !important; box-shadow: 0 0 0 3px rgba(22,192,74,0.12) !important; }
+.lp-dd-val { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lp-dd-arrow { flex-shrink: 0; width: 15px; height: 15px; transition: transform .2s; display: block; }
+.lp-dd.is-open .lp-dd-arrow { transform: rotate(180deg); }
+.lp-dd-panel { position: fixed !important; background: #ffffff !important; border: 1.5px solid #e2e8f0 !important; border-radius: 12px !important; box-shadow: 0 24px 64px rgba(0,0,0,0.16), 0 4px 16px rgba(0,0,0,0.08) !important; z-index: 2147483647 !important; max-height: 300px; overflow-y: auto; display: none !important; min-width: 220px; padding: 6px 0; scrollbar-width: thin; }
+.lp-dd-panel.is-open { display: block !important; }
+.lp-dd-opt { padding: 10px 18px !important; font-size: 13px !important; font-weight: 500 !important; color: #334155 !important; cursor: pointer !important; transition: background .1s; border: none !important; background: transparent !important; display: block; }
+.lp-dd-opt:hover { background: #f0faf4 !important; color: #0f7f2f !important; }
+.lp-dd-opt.is-sel { background: #dcfce7 !important; color: #166534 !important; font-weight: 700 !important; }
+.lp-search-submit { background: linear-gradient(135deg,#16c04a,#0a6625) !important; color: #fff !important; border: none !important; border-radius: 10px !important; height: 46px !important; padding: 0 22px !important; font-weight: 700 !important; font-size: 14px !important; cursor: pointer !important; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 4px 18px rgba(22,192,74,0.32) !important; transition: all .2s !important; width: 100%; justify-content: center; }
+.lp-search-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(22,192,74,0.42) !important; }
+@media (max-width: 1100px) { .lp-searchbar-inner { grid-template-columns: 1.5fr 1fr 1fr; } }
+@media (max-width: 760px) { .lp-searchbar-inner { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 440px) { .lp-searchbar-inner { grid-template-columns: 1fr; } }
+
+/* MAIN CONTENT */
+.lp-main { padding: 32px 0 60px; }
+.lp-layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: start; }
+
+/* SIDEBAR */
+.lp-sidebar { position: sticky; top: 60px; }
+.lp-sidebar-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+.lp-sidebar-card h3 { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; color: #000000; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 2px solid #000000; }
+.lp-sidebar-option { display: flex; align-items: center; gap: 8px; padding: 6px 0; cursor: pointer; font-size: 13.5px; color: #000000; }
+.lp-sidebar-option input { accent-color: var(--green); }
+.lp-sidebar-range { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+.lp-sidebar-range input { border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 13px; width: 100%; color: #000000; background: #fff; }
+.lp-hotline { background: var(--navy); border-radius: 10px; padding: 20px; color: #fff; text-align: center; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(23,59,94,.15); }
+.lp-hotline p { font-size: 13px; margin: 0 0 8px; color: rgba(255,255,255,.9); font-weight: 500; }
+.lp-hotline strong { font-size: 20px; display: block; color: #fff; font-weight: 800; letter-spacing: 0.5px; }
+.lp-hotline a { display: block; background: #fff; color: var(--navy); font-weight: 800; font-size: 15px; border-radius: 6px; padding: 10px; text-decoration: none; margin-top: 12px; transition: .2s; }
+.lp-hotline a:hover { background: #f8fafc; }
+
+/* GRID */
+.lp-results-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.lp-results-count { font-size: 14px; color: #000000; }
+.lp-results-count strong { color: #000000; }
+
+.lp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.lp-card {
+	background: #fff; border: 1px solid var(--line); border-radius: 10px;
+	overflow: hidden; text-decoration: none; color: inherit; display: block;
+	transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.lp-card:hover { transform: translateY(-3px); border-color: #cbd5e1; box-shadow: 0 12px 28px rgba(23,59,94,.08); }
+.lp-card-thumb { aspect-ratio: 16/10; overflow: hidden; position: relative; background: #f0f2f0; }
+.lp-card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.lp-card:hover .lp-card-thumb img { transform: scale(1.06); }
+.lp-card-badge { position: absolute; top: 10px; left: 10px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 4px; text-transform: uppercase; }
+.lp-card-badge.green { background: var(--green); }
+.lp-card-area { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,.7); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 4px; }
+.lp-card-body { padding: 16px; }
+.lp-card-kicker { display: flex; justify-content: space-between; font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; color: #000000 !important; font-weight: 700; margin-bottom: 6px; }
+.lp-card-title { font-weight: 700; font-size: 15.5px; color: #000000 !important; margin: 0 0 4px; line-height: 1.35; letter-spacing: -.01em; }
+.lp-card:hover .lp-card-title { color: #000000; }
+.lp-card-loc { font-size: 13px; color: #000000 !important; font-weight: 600; margin-bottom: 10px; }
+.lp-card-specs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.lp-card-spec { background: #ffffff; border: 1px solid #94a3b8; border-radius: 5px; padding: 4px 8px; font-size: 11.5px; color: #000000 !important; font-weight: 700; }
+.lp-card-price { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.lp-card-price strong { font-family: 'Oswald', sans-serif; font-size: 18px; color: #000000 !important; font-weight: 700; }
+.lp-card-cta { font-size: 12px; font-weight: 700; color: #000000 !important; }
+
+/* PAGINATION */
+.lp-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 36px; }
+.lp-page-btn { width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #000000; text-decoration: none; background: #fff; cursor: pointer; transition: .15s; }
+.lp-page-btn:hover, .lp-page-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+/* CTA SECTION */
+.lp-cta-section { background: #0d3559; border-top: 3px solid #0F7F2F; padding: 56px 0; text-align: center; }
+.lp-cta-section h2 { font-family: 'Oswald', sans-serif; font-size: 32px; color: #fff; font-weight: 700; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.5px; }
+.lp-cta-section p { color: rgba(255,255,255,.85); font-size: 15px; max-width: 540px; margin: 0 auto 24px; }
+.lp-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.lp-cta-btn { display: inline-flex; align-items: center; gap: 7px; height: 46px; padding: 0 24px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: .2s; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+.lp-cta-btn.primary { background: #D9531E; color: #fff; border: none; }
+.lp-cta-btn.secondary { background: #0F7F2F; color: #fff; border: none; }
+.lp-cta-btn.facebook { background: #1877F2; color: #fff; border: none; }
+.lp-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.3); opacity: 0.95; }
+
+/* FOOTER */
+.lp-footer { background: #111827; color: #9ca3af; padding: 40px 0 24px; }
+.lp-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+.lp-footer h4 { font-family: 'Oswald', sans-serif; font-size: 14px; text-transform: uppercase; color: #fff; margin: 0 0 14px; letter-spacing: .05em; }
+.lp-footer p { font-size: 13px; line-height: 1.65; margin: 0; }
+.lp-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.lp-footer ul a { color: #9ca3af; text-decoration: none; font-size: 13px; transition: .15s; }
+.lp-footer ul a:hover { color: #16c04a; }
+.lp-footer-bottom { border-top: 1px solid #1f2937; padding-top: 20px; font-size: 12px; text-align: center; }
+
+@media (max-width: 900px) {
+	.lp-search-box { grid-template-columns: 1fr 1fr; overflow: visible; }
+	.lp-layout { grid-template-columns: 1fr; }
+	.lp-sidebar { position: static; }
+	.lp-grid { grid-template-columns: 1fr; }
+	.lp-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+	.lp-search-box { grid-template-columns: 1fr; }
+	.lp-hero h1 { font-size: 26px; }
+	.lp-footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- HERO -->
+<section class="lp-hero">
+	<div class="wrap">
+		<nav class="lp-breadcrumb">
+			<a href="https://batdongsankhucongnghiep.vn/">Trang chủ</a> / Kho xưởng
+		</nav>
+		<h1>Kho Xưởng Cho Thuê <span>Sẵn Sàng Sản Xuất</span></h1>
+		<p>Hơn 200 kho xưởng đang cho thuê tại TP.HCM, Long An, Bình Dương và Đồng Nai. Diện tích đa dạng từ 500m² đến 50.000m², xưởng xây sẵn và xưởng thiết kế theo yêu cầu.</p>
+		<div class="lp-stats-row">
+			<div class="lp-stat"><strong>200+</strong><span>Kho xưởng</span></div>
+			<div class="lp-stat"><strong>12</strong><span>Tỉnh thành</span></div>
+			<div class="lp-stat"><strong>500m²</strong><span>Diện tích tối thiểu</span></div>
+			<div class="lp-stat"><strong>24h</strong><span>Phản hồi tư vấn</span></div>
+		</div>
+
+		<!-- THANH TÌM KIẾM -->
+		<div class="lp-searchbar">
+		  <div class="lp-searchbar-inner">
+
+		    <!-- Từ khóa -->
+		    <div class="lp-sf">
+		      <div class="lp-sf-label">🔍 Tìm theo từ khóa</div>
+		      <input type="text" class="lp-sf-input" id="ks-kw" placeholder="Tên xưởng, địa chỉ...">
+		    </div>
+
+		    <!-- Khu vực -->
+		    <div class="lp-sf">
+		      <div class="lp-sf-label">📍 Khu vực</div>
+		      <div class="lp-dd" id="dd-ks-region">
+		        <button class="lp-dd-btn" type="button"><span class="lp-dd-val">Tất cả khu vực</span><svg class="lp-dd-arrow" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+		        <input type="hidden" id="ks-region" value="">
+		        <div class="lp-dd-panel">
+		          <div class="lp-dd-opt is-sel" data-val="">Tất cả khu vực</div>
+		          <div class="lp-dd-opt" data-val="TP. Hồ Chí Minh">TP. Hồ Chí Minh</div>
+		          <div class="lp-dd-opt" data-val="Long An">Long An</div>
+		          <div class="lp-dd-opt" data-val="Bình Dương">Bình Dương</div>
+		          <div class="lp-dd-opt" data-val="Đồng Nai">Đồng Nai</div>
+		          <div class="lp-dd-opt" data-val="Bà Rịa">Bà Rịa – Vũng Tàu</div>
+		          <div class="lp-dd-opt" data-val="Quảng Trị">Quảng Trị</div>
+		          <div class="lp-dd-opt" data-val="Đà Nẵng">Đà Nẵng</div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <!-- Diện tích -->
+		    <div class="lp-sf">
+		      <div class="lp-sf-label">📐 Diện tích</div>
+		      <div class="lp-dd" id="dd-ks-area">
+		        <button class="lp-dd-btn" type="button"><span class="lp-dd-val">Mọi diện tích</span><svg class="lp-dd-arrow" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+		        <input type="hidden" id="ks-area" value="">
+		        <div class="lp-dd-panel">
+		          <div class="lp-dd-opt is-sel" data-val="">Mọi diện tích</div>
+		          <div class="lp-dd-opt" data-val="0-500">Dưới 500m²</div>
+		          <div class="lp-dd-opt" data-val="500-1000">Từ 500m² – 1.000m²</div>
+		          <div class="lp-dd-opt" data-val="1000-2000">Từ 1.000m² – 2.000m²</div>
+		          <div class="lp-dd-opt" data-val="2000-3000">Từ 2.000m² – 3.000m²</div>
+		          <div class="lp-dd-opt" data-val="3000-5000">Từ 3.000m² – 5.000m²</div>
+		          <div class="lp-dd-opt" data-val="5000-7000">Từ 5.000m² – 7.000m²</div>
+		          <div class="lp-dd-opt" data-val="7000-10000">Từ 7.000m² – 10.000m²</div>
+		          <div class="lp-dd-opt" data-val="10000-15000">Từ 10.000m² – 15.000m²</div>
+		          <div class="lp-dd-opt" data-val="15000-20000">Từ 15.000m² – 20.000m²</div>
+		          <div class="lp-dd-opt" data-val="20000-30000">Từ 20.000m² – 30.000m²</div>
+		          <div class="lp-dd-opt" data-val="30000-50000">Từ 30.000m² – 50.000m²</div>
+		          <div class="lp-dd-opt" data-val="50000-70000">Từ 50.000m² – 70.000m²</div>
+		          <div class="lp-dd-opt" data-val="70000-100000">Từ 70.000m² – 100.000m²</div>
+		          <div class="lp-dd-opt" data-val="100000-150000">Từ 100.000m² – 150.000m²</div>
+		          <div class="lp-dd-opt" data-val="150000-200000">Từ 150.000m² – 200.000m²</div>
+		          <div class="lp-dd-opt" data-val="200000-300000">Từ 200.000m² – 300.000m²</div>
+		          <div class="lp-dd-opt" data-val="300000-500000">Từ 300.000m² – 500.000m²</div>
+		          <div class="lp-dd-opt" data-val="500000-1000000">Từ 500.000m² – 1.000.000m²</div>
+		          <div class="lp-dd-opt" data-val="1000000-999999999">Trên 1.000.000m²</div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <!-- Khoảng giá -->
+		    <div class="lp-sf">
+		      <div class="lp-sf-label">💰 Khoảng giá</div>
+		      <div class="lp-dd" id="dd-ks-price">
+		        <button class="lp-dd-btn" type="button"><span class="lp-dd-val">Mọi khoảng giá</span><svg class="lp-dd-arrow" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+		        <input type="hidden" id="ks-price" value="">
+		        <div class="lp-dd-panel">
+		          <div class="lp-dd-opt is-sel" data-val="">Mọi khoảng giá</div>
+		          <div class="lp-dd-opt" data-val="0-30">Từ 10 – 30 triệu</div>
+		          <div class="lp-dd-opt" data-val="30-50">Từ 30 – 50 triệu</div>
+		          <div class="lp-dd-opt" data-val="50-100">Từ 50 – 100 triệu</div>
+		          <div class="lp-dd-opt" data-val="100-150">Từ 100 – 150 triệu</div>
+		          <div class="lp-dd-opt" data-val="150-200">Từ 150 – 200 triệu</div>
+		          <div class="lp-dd-opt" data-val="200-300">Từ 200 – 300 triệu</div>
+		          <div class="lp-dd-opt" data-val="300-500">Từ 300 – 500 triệu</div>
+		          <div class="lp-dd-opt" data-val="500-1000">Từ 500 triệu – 1 tỷ</div>
+		          <div class="lp-dd-opt" data-val="1000-2000">Từ 1 – 2 tỷ</div>
+		          <div class="lp-dd-opt" data-val="2000-3000">Từ 2 – 3 tỷ</div>
+		          <div class="lp-dd-opt" data-val="3000-5000">Từ 3 – 5 tỷ</div>
+		          <div class="lp-dd-opt" data-val="5000-10000">Từ 5 – 10 tỷ</div>
+		          <div class="lp-dd-opt" data-val="10000-20000">Từ 10 – 20 tỷ</div>
+		          <div class="lp-dd-opt" data-val="20000-30000">Từ 20 – 30 tỷ</div>
+		          <div class="lp-dd-opt" data-val="30000-50000">Từ 30 – 50 tỷ</div>
+		          <div class="lp-dd-opt" data-val="50000-100000">Từ 50 – 100 tỷ</div>
+		          <div class="lp-dd-opt" data-val="100000-150000">Từ 100 – 150 tỷ</div>
+		          <div class="lp-dd-opt" data-val="150000-200000">Từ 150 – 200 tỷ</div>
+		          <div class="lp-dd-opt" data-val="200000-300000">Từ 200 – 300 tỷ</div>
+		          <div class="lp-dd-opt" data-val="300000-500000">Từ 300 – 500 tỷ</div>
+		          <div class="lp-dd-opt" data-val="500000-1000000">Từ 500 – 1.000 tỷ</div>
+		          <div class="lp-dd-opt" data-val="1000000-999999999">Trên 1.000 tỷ</div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <!-- Nút tìm kiếm -->
+		    <div class="lp-sf">
+		      <div class="lp-sf-label">&nbsp;</div>
+		      <button class="lp-search-submit" id="ks-search-btn">🔍 Tìm kiếm</button>
+		    </div>
+
+		  </div>
+		</div>
+	</div>
+</section>
+
+<!-- MAIN -->
+<main class="lp-main">
+	<div class="wrap">
+		<div class="lp-layout">
+
+			<!-- SIDEBAR LỌC -->
+			<aside class="lp-sidebar">
+				<div class="lp-hotline">
+					<p>📞 Cần tư vấn chuyên sâu?</p>
+					<strong style="font-size:20px; display:block;">0909 161 824</strong>
+					<a href="tel:0909161824">Gọi ngay miễn phí</a>
+				</div>
+				<div class="lp-sidebar-card">
+					<h3>Loại hình</h3>
+					<label class="lp-sidebar-option"><input type="checkbox" checked> Kho xưởng xây sẵn</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Xưởng thiết kế theo yêu cầu (BTS)</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Kho ngoại quan</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Nhà xưởng kết hợp văn phòng</label>
+				</div>
+				<div class="lp-sidebar-card">
+					<h3>Khu vực</h3>
+					<label class="lp-sidebar-option"><input type="checkbox" checked> TP. Hồ Chí Minh</label>
+					<label class="lp-sidebar-option"><input type="checkbox" checked> Long An</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Bình Dương</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Đồng Nai</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Bà Rịa - Vũng Tàu</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Đà Nẵng</label>
+				</div>
+				<div class="lp-sidebar-card">
+					<h3>Diện tích (m²)</h3>
+					<div class="lp-sidebar-range">
+						<input type="number" placeholder="Từ" min="0">
+						<input type="number" placeholder="Đến" min="0">
+					</div>
+				</div>
+				<div class="lp-sidebar-card">
+					<h3>Tiện ích</h3>
+					<label class="lp-sidebar-option"><input type="checkbox"> PCCC đầy đủ</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Điện 3 pha</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Cầu trục</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Hầm xe container</label>
+					<label class="lp-sidebar-option"><input type="checkbox"> Có văn phòng đi kèm</label>
+				</div>
+			</aside>
+
+			<!-- DANH SÁCH -->
+			<div>
+				<div class="lp-results-meta">
+					<p class="lp-results-count">Tìm thấy <strong>8 kho xưởng</strong> phù hợp</p>
+					<div class="lp-sort">
+						<span>Sắp xếp:</span>
+						<div class="lp-dd lp-sort-dd" id="dd-ks-sort">
+							<button class="lp-dd-btn" type="button"><span class="lp-dd-val">Mới nhất</span><svg class="lp-dd-arrow" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+							<input type="hidden" id="ks-sort" value="newest">
+							<div class="lp-dd-panel">
+								<div class="lp-dd-opt is-sel" data-val="newest">Mới nhất</div>
+								<div class="lp-dd-opt" data-val="area-asc">Diện tích tăng dần</div>
+								<div class="lp-dd-opt" data-val="area-desc">Diện tích giảm dần</div>
+								<div class="lp-dd-opt" data-val="price-asc">Giá thấp nhất</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="lp-grid">
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/cho-thue-kho-xuong-600m2-vinh-loc-pham-van-hai-binh-chanh-2/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://khoxuongdep.com.vn/wp-content/uploads/2026/08/khu-cong-nghiep-cau-cang-phuoc-dong-long-an.jpg" alt="Cho thuê kho xưởng 600m2 Vĩnh Lộc, Phạm Văn Hai, Bình Chánh">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">3.000 m²</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Cho thuê kho xưởng 600m2 Vĩnh Lộc, Phạm Văn Hai, Bình Chánh</div>
+							<div class="lp-card-loc">📍 Long An</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">3.000 m²</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>Thỏa thuận</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-10000m2-30-hecta-dat-nha-xuong-mt-song-vam-co-trong-kcn-tai-long-an/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-10000m2-30hecta-dat-nha-xuong-song-vam-co_00.jpg" alt="Bán 10000m2- 30 Hecta đất nhà xưởng mt sông Vàm Cỏ trong KCN tại Long An">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">300000</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 10000m2- 30 Hecta đất nhà xưởng mt sông Vàm Cỏ trong KCN tại Long An</div>
+							<div class="lp-card-loc">📍 Huyện Cần Đước</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">300000</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>Liên hệ</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-1-2-hecta-dat-nha-xuong-2-mt-kcn-hai-son-12-gia-43-ty/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-1-2-hecta-dat-nha-xuong-2-mt-kcn-hai-son-gia-43-ty_00.jpg" alt="Bán 1.2 hecta đất &#038; nhà xưởng 2 mt kcn Hải Sơn 1,2 giá 43 tỷ">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">1.2 hecta</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 1.2 hecta đất &#038; nhà xưởng 2 mt kcn Hải Sơn 1,2 giá 43 tỷ</div>
+							<div class="lp-card-loc">📍 Huyện Đức Hoà</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">1.2 hecta</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>43.000.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-11000m2-220000m2-dat-cong-nghiep-va-nha-xuong-trong-khu-cong-nghiep-tan-phu-trung-cu-chi-tphcm/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-11000m2-220000m2-dat-cong-nghiep-va-nha-xuong-trong-khu-_00.jpg" alt="Bán 11000m2 – 220000m2 Đất Công Nghiệp và Nhà Xưởng trong Khu Công Nghiệp Tân Phú Trung Củ Chi TPHCM">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">3.000 m²</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 11000m2 – 220000m2 Đất Công Nghiệp và Nhà Xưởng trong Khu Công Nghiệp Tân Phú Trung Củ Chi TPHCM</div>
+							<div class="lp-card-loc">📍 Huyện Củ Chi</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">3.000 m²</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>Liên hệ</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-10468m2-dat-xuong-gia-re-khu-cong-nghiep-tan-phu-trung/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-1468m2-dat-xuong-gia-re-kcn-tan-phu-trung_00.jpg" alt="Bán 10468m2 đất xưởng giá rẻ khu công nghiệp Tân Phú Trung">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">10469m2</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 10468m2 đất xưởng giá rẻ khu công nghiệp Tân Phú Trung</div>
+							<div class="lp-card-loc">📍 Huyện Củ Chi</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">10469m2</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>Liên hệ</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-2-4-hecta-dat-nha-xuong-kcn-vinh-loc-2-ben-luc-long-an/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-2-4-hecta-dat-nha-xuong-kcn-vinh-loc-2-ben-luc-long-an_00.jpg" alt="Bán 2.4 hecta đất nhà xưởng kcn Vĩnh Lộc 2, Bến Lức, Long An">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">24000</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 2.4 hecta đất nhà xưởng kcn Vĩnh Lộc 2, Bến Lức, Long An</div>
+							<div class="lp-card-loc">📍 Huyện Bến Lức</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">24000</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>141.000.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-28000m2-dat-gom-kho-xuong-8400m2-huong-lo-2-trung-lap-thuong-cu-chi/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-28000m2-dat-gom-kho-xuong-8400m2-huong-lo-2-cu-chi_00.jpg" alt="Bán 28000m2 đất gồm kho xưởng 8400m2 Hương Lộ 2, Trung Lập Thượng, Củ Chi.">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">28000</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 28000m2 đất gồm kho xưởng 8400m2 Hương Lộ 2, Trung Lập Thượng, Củ Chi.</div>
+							<div class="lp-card-loc">📍 Huyện Củ Chi</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">28000</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>150.000.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-30-000m2-dat-cong-nghiep-mat-tien-quoc-lo-1a-thuoc-xa-nhut-chanh-ben-luc-long-an/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-30-000m2-dat-cong-nghiep-ben-luc-long-an_00.jpg" alt="Bán 30.000m2 đất công nghiệp mặt tiền Quốc Lộ 1A thuộc xã Nhựt Chánh, Bến Lức, Long An">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">30.000</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 30.000m2 đất công nghiệp mặt tiền Quốc Lộ 1A thuộc xã Nhựt Chánh, Bến Lức, Long An</div>
+							<div class="lp-card-loc">📍 Huyện Bến Lức</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">30.000</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>270.000.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-3hecta-5hecta-dat-nha-xuong-kcn-thuan-dao-ben-luc-long-an/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-3hecta-5hecta-dat-nha-xuong-kcn-thuan-dao_00.jpg" alt="Bán 3hecta – 5hecta đất nhà xưởng kcn Thuận Đạo, Bến Lức, Long An.">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">30000</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 3hecta – 5hecta đất nhà xưởng kcn Thuận Đạo, Bến Lức, Long An.</div>
+							<div class="lp-card-loc">📍 Huyện Bến Lức</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">30000</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>5.628.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-5163m2-nha-xuong-goc-2mt-khu-cong-nghiep-hai-son-duc-hoa-dong-long-an/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-5163m2-nha-xuong-goc-2mt-khu-cong-nghiep_00.jpg" alt="Bán 5163m2 nhà xưởng góc 2MT khu công nghiệp Hải Sơn Đức Hòa Đông Long An">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">5163</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 5163m2 nhà xưởng góc 2MT khu công nghiệp Hải Sơn Đức Hòa Đông Long An</div>
+							<div class="lp-card-loc">📍 Huyện Đức Hoà</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">5163</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>160</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-5760m2-dat-khu-cong-nghiep-cau-tram-huyen-can-duoc-long-an/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-5760m2-dat-cong-nghiep-cau-tram-can-duoc_00.jpg" alt="Bán 5760m2 đất Khu Công Nghiệp Cầu Tràm, huyện Cần Đước, Long An">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">5760</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 5760m2 đất Khu Công Nghiệp Cầu Tràm, huyện Cần Đước, Long An</div>
+							<div class="lp-card-loc">📍 Huyện Cần Đước</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">5760</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>29.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-63-hecta-dat-khu-cong-nghiep-thuan-dao-long-an-lam-kho-logistic/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-63000m2-dat-kcn-thuan-dao-tinh-long-an_00.jpg" alt="Bán 6,3 hecta đất khu công nghiệp Thuận Đạo Long An làm kho logistic">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">63000</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán 6,3 hecta đất khu công nghiệp Thuận Đạo Long An làm kho logistic</div>
+							<div class="lp-card-loc">📍 Huyện Bến Lức</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">63000</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>3.397.905.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-cho-thue-kho-xuong-3260m2-tai-tan-uyen-binh-duong/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-cho-thue-kho-3260m2-tan-uyen-binh-duong_00.jpg" alt="Bán/ cho thuê kho xưởng 3260m2 tại Tân Uyên, Bình Dương">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">3260m2</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán/ cho thuê kho xưởng 3260m2 tại Tân Uyên, Bình Dương</div>
+							<div class="lp-card-loc">📍 Thị xã Tân Uyên</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">3260m2</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>180.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-cho-thue-kho-xuong-1107-1473m2-kcn-dung-quat/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-cho-thue-kho-1107-1473m2-kcn-dung-quat_00.jpg" alt="Bán/Cho thuê kho xưởng 1107-1473m2 KCN Dung Quất">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">2580m2</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán/Cho thuê kho xưởng 1107-1473m2 KCN Dung Quất</div>
+							<div class="lp-card-loc">📍 Quảng Ngãi</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">2580m2</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>129.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-cho-thue-kho-xuong-7800m2-tai-vinh-tan-tan-uyen-binh-duong/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-cho-thue-kho-xuong-7800m2-vinh-tan-tan-uyen_00.jpg" alt="Bán/Cho thuê kho xưởng 7800m2 tại Vĩnh Tân, Tân Uyên, Bình Dương">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">7800m2</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán/Cho thuê kho xưởng 7800m2 tại Vĩnh Tân, Tân Uyên, Bình Dương</div>
+							<div class="lp-card-loc">📍 Thị xã Tân Uyên</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">7800m2</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>64.000.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+					<a href="https://batdongsankhucongnghiep.vn/khu-cong-nghiep/ban-cho-thue-kho-xuong-537m2-an-lac-binh-tan/" class="lp-card">
+						<div class="lp-card-thumb">
+							<img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/09/ban-cho-thue-kho-xuong-537m2-an-lac-binh-tan_00.jpg" alt="Bán/Cho thuê kho xưởng 537m2 An Lạc, Bình Tân">
+							<span class="lp-card-badge">Mới nhất</span>
+							<span class="lp-card-area">537m2</span>
+						</div>
+						<div class="lp-card-body">
+							<div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+							<div class="lp-card-title">Bán/Cho thuê kho xưởng 537m2 An Lạc, Bình Tân</div>
+							<div class="lp-card-loc">📍 Quận Bình Tân</div>
+							<div class="lp-card-specs">
+								<span class="lp-card-spec">537m2</span>
+								<span class="lp-card-spec">PCCC tự động</span>
+								<span class="lp-card-spec">Container 24/24</span>
+							</div>
+							<div class="lp-card-price">
+								<strong>45.000.000</strong>
+								<span class="lp-card-cta">Xem chi tiết →</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- CTA SECTION -->
+<section class="lp-cta-section">
+	<div class="wrap">
+		<h2>Cần Tư Vấn Kho Xưởng?</h2>
+		<p>Đội ngũ chuyên gia của chúng tôi sẵn sàng hỗ trợ bạn tìm kho xưởng phù hợp nhất với nhu cầu sản xuất.</p>
+		<div class="lp-cta-btns">
+			<a href="tel:0909161824" class="lp-cta-btn primary">☎ Gọi Hotline: 0909 161 824</a>
+			<a href="https://zalo.me/0909161824" class="lp-cta-btn secondary" target="_blank">💬 Chat Zalo</a>
+			<a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" class="lp-cta-btn facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff" style="flex-shrink:0;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Fanpage Facebook</a>
+		</div>
+	</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lp-footer">
+	<div class="wrap">
+		<div class="lp-footer-grid">
+			<div>
+				<h4>BDS24H – Bất Động Sản Công Nghiệp</h4>
+				<p>Nền tảng thông tin bất động sản khu công nghiệp, kho xưởng và đất công nghiệp Việt Nam.</p>
+				<p style="margin-top:12px;">📞 Hotline: <strong style="color:#fff;">0909 161 824</strong></p>
+			</div>
+			<div>
+				<h4>Loại hình</h4>
+				<ul>
+					<li><a href="#">Kho xưởng cho thuê</a></li>
+					<li><a href="https://batdongsankhucongnghiep.vn/dat-cong-nghiep/">Đất công nghiệp</a></li>
+					<li><a href="https://batdongsankhucongnghiep.vn/kcn/">Khu công nghiệp</a></li>
+					<li><a href="#">Nhà xưởng BTS</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4>Khu vực</h4>
+				<ul>
+					<li><a href="#">TP. Hồ Chí Minh</a></li>
+					<li><a href="#">Long An</a></li>
+					<li><a href="#">Bình Dương</a></li>
+					<li><a href="#">Đồng Nai</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4>Hỗ trợ</h4>
+				<ul>
+					<li><a href="https://batdongsankhucongnghiep.vn/news-listing/">Tin tức thị trường</a></li>
+					<li><a href="#">Ký gửi bất động sản</a></li>
+					<li><a href="#">Liên hệ</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="lp-footer-bottom">© 2026 BDS24H. Tất cả quyền được bảo lưu. · <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:#60a5fa;text-decoration:none;font-weight:600;">Fanpage Facebook</a></div>
+	</div>
+</footer>
+
+<script>
+// ===== FILTER CHIPS =====
+document.querySelectorAll('.lp-chip').forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.lp-chip').forEach(function(c) { c.classList.remove('active'); });
+    this.classList.add('active');
+  });
+});
+
+// ===== CUSTOM DROPDOWN ENGINE (TELEPORT TO BODY) =====
+(function(){
+  var activeDD = null;
+
+  function getPanel(dd) {
+    if (dd._panel) return dd._panel;
+    var panel = dd.querySelector('.lp-dd-panel');
+    if (panel) {
+      dd._panel = panel;
+      panel._dd = dd;
+      if (panel.parentNode !== document.body) {
+        document.body.appendChild(panel);
+      }
+      return panel;
+    }
+    return null;
+  }
+
+  function initDropdowns() {
+    document.querySelectorAll('.lp-dd').forEach(function(dd) {
+      getPanel(dd);
+    });
+  }
+
+  function posPanel(dd) {
+    var panel = getPanel(dd);
+    if (!dd || !panel) return;
+    var btn = dd.querySelector('.lp-dd-btn');
+    var r = btn.getBoundingClientRect();
+    panel.style.top = (r.bottom + 4) + 'px';
+    panel.style.left = r.left + 'px';
+    panel.style.minWidth = Math.max(r.width, 220) + 'px';
+    panel.style.zIndex = '2147483647';
+  }
+
+  function closeAll() {
+    document.querySelectorAll('.lp-dd').forEach(function(d) {
+      d.classList.remove('is-open');
+    });
+    document.querySelectorAll('.lp-dd-panel').forEach(function(p) {
+      p.classList.remove('is-open');
+    });
+    activeDD = null;
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.lp-dd-btn');
+    if (btn) {
+      e.stopPropagation();
+      var dd = btn.closest('.lp-dd');
+      var panel = getPanel(dd);
+      var wasOpen = dd.classList.contains('is-open');
+      closeAll();
+      if (!wasOpen && panel) {
+        dd.classList.add('is-open');
+        panel.classList.add('is-open');
+        posPanel(dd);
+        activeDD = dd;
+      }
+      return;
+    }
+
+    var opt = e.target.closest('.lp-dd-opt');
+    if (opt) {
+      e.stopPropagation();
+      var panel = opt.closest('.lp-dd-panel');
+      var dd2 = panel ? panel._dd : null;
+      if (dd2) {
+        var val = opt.getAttribute('data-val');
+        dd2.querySelector('.lp-dd-val').textContent = opt.textContent.trim();
+        var hidden = dd2.querySelector('input[type=hidden]');
+        if (hidden) hidden.value = val;
+        panel.querySelectorAll('.lp-dd-opt').forEach(function(o) { o.classList.remove('is-sel'); });
+        opt.classList.add('is-sel');
+      }
+      closeAll();
+      runFilter();
+      return;
+    }
+
+    closeAll();
+  });
+
+  window.addEventListener('scroll', function() {
+    if (activeDD) posPanel(activeDD);
+  }, true);
+
+  window.addEventListener('resize', function() {
+    if (activeDD) posPanel(activeDD);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDropdowns);
+  } else {
+    initDropdowns();
+  }
+})();
+
+// ===== SEARCH / FILTER CARDS =====
+function parseArea(cardEl) {
+  var badge = cardEl.querySelector('.lp-card-area');
+  if (!badge) return 0;
+  var txt = badge.textContent.replace(/[^\d]/g,'');
+  return parseInt(txt, 10) || 0;
+}
+
+function parsePrice(cardEl) {
+  var badge = cardEl.querySelector('.lp-card-price');
+  if (!badge) return 0;
+  var txt = badge.textContent.toLowerCase();
+  var num = parseFloat(txt.replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
+  if (txt.indexOf('tỷ') !== -1) {
+    return num * 1000; // Quy về Triệu để so sánh đồng nhất
+  }
+  return num; // Triệu
+}
+
+function runFilter() {
+  var kw = (document.getElementById('ks-kw') || {}).value || '';
+  kw = kw.trim().toLowerCase();
+  var region = ((document.getElementById('ks-region') || {}).value || '');
+  var areaRange = ((document.getElementById('ks-area') || {}).value || '');
+  var priceRange = ((document.getElementById('ks-price') || {}).value || '');
+
+  var grid = document.querySelector('.lp-grid');
+  var countEl = document.querySelector('.lp-results-count strong');
+  var cards = grid ? grid.querySelectorAll('.lp-card') : [];
+  var visible = 0;
+
+  cards.forEach(function(card){
+    var title = (card.querySelector('.lp-card-title') || {}).textContent || '';
+    var loc = (card.querySelector('.lp-card-loc') || {}).textContent || '';
+    var combined = (title + ' ' + loc).toLowerCase();
+
+    var kwOk = !kw || combined.indexOf(kw) !== -1;
+    var regionOk = !region || loc.indexOf(region) !== -1;
+    var areaOk = true;
+    if (areaRange) {
+      var parts = areaRange.split('-');
+      var minA = parseInt(parts[0], 10);
+      var maxA = parseInt(parts[1], 10);
+      var cardArea = parseArea(card);
+      areaOk = cardArea >= minA && cardArea <= maxA;
+    }
+
+    var priceOk = true;
+    if (priceRange) {
+      var pParts = priceRange.split('-');
+      var minP = parseFloat(pParts[0]);
+      var maxP = parseFloat(pParts[1]);
+      var cardPrice = parsePrice(card);
+      if (cardPrice > 0) {
+        priceOk = cardPrice >= minP && cardPrice <= maxP;
+      }
+    }
+
+    var show = kwOk && regionOk && areaOk && priceOk;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+
+  if (countEl) countEl.textContent = visible + ' kho xưởng';
+}
+
+function applyUrlParams() {
+  var params = new URLSearchParams(window.location.search);
+  var price = params.get('price');
+  var kcn = params.get('kcn');
+  var type = params.get('type');
+  var kw = params.get('kw');
+  var region = params.get('region');
+
+  if (kw && document.getElementById('ks-kw')) {
+    document.getElementById('ks-kw').value = kw;
+  }
+  if (kcn === 'trong') {
+    if (!kw && document.getElementById('ks-kw')) document.getElementById('ks-kw').value = 'KCN';
+  } else if (kcn === 'ngoai') {
+    if (!kw && document.getElementById('ks-kw')) document.getElementById('ks-kw').value = 'ngoài KCN';
+  }
+  if (region && document.getElementById('ks-region')) {
+    document.getElementById('ks-region').value = region;
+    var optReg = document.querySelector('.lp-dd-panel .lp-dd-opt[data-val="' + region + '"]');
+    var ddReg = document.getElementById('dd-ks-region');
+    if (optReg && ddReg) {
+      ddReg.querySelector('.lp-dd-val').textContent = optReg.textContent.trim();
+      optReg.closest('.lp-dd-panel').querySelectorAll('.lp-dd-opt').forEach(function(o){ o.classList.remove('is-sel'); });
+      optReg.classList.add('is-sel');
+    }
+  }
+  if (price && document.getElementById('ks-price')) {
+    document.getElementById('ks-price').value = price;
+    var optPrice = document.querySelector('.lp-dd-panel .lp-dd-opt[data-val="' + price + '"]');
+    var ddPrice = document.getElementById('dd-ks-price');
+    if (optPrice && ddPrice) {
+      ddPrice.querySelector('.lp-dd-val').textContent = optPrice.textContent.trim();
+      optPrice.closest('.lp-dd-panel').querySelectorAll('.lp-dd-opt').forEach(function(o){ o.classList.remove('is-sel'); });
+      optPrice.classList.add('is-sel');
+    }
+  }
+  runFilter();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('ks-search-btn');
+  var kw = document.getElementById('ks-kw');
+  if (btn) btn.addEventListener('click', runFilter);
+  if (kw) kw.addEventListener('keydown', function(e){ if(e.key==='Enter') runFilter(); });
+  applyUrlParams();
+});
+</script>
+
+</body>
+</html>
