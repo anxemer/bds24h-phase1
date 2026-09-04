@@ -13,7 +13,7 @@
 
         <a href="/" class="kx-logo">
             <div class="kx-logo-main">
-                <img src="https://batdongsankhucongnghiep.vn/wp-content/uploads/2026/08/2-1.png" alt="Bất Động Sản Khu Công Nghiệp" class="kx-logo-icon">
+                <img src="https://batdongsancongnghiep24h.vn/wp-content/uploads/2026/08/2-1.png" alt="Bất Động Sản Khu Công Nghiệp" class="kx-logo-icon">
                 <div class="kx-logo-brand">
                     <span class="kx-brand-sub">Bất động sản</span>
                     <span class="kx-brand-main">KHU CÔNG NGHIỆP<span class="kx-brand-vn">.vn</span></span>
@@ -322,23 +322,33 @@
 
                 <!-- 5. Khu công nghiệp -->
                 <li class="kx-nav-item">
-                    <a href="https://batdongsankhucongnghiep.vn/kcn/">
+                    <a href="https://batdongsancongnghiep24h.vn/kcn/">
                         Khu công nghiệp
                     </a>
                 </li>
 
-                <!-- 6. Tin tức -->
-                <li class="kx-nav-item">
-                    <a href="https://batdongsankhucongnghiep.vn/news-listing/">
+                <!-- 6. Tin tức & Pháp luật (Dropdown) -->
+                <li class="kx-nav-item kx-has-dropdown">
+                    <a href="https://batdongsancongnghiep24h.vn/news-listing/" class="kx-nav-link">
                         Tin tức
+                        <svg class="kx-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </a>
-                </li>
-
-                <!-- 7. Pháp luật đầu tư -->
-                <li class="kx-nav-item">
-                    <a href="https://batdongsankhucongnghiep.vn/phap-luat-dau-tu/">
-                        Pháp luật đầu tư
-                    </a>
+                    <div class="kx-dropdown-menu">
+                        <a href="https://batdongsancongnghiep24h.vn/news-listing/" class="kx-dropdown-item">
+                            <span class="kx-dd-icon">📰</span>
+                            <div class="kx-dd-text">
+                                <strong>Tin tức thị trường</strong>
+                                <span>Thông tin & xu hướng BĐS KCN</span>
+                            </div>
+                        </a>
+                        <a href="https://batdongsancongnghiep24h.vn/phap-luat-dau-tu/" class="kx-dropdown-item">
+                            <span class="kx-dd-icon">⚖️</span>
+                            <div class="kx-dd-text">
+                                <strong>Pháp luật đầu tư</strong>
+                                <span>Quy định & chính sách KCN</span>
+                            </div>
+                        </a>
+                    </div>
                 </li>
 
                 <!-- MORE -->
@@ -363,6 +373,11 @@
 
         <!-- RIGHT SIDE -->
         <div class="kx-header-actions">
+
+            <a href="tel:0909161824" class="kx-menu-hotline-link">
+                <span class="kx-menu-hotline-icon">☎</span>
+                <span>Hotline: <strong>0909 161 824</strong></span>
+            </a>
 
             <!-- MOBILE BUTTON -->
             <button type="button" class="kx-mobile-button" aria-label="Mở menu">
@@ -539,11 +554,30 @@
                 </div>
             </div>
 
-            <a href="https://batdongsankhucongnghiep.vn/kcn/">Khu công nghiệp</a>
-            <a href="https://batdongsankhucongnghiep.vn/news-listing/">Tin tức</a>
-            <a href="https://batdongsankhucongnghiep.vn/phap-luat-dau-tu/">Pháp luật đầu tư</a>
+            <a href="https://batdongsancongnghiep24h.vn/kcn/">Khu công nghiệp</a>
+
+            <!-- Accordion Tin tức -->
+            <div class="kx-mob-acc">
+                <div class="kx-mob-acc-head">
+                    <a href="https://batdongsancongnghiep24h.vn/news-listing/">Tin tức</a>
+                    <button type="button" class="kx-mob-toggle" aria-label="Toggle">▼</button>
+                </div>
+                <div class="kx-mob-acc-body">
+                    <div class="kx-mob-links">
+                        <a href="https://batdongsancongnghiep24h.vn/news-listing/" class="full">📰 Tin tức thị trường</a>
+                        <a href="https://batdongsancongnghiep24h.vn/phap-luat-dau-tu/">⚖️ Pháp luật đầu tư</a>
+                    </div>
+                </div>
+            </div>
 
 
+            <div class="kx-mobile-contact">
+                <a href="tel:0909161824">
+                    ☎ Hotline: 0909 161 824
+                </a>
+                <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener" style="background:#1877f2;color:#ffffff;display:flex;align-items:center;justify-content:center;gap:6px;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage
+                </a>
             </div>
 
         </div>
@@ -670,18 +704,14 @@
 
     #kx-header .kx-logo-slogan {
         font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        font-size: 10.8px;
+        font-size: 8.5px;
         font-style: italic;
         font-weight: 700;
         color: #0f5999;
-        letter-spacing: 0.25px;
-        margin-top: 3.5px;
+        letter-spacing: 0.2px;
+        margin-top: 2px;
         line-height: 1.2;
         white-space: nowrap;
-        display: block;
-        width: 100%;
-        text-align: justify;
-        text-align-last: justify;
     }
 
     /* =====================================================
@@ -1113,12 +1143,37 @@
         box-shadow: 0 2px 6px rgba(21, 128, 61, 0.2);
     }
 
-    #kx-header .kx-menu-hotline-link,
-    .kx-menu-hotline-link,
-    .kx-nav-hotline-item,
-    #kx-header .kx-mobile-contact,
-    .kx-mobile-contact {
-        display: none !important;
+    #kx-header .kx-menu-hotline-link {
+        color: #c4161c !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        background: #fff5f5;
+        border: 1px solid #fed7d7;
+        padding: 4px 10px !important;
+        height: auto !important;
+        border-radius: 14px;
+        text-decoration: none !important;
+        transition: background .15s, transform .15s, box-shadow .15s !important;
+    }
+
+    #kx-header .kx-menu-hotline-link strong {
+        font-size: 12.5px;
+        font-weight: 800;
+    }
+
+    #kx-header .kx-menu-hotline-link:hover {
+        background: #fee2e2 !important;
+        color: #a31217 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(196, 22, 28, 0.12);
+    }
+
+    #kx-header .kx-menu-hotline-icon {
+        font-size: 11px;
+        color: #c4161c;
     }
 
 
@@ -1443,29 +1498,24 @@
             display: none;
         }
         #kx-header .kx-logo-slogan {
-            font-size: 9.5px;
-            display: block;
-            width: 100%;
-            text-align: justify;
-            text-align-last: justify;
-            margin-top: 2.5px;
+            display: none;
         }
         #kx-header .kx-header-inner {
             padding: 0 14px;
             gap: 8px;
-            min-height: 64px;
+            min-height: 62px;
         }
         #kx-header .kx-logo-icon {
-            height: 36px;
+            height: 34px;
         }
         #kx-header .kx-brand-sub {
-            font-size: 9.5px;
+            font-size: 9px;
         }
         #kx-header .kx-brand-main {
-            font-size: 13px;
+            font-size: 12.5px;
         }
         #kx-header .kx-brand-vn {
-            font-size: 10.5px;
+            font-size: 10px;
         }
         #kx-header .kx-header-actions {
             margin-left: auto;
@@ -1473,6 +1523,10 @@
             display: flex;
             align-items: center;
             flex-shrink: 0;
+        }
+        #kx-header .kx-menu-hotline-link {
+            padding: 5px 8px;
+            font-size: 11px;
         }
         #kx-header .kx-mobile-button {
             display: flex;
@@ -1496,32 +1550,28 @@
 
     @media (max-width: 480px) {
         #kx-header .kx-header-inner {
-            min-height: 58px;
+            min-height: 54px;
             padding: 0 8px;
-            gap: 6px;
+            gap: 5px;
         }
         #kx-header .kx-logo-icon {
-            height: 32px;
+            height: 26px;
         }
         #kx-header .kx-brand-sub {
-            font-size: 8.5px;
+            font-size: 7.5px;
         }
         #kx-header .kx-brand-main {
-            font-size: 11.5px;
-        }
-        #kx-header .kx-brand-vn {
             font-size: 9.5px;
         }
-        #kx-header .kx-logo-slogan {
-            font-size: 8.5px;
-            display: block;
-            width: 100%;
-            text-align: justify;
-            text-align-last: justify;
-            margin-top: 2px;
+        #kx-header .kx-brand-vn {
+            font-size: 8px;
         }
         #kx-header .kx-header-actions {
-            gap: 4px;
+            gap: 5px;
+        }
+        #kx-header .kx-menu-hotline-link {
+            padding: 4px 6px;
+            font-size: 9.5px;
         }
         #kx-header .kx-mobile-button {
             width: 32px;
@@ -1536,16 +1586,12 @@
     }
 
     @media (max-width: 360px) {
-        #kx-header .kx-logo-icon { height: 28px; }
-        #kx-header .kx-brand-sub { font-size: 7.5px; }
-        #kx-header .kx-brand-main { font-size: 10px; }
-        #kx-header .kx-brand-vn { font-size: 8.5px; }
-        #kx-header .kx-logo-slogan {
-            font-size: 7.5px;
-            display: block;
-            width: 100%;
-            text-align: justify;
-            text-align-last: justify;
+        #kx-header .kx-menu-hotline-link span:not(.kx-menu-hotline-icon) {
+            display: none;
+        }
+        #kx-header .kx-menu-hotline-link {
+            padding: 5px 8px;
+            font-size: 13px;
         }
     }
 

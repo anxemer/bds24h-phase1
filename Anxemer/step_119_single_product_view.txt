@@ -1,0 +1,88 @@
+Created At: 2026-09-03T21:57:03+07:00
+Completed At: 2026-09-03T21:57:03+07:00
+File Path: `file:///c:/Users/ACER/Downloads/Anxemer/single-product.php`
+Total Lines: 1093
+Total Bytes: 38586
+Showing lines 1 to 80
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <?php
+2: /**
+3:  * Template Name: Chi Tiết Sản Phẩm BĐS (Kho Xưởng & Đất Công Nghiệp)
+4:  * Template Post Type: post, khu-cong-nghiep, product, page
+5:  * 
+6:  * Thiết kế chuẩn 100% theo layout Kho Xưởng Đẹp:
+7:  * - Breadcrumb & Meta pills (Loại hình, Khu vực, Thời gian cập nhật)
+8:  * - Ảnh thực tế dự án
+9:  * - Bảng thông tin tổng quan (Mã tin, Diện tích, Giá, Loại hình, Khu vực)
+10:  * - Mô tả chi tiết
+11:  * - Tiện ích & đặc điểm nổi bật (Checklist)
+12:  * - Vị trí & Bản đồ Google Maps
+13:  * - Sidebar Giá & Hotline / Zalo
+14:  */
+15: 
+16: get_header(); ?>
+17: 
+18: <style>
+19:     /* RESET & VARS */
+20:     *, *::before, *::after { box-sizing: border-box; }
+21:     
+22:     :root {
+23:         --kxd-green: #0f7f2f;
+24:         --kxd-green-dark: #083315;
+25:         --kxd-orange: #FF7F2A;
+26:         --kxd-bg: #f8fafc;
+27:         --kxd-card-bg: #ffffff;
+28:         --kxd-border: #e2e8f0;
+29:         --kxd-text: #000000;
+30:         --kxd-text-muted: #000000;
+31:         --kxd-radius: 12px;
+32:     }
+33: 
+34:     body {
+35:         background-color: var(--kxd-bg);
+36:         color: var(--kxd-text);
+37:         font-family: 'Roboto', 'Inter', sans-serif;
+38:         line-height: 1.6;
+39:         margin: 0;
+40:         padding: 0;
+41:     }
+42: 
+43:     /* Ẩn Header mặc định của theme nếu xung đột */
+44:     .pearl-header-wrap, .stm-header, .header-default, header.pearl-header {
+45:         display: none !important;
+46:     }
+47: 
+48:     .kxd-wrap {
+49:         max-width: 1180px;
+50:         margin: 0 auto;
+51:         padding: 0 20px;
+52:     }
+53: 
+54:     /* =================================================
+55:        HEADER CUSTOM ĐỒNG BỘ
+56:     ================================================= */
+57:     #kx-header {
+58:         background: #ffffff;
+59:         border-bottom: 1px solid var(--kxd-border);
+60:         position: sticky;
+61:         top: 0;
+62:         z-index: 999;
+63:         box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+64:     }
+65:     .kx-header-inner {
+66:         max-width: 1180px;
+67:         margin: 0 auto;
+68:         padding: 12px 20px;
+69:         display: flex;
+70:         align-items: center;
+71:         justify-content: space-between;
+72:         gap: 20px;
+73:     }
+74:     .kx-logo {
+75:         flex: 0 0 auto;
+76:         display: inline-flex;
+77:         flex-direction: column;
+78:         justify-content: center;
+79:         text-decoration: none;
+80:         padding: 4px 0;
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

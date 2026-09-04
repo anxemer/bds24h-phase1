@@ -1,0 +1,321 @@
+Created At: 2026-09-03T21:40:53+07:00
+Completed At: 2026-09-03T21:40:53+07:00
+File Path: `file:///c:/Users/ACER/Downloads/Anxemer/single-khu-cong-nghiep.php`
+Total Lines: 1362
+Total Bytes: 39672
+Showing lines 1050 to 1362
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1050: 					</div>
+1051: 					<span class="badge">● <?php echo esc_html($trang_thai); ?></span>
+1052: 				</div>
+1053: 			</div>
+1054: 
+1055: 		<!-- BỐ CỤC NỘI DUNG CHÍNH (CHUẨN DETAIL.HTML) -->
+1056: 		<div class="layout">
+1057: 			<div>
+1058: 				<!-- MỤC LỤC ĐIỀU HƯỚNG NHANH -->
+1059: 				<section class="panel toc-panel">
+1060: 					<div class="toc-title">📑 Mục lục hồ sơ dự án</div>
+1061: 					<div class="toc-grid">
+1062: 						<a href="#sec-tong-quan" class="toc-item">1. Tổng quan đầu tư</a>
+1063: 						<?php if ($ha_tang_text): ?><a href="#sec-thong-so" class="toc-item">2. Hạ tầng</a><?php endif; ?>
+1064: 						<?php if ($nganh_nghe_text): ?><a href="#sec-nganh-nghe" class="toc-item">3. Ngành nghề thu hút</a><?php endif; ?>
+1065: 						<a href="#sec-uu-dai" class="toc-item">4. Hỗ trợ đầu tư</a>
+1066: 						<a href="#sec-quy-trinh" class="toc-item">5. Quy trình xúc tiến đầu tư</a>
+1067: 						<?php if ($mo_ta_chi_tiet_kcn || get_the_content()): ?><a href="#sec-bo-sung" class="toc-item">6. Mô tả chi tiết</a><?php endif; ?>
+1068: 					</div>
+1069: 				</section>
+1070: 
+1071: 				<!-- 1. TỔNG QUAN ĐẦU TƯ -->
+1072: 				<section class="panel" id="sec-tong-quan">
+1073: 					<h2>Tổng quan đầu tư</h2>
+1074: 					<div class="facts">
+1075: 						<div class="fact"><b><?php echo esc_html($gia_thue); ?></b><span>Giá thuê</span></div>
+1076: 						<?php if ($dien_tich): ?>
+1077: 						<div class="fact"><b><?php echo esc_html($dien_tich); ?></b><span>Diện tích</span></div>
+1078: 						<?php endif; ?>
+1079: 						<?php if ($ty_le_lap_day): ?>
+1080: 						<div class="fact"><b><?php echo esc_html($ty_le_lap_day); ?></b><span>Tỷ lệ lấp đầy</span></div>
+1081: 						<?php endif; ?>
+1082: 					</div>
+1083: 					<?php if ($chu_dau_tu): ?>
+1084: 					<div class="source-note">Chủ đầu tư: <strong><?php echo esc_html($chu_dau_tu); ?></strong>.</div>
+1085: 					<?php endif; ?>
+1086: 				</section>
+1087: 
+1088: 				<!-- 2. THÔNG SỐ / HẠ TẦNG — chỉ hiện nếu crawler tách được mô tả hạ tầng
+1089: 				     (KHÔNG còn tách riêng điện/nước/viễn thông như bản cũ, vì crawler
+1090: 				     hiện chỉ lấy được 1 đoạn mô tả hạ tầng chung, không có số liệu riêng
+1091: 				     từng hạng mục) -->
+1092: 				<?php if ($ha_tang_text): ?>
+1093: 				<section class="panel" id="sec-thong-so">
+1094: 					<h2>Hạ tầng</h2>
+1095: 					<p class="desc"><?php echo esc_html($ha_tang_text); ?></p>
+1096: 				</section>
+1097: 				<?php endif; ?>
+1098: 
+1099: 				<!-- 3. NGÀNH NGHỀ THU HÚT — chỉ hiện nếu có dữ liệu -->
+1100: 				<?php if ($nganh_nghe_text): ?>
+1101: 				<section class="panel" id="sec-nganh-nghe">
+1102: 					<h2>Ngành nghề thu hút</h2>
+1103: 					<div class="chips">
+1104: 						<?php
+1105: 						$nganh_nghe_arr = explode(',', $nganh_nghe_text);
+1106: 						foreach ($nganh_nghe_arr as $nganh) : ?>
+1107: 							<span class="chip"><?php echo esc_html(trim($nganh)); ?></span>
+1108: 						<?php endforeach; ?>
+1109: 					</div>
+1110: 				</section>
+1111: 				<?php endif; ?>
+1112: 
+1113: 				<!-- 6. ƯU ĐÃI & CHÍNH SÁCH ĐẦU TƯ — bỏ dòng tuyên bố cụ thể (miễn thuế X năm...)
+1114: 				     vì đây là thông tin CHÍNH SÁCH THẬT của từng KCN, crawler chưa trích xuất
+1115: 				     được, không nên hiển thị số liệu có thể sai. Giữ lại các chip là dịch vụ
+1116: 				     hỗ trợ CHUNG của BDS24H (không phải cam kết cụ thể của riêng KCN này). -->
+1117: 				<section class="panel" id="sec-uu-dai">
+1118: 					<h2>Hỗ trợ đầu tư từ BDS24H</h2>
+1119: 					<div class="chips">
+1120: 						<span class="chip">Hỗ trợ thủ tục IRC / ERC</span>
+1121: 						<span class="chip">Kết nối trực tiếp chủ đầu tư</span>
+1122: 						<span class="chip">Tư vấn pháp lý miễn phí</span>
+1123: 					</div>
+1124: 				</section>
+1125: 
+1126: 				<!-- 7. QUY TRÌNH XÚC TIẾN ĐẦU TƯ -->
+1127: 				<section class="panel" id="sec-quy-trinh">
+1128: 					<h2>Quy trình xúc tiến đầu tư</h2>
+1129: 					<ul class="info-list">
+1130: 						<li><b>01 · Chọn mặt bằng</b>Nhận thông tin lô đất, nhà xưởng và loại hình thuê.</li>
+1131: 						<li><b>02 · Kiểm tra hồ sơ</b>Rà soát pháp lý, ngành nghề, hạ tầng và chi phí.</li>
+1132: 						<li><b>03 · Khảo sát thực địa</b>Kiểm tra vị trí, cốt nền, đường container và hạ tầng kỹ thuật.</li>
+1133: 						<li><b>04 · Đàm phán & ký kết</b>Hỗ trợ làm việc với chủ đầu tư và triển khai hồ sơ.</li>
+1134: 					</ul>
+1135: 				</section>
+1136: 
+1137: 				<!-- 8. MÔ TẢ CHI TIẾT — ưu tiên field ACF "mo_ta_chi_tiet" (nơi crawl_kcn.py
+1138: 				     lưu mô tả đầy đủ), get_the_content() thường trống vì script chỉ ghi ACF -->
+1139: 				<?php
+1140: 				$mo_ta_chi_tiet_kcn = get_field('mo_ta_chi_tiet');
+1141: 				?>
+1142: 				<?php if ( $mo_ta_chi_tiet_kcn ) : ?>
+1143: 				<section class="panel" id="sec-bo-sung">
+1144: 					<h2>Mô tả chi tiết</h2>
+1145: 					<div class="desc"><?php echo nl2br(esc_html($mo_ta_chi_tiet_kcn)); ?></div>
+1146: 				</section>
+1147: 				<?php elseif ( get_the_content() ) : ?>
+1148: 				<section class="panel" id="sec-bo-sung">
+1149: 					<h2>Chi tiết bổ sung</h2>
+1150: 					<div class="desc">
+1151: 						<?php the_content(); ?>
+1152: 					</div>
+1153: 				</section>
+1154: 				<?php endif; ?>
+1155: 
+1156: 				<!-- BANNER PHÒNG XÚC TIẾN ĐẦU TƯ -->
+1157: 				<section class="invest-promo-banner">
+1158: 					<div class="ipb-top">
+1159: 						<div class="ipb-badge-wrap">
+1160: 							<span class="ipb-pulse-dot"></span>
+1161: 							<span>Ban Xúc Tiến Đầu Tư &amp; Quản Lý Dự Án</span>
+1162: 						</div>
+1163: 						<div class="ipb-live-text">⚡ Tiếp nhận hồ sơ &amp; phản hồi trong 15 phút</div>
+1164: 					</div>
+1165: 					<div class="ipb-content-grid">
+1166: 						<div class="ipb-main-info">
+1167: 							<h3>Liên hệ <span>Phòng Xúc Tiến Đầu Tư</span> KCN</h3>
+1168: 							<p class="ipb-intro-desc">Đầu mối chính thức tiếp nhận nhu cầu thuê đất, nhà xưởng xây sẵn và hỗ trợ trọn gói thủ tục pháp lý đầu tư, hưởng đầy đủ chính sách ưu đãi trực tiếp từ Chủ đầu tư.</p>
+1169: 							<div class="ipb-feature-list">
+1170: 								<div class="ipb-feature-item">
+1171: 									<div class="ipb-feature-icon">🏢</div>
+1172: 									<div><strong>Quỹ đất &amp; xưởng trực tiếp:</strong> <span>Cung cấp diện tích chuẩn theo ngành nghề, nguồn gốc sạch, giá gốc CĐT.</span></div>
+1173: 								</div>
+1174: 								<div class="ipb-feature-item">
+1175: 									<div class="ipb-feature-icon">📑</div>
+1176: 									<div><strong>Thủ tục pháp lý trọn gói:</strong> <span>Hỗ trợ cấp phép IRC, ERC, ĐTM, thẩm duyệt PCCC &amp; GPXD miễn phí.</span></div>
+1177: 								</div>
+1178: 								<div class="ipb-feature-item">
+1179: 									<div class="ipb-feature-icon">🚗</div>
+1180: 									<div><strong>Khảo sát thực địa 0đ:</strong> <span>Xe đưa đón tận nơi, kiểm tra hạ tầng kỹ thuật và kết nối logistics 24/7.</span></div>
+1181: 								</div>
+1182: 							</div>
+1183: 						</div>
+1184: 						<div class="ipb-action-card">
+1185: 							<div class="ipb-action-card-tag">Hotline Phòng Xúc Tiến</div>
+1186: 							<a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>" class="ipb-phone-highlight"><?php echo esc_html($hotline); ?></a>
+1187: 							<div class="ipb-phone-desc">Chuyên viên tư vấn hồ sơ &amp; bảng giá 24/7</div>
+1188: 							<div class="ipb-buttons">
+1189: 								<a class="ipb-btn-hotline" href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>">
+1190: 									<span>📞</span>
+1191: 									<span>Gọi Hotline Ngay</span>
+1192: 								</a>
+1193: 								<a class="ipb-btn-zalo" href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">
+1194: 									<span>💬</span>
+1195: 									<span>Chat Zalo Nhận Báo Giá</span>
+1196: 								</a>
+1197: 							</div>
+1198: 							<div class="ipb-footer-note">
+1199: 								<span>⏱️ Hỗ trợ 24/7 (Kể cả Thứ 7 &amp; Chủ Nhật)</span>
+1200: 							</div>
+1201: 						</div>
+1202: 					</div>
+1203: 				</section>
+1204: 
+1205: 				<!-- 9. VỊ TRÍ & BẢN ĐỒ -->
+1206: 				<?php if ( get_field('google_map_embed') ) : ?>
+1207: 				<section class="panel" id="sec-vi-tri">
+1208: 					<h2>Vị trí & bản đồ</h2>
+1209: 					<div class="map">
+1210: 						<?php echo get_field('google_map_embed'); ?>
+1211: 					</div>
+1212: 				</section>
+1213: 				<?php endif; ?>
+1214: 			</div>
+1215: 
+1216: 			<!-- CỘT PHẢI CỐ ĐỊNH SIDEBAR -->
+1217: 			<aside class="sticky">
+1218: 				<section class="panel price-card">
+1219: 					<div class="price-label">Giá tham khảo</div>
+1220: 					<div class="price"><?php echo esc_html($gia_thue); ?></div>
+1221: 					<div class="unit"><?php echo esc_html($don_vi_tinh); ?></div>
+1222: 					
+1223: 					<a class="cta" href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>">📞 Nhận tư vấn &amp; khảo sát</a>
+1224: 					<a class="cta alt" href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">💬 Chat Zalo tư vấn</a>
+1225: 					<a class="cta alt" style="background:#1877f2;color:#ffffff;border:none;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:0;" href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage</a>
+1226: 					
+1227: 					<?php if ( $file_brochure ) : ?>
+1228: 						<a class="cta alt" style="background:#27ae60;" href="<?php echo esc_url(is_array($file_brochure) ? $file_brochure['url'] : $file_brochure); ?>" target="_blank" download>📄 Tải Brochure PDF</a>
+1229: 					<?php endif; ?>
+1230: 
+1231: 					<div class="agent">
+1232: 						<strong>Chuyên viên BDS24H</strong>
+1233: 						Hotline / Zalo: <?php echo esc_html($hotline); ?><br>
+1234: 						Hỗ trợ hồ sơ pháp lý và kết nối chủ đầu tư
+1235: 					</div>
+1236: 				</section>
+1237: 				<section class="panel source">Thông tin tham khảo từ <a href="https://khoxuongdep.com.vn/" target="_blank" rel="noopener">Khoxuongdep.com.vn</a>.</section>
+1238: 			</aside>
+1239: 		</div>
+1240: 	</article>
+1241: 
+1242: 	<?php endwhile; endif; ?>
+1243: </main>
+1244: 
+1245: <!-- LIGHTBOX MODAL BẬT XEM ẢNH PHÓNG TO -->
+1246: <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to">
+1247: 	<button class="image-lightbox-close" type="button" aria-label="Đóng ảnh phóng to">×</button>
+1248: 	<img src="" alt="">
+1249: 	<div class="image-lightbox-caption"></div>
+1250: </div>
+1251: 
+1252: <script>
+1253: 	// SCRIPT XEM ẢNH LIGHTBOX
+1254: 	(function () {
+1255: 		var lightbox = document.getElementById('image-lightbox');
+1256: 		if (!lightbox) return;
+1257: 		var preview = lightbox.querySelector('img');
+1258: 		var caption = lightbox.querySelector('.image-lightbox-caption');
+1259: 		var closeButton = lightbox.querySelector('.image-lightbox-close');
+1260: 		var lastTrigger;
+1261: 
+1262: 		function getImageUrl(element) {
+1263: 			var match = (element.style.backgroundImage || '').match(/url\(["']?(.*?)["']?\)/);
+1264: 			return match ? match[1] : '';
+1265: 		}
+1266: 
+1267: 		function closeLightbox() {
+1268: 			lightbox.classList.remove('is-open');
+1269: 			preview.removeAttribute('src');
+1270: 			if (lastTrigger) lastTrigger.focus();
+1271: 		}
+1272: 
+1273: 		document.querySelectorAll('.gallery .cover, .gallery .side div').forEach(function (image) {
+1274: 			image.setAttribute('tabindex', '0');
+1275: 			image.setAttribute('role', 'button');
+1276: 			image.setAttribute('aria-label', 'Mở ảnh phóng to');
+1277: 			image.addEventListener('click', function () {
+1278: 				var url = getImageUrl(image);
+1279: 				if (!url) return;
+1280: 				lastTrigger = image;
+1281: 				preview.src = url;
+1282: 				preview.alt = image.querySelector('.photo-label') ? image.querySelector('.photo-label').textContent : 'Ảnh dự án';
+1283: 				caption.textContent = preview.alt;
+1284: 				lightbox.classList.add('is-open');
+1285: 				closeButton.focus();
+1286: 			});
+1287: 			image.addEventListener('keydown', function (event) {
+1288: 				if (event.key === 'Enter' || event.key === ' ') {
+1289: 					event.preventDefault();
+1290: 					image.click();
+1291: 				}
+1292: 			});
+1293: 		});
+1294: 
+1295: 		closeButton.addEventListener('click', closeLightbox);
+1296: 		lightbox.addEventListener('click', function (event) {
+1297: 			if (event.target === lightbox) closeLightbox();
+1298: 		});
+1299: 		document.addEventListener('keydown', function (event) {
+1300: 			if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+1301: 		});
+1302: 	}());
+1303: 
+1304: 	// SCRIPT DÍNH SIDEBAR STICKY DỘNG
+1305: 	(function () {
+1306: 		function updateStickyPositions() {
+1307: 			var screenWidth = window.innerWidth || document.documentElement.clientWidth;
+1308: 			var visibleArticle = document.querySelector('.detail-view');
+1309: 			if (!visibleArticle) return;
+1310: 
+1311: 			var layout = visibleArticle.querySelector('.layout');
+1312: 			var sticky = visibleArticle.querySelector('.sticky');
+1313: 			if (!layout || !sticky) return;
+1314: 
+1315: 			if (screenWidth <= 900) {
+1316: 				sticky.style.position = '';
+1317: 				sticky.style.top = '';
+1318: 				sticky.style.left = '';
+1319: 				sticky.style.width = '';
+1320: 				sticky.style.zIndex = '';
+1321: 				return;
+1322: 			}
+1323: 
+1324: 			var layoutRect = layout.getBoundingClientRect();
+1325: 			var stickyHeight = sticky.offsetHeight;
+1326: 			var adminBar = document.getElementById('wpadminbar');
+1327: 			var adminBarHeight = (adminBar && window.getComputedStyle(adminBar).position === 'fixed') ? adminBar.offsetHeight : 0;
+1328: 			var headerOffset = 84 + adminBarHeight;
+1329: 
+1330: 			var layoutTop = layoutRect.top;
+1331: 			var layoutBottom = layoutRect.bottom;
+1332: 
+1333: 			if (layoutTop <= headerOffset && layoutBottom >= (headerOffset + stickyHeight)) {
+1334: 				sticky.style.position = 'fixed';
+1335: 				sticky.style.top = headerOffset + 'px';
+1336: 				sticky.style.left = (layoutRect.right - 300) + 'px';
+1337: 				sticky.style.width = '300px';
+1338: 				sticky.style.zIndex = '90';
+1339: 			} else if (layoutBottom < (headerOffset + stickyHeight)) {
+1340: 				sticky.style.position = 'absolute';
+1341: 				sticky.style.top = 'auto';
+1342: 				sticky.style.bottom = '0px';
+1343: 				sticky.style.left = 'auto';
+1344: 				sticky.style.right = '0px';
+1345: 				sticky.style.width = '300px';
+1346: 			} else {
+1347: 				sticky.style.position = 'static';
+1348: 				sticky.style.top = '';
+1349: 				sticky.style.left = '';
+1350: 				sticky.style.width = '';
+1351: 			}
+1352: 		}
+1353: 
+1354: 		window.addEventListener('scroll', updateStickyPositions, { passive: true });
+1355: 		window.addEventListener('resize', updateStickyPositions, { passive: true });
+1356: 		document.addEventListener('DOMContentLoaded', updateStickyPositions);
+1357: 		setTimeout(updateStickyPositions, 100);
+1358: 		updateStickyPositions();
+1359: 	}());
+1360: </script>
+1361: 
+1362: <?php get_footer(); ?>
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

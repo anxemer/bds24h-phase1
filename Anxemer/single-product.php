@@ -40,9 +40,47 @@ get_header(); ?>
         padding: 0;
     }
 
-    /* Ẩn Header mặc định của theme nếu xung đột */
-    .pearl-header-wrap, .stm-header, .header-default, header.pearl-header {
+    /* Ẩn triệt để Header và Topbar mặc định của Theme Pearl / WordPress */
+    body > header,
+    #header,
+    .stm-header,
+    .stm_mobile_header,
+    .top_bar,
+    .top_nav,
+    .stm-header-builder,
+    header:not(#kx-header),
+    div[class*="stm-header"],
+    div[class*="top_bar"],
+    div[class*="topbar"],
+    div[class*="header_"],
+    .header_default,
+    .header_center,
+    .stm-header__cell,
+    .pearl-header-wrap {
         display: none !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    /* 2. RESET KHUNG CONTAINER CỦA THEME PEARL THÀNH FULL WIDTH (XÓA BỎ BÓP KHUNG) */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        background: var(--kxd-bg) !important;
+    }
+
+    #main, #content, .site-content, .stm-single-post, .container, .row, .post-type-archive-product, .single-product-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border: none !important;
+        float: none !important;
     }
 
     .kxd-wrap {
@@ -95,71 +133,43 @@ get_header(); ?>
     .kx-logo-brand {
         display: flex;
         flex-direction: column;
-        line-height: 1.08;
+        line-height: 1.05;
     }
     .kx-brand-sub {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 13.5px;
+        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 11.5px;
         font-weight: 800;
-        color: #0072bc;
+        color: #0f5999;
         letter-spacing: -0.2px;
         line-height: 1.15;
     }
     .kx-brand-main {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 17px;
+        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 13.5px;
         font-weight: 900;
-        color: #ea2429;
+        color: #c4161c;
         text-transform: uppercase;
         letter-spacing: 0.2px;
         line-height: 1.1;
         white-space: nowrap;
     }
     .kx-brand-vn {
-        font-family: 'Montserrat', sans-serif;
-        color: #0072bc;
-        font-size: 13.5px;
+        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #0f5999;
+        font-size: 11px;
         font-weight: 800;
         text-transform: lowercase;
     }
     .kx-logo-slogan {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 11.5px;
+        font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 8.5px;
         font-style: italic;
         font-weight: 700;
-        color: #0072bc;
-        letter-spacing: 0.15px;
-        margin-top: 3.5px;
+        color: #0f5999;
+        letter-spacing: 0.2px;
+        margin-top: 2px;
         line-height: 1.2;
         white-space: nowrap;
-        display: block;
-        visibility: visible;
-        opacity: 1;
-    }
-    @media (max-width: 1024px) {
-        .kx-logo-icon { height: 48px; }
-        .kx-brand-sub { font-size: 13px; }
-        .kx-brand-main { font-size: 16px; }
-        .kx-brand-vn { font-size: 13px; }
-        .kx-logo-slogan { font-size: 11px; display: block; }
-    }
-    @media (max-width: 768px) {
-        .kx-header-inner { padding: 10px 12px; }
-        .kx-logo-main { gap: 8px; }
-        .kx-logo-icon { height: 44px; }
-        .kx-brand-sub { font-size: 12.5px; }
-        .kx-brand-main { font-size: 15.5px; }
-        .kx-brand-vn { font-size: 12.5px; }
-        .kx-logo-slogan { font-size: 10.5px; display: block; margin-top: 3px; }
-    }
-    @media (max-width: 480px) {
-        .kx-header-inner { padding: 8px 10px; }
-        .kx-logo-main { gap: 7px; }
-        .kx-logo-icon { height: 40px; }
-        .kx-brand-sub { font-size: 12px; }
-        .kx-brand-main { font-size: 14.5px; }
-        .kx-brand-vn { font-size: 12px; }
-        .kx-logo-slogan { font-size: 10px; display: block; margin-top: 2.5px; }
     }
     .kx-nav-list {
         display: flex;
@@ -343,14 +353,16 @@ get_header(); ?>
         position: relative;
         border-radius: var(--kxd-radius);
         overflow: hidden;
-        background: #000;
+        background: #0f172a;
         aspect-ratio: 16 / 10;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
     .kxd-gallery-main img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        transition: opacity 0.25s ease-in-out;
     }
     .kxd-gallery-badge {
         position: absolute;
@@ -363,6 +375,50 @@ get_header(); ?>
         padding: 6px 14px;
         border-radius: 6px;
         backdrop-filter: blur(4px);
+        z-index: 2;
+    }
+    .kxd-gallery-thumbs {
+        display: flex;
+        gap: 10px;
+        padding: 12px;
+        background: #ffffff;
+        border: 1px solid var(--kxd-border);
+        border-top: none;
+        border-bottom-left-radius: var(--kxd-radius);
+        border-bottom-right-radius: var(--kxd-radius);
+        overflow-x: auto;
+        scrollbar-width: thin;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .kxd-gallery-thumbs::-webkit-scrollbar {
+        height: 6px;
+    }
+    .kxd-gallery-thumbs::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+    }
+    .kxd-thumb-item {
+        width: 110px;
+        height: 76px;
+        flex-shrink: 0;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 2px solid transparent;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.2s ease;
+    }
+    .kxd-thumb-item:hover, .kxd-thumb-item.active {
+        opacity: 1;
+        border-color: var(--kxd-green);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(15, 127, 47, 0.25);
+    }
+    .kxd-thumb-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 
     /* FEATURE OVERVIEW GRID */
@@ -399,12 +455,121 @@ get_header(); ?>
 
     /* CONTENT & CHECKLIST */
     .kxd-entry-content {
-        font-size: 15px;
-        line-height: 1.75;
-        color: #000000;
+        font-size: 15.5px;
+        line-height: 1.85;
+        color: #1e293b;
     }
     .kxd-entry-content p {
-        margin: 0 0 14px;
+        margin: 0 0 16px;
+    }
+    .kxd-desc-para {
+        margin: 0 0 16px;
+        font-size: 15.5px;
+        line-height: 1.85;
+        color: #334155;
+    }
+    .kxd-desc-highlights {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-left: 4px solid var(--kxd-green);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 2px 8px rgba(15, 127, 47, 0.06);
+    }
+    .kxd-desc-point {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #166534;
+        line-height: 1.6;
+    }
+    .kxd-point-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        background: var(--kxd-green);
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 900;
+        flex-shrink: 0;
+        margin-top: 2px;
+        box-shadow: 0 2px 4px rgba(15, 127, 47, 0.2);
+    }
+    .kxd-desc-contact-card {
+        background: linear-gradient(135deg, #0f7f2f 0%, #064e1b 100%);
+        color: #ffffff;
+        border-radius: 12px;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 24px 0 12px;
+        box-shadow: 0 6px 18px rgba(15, 127, 47, 0.22);
+    }
+    .kxd-dcc-icon {
+        font-size: 32px;
+        flex-shrink: 0;
+    }
+    .kxd-dcc-body {
+        flex: 1;
+    }
+    .kxd-dcc-title {
+        font-size: 12.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #86efac;
+        font-weight: 700;
+        margin-bottom: 3px;
+    }
+    .kxd-dcc-text {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.4;
+    }
+    .kxd-dcc-btn {
+        background: #ffffff;
+        color: var(--kxd-green);
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .kxd-dcc-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+        background: #f0fdf4;
+        color: var(--kxd-green-dark);
+    }
+    @media (max-width: 640px) {
+        .kxd-desc-contact-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px 20px;
+        }
+        .kxd-dcc-btn {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+        }
     }
     .kxd-entry-content ul {
         padding-left: 20px;
@@ -509,10 +674,9 @@ get_header(); ?>
         font-weight: 700;
         text-decoration: none;
         cursor: pointer;
-        transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all .2s;
         margin-bottom: 10px;
         border: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
     .kxd-price-box .cta-btn.primary {
         background: var(--kxd-green);
@@ -521,8 +685,6 @@ get_header(); ?>
     .kxd-price-box .cta-btn.primary:hover {
         background: var(--kxd-green-dark);
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(15, 127, 47, 0.35);
-        color: #ffffff;
     }
     .kxd-price-box .cta-btn.zalo {
         background: #0068FF;
@@ -531,23 +693,6 @@ get_header(); ?>
     .kxd-price-box .cta-btn.zalo:hover {
         background: #0052cc;
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 104, 255, 0.35);
-        color: #ffffff;
-    }
-    .kxd-price-box .cta-btn.facebook {
-        background: #1877f2;
-        color: #ffffff;
-        margin-bottom: 0;
-    }
-    .kxd-price-box .cta-btn.facebook:hover {
-        background: #1464cc;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35);
-        color: #ffffff;
-    }
-    .kxd-price-box .cta-btn:active {
-        transform: translateY(0);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .kxd-agent-card {
@@ -845,72 +990,207 @@ get_header(); ?>
 </style>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-    // Xác định Chuyên mục
-    $categories = get_the_category();
-    $cat_name = 'Kho Xưởng';
-    $cat_url = home_url('/kho-xuong/');
-    $loai_hinh_default = 'Kho Xưởng Cho Thuê';
+    $post_id = get_the_ID();
+    $title = get_the_title();
 
-    if ( !empty($categories) ) {
-        foreach ($categories as $cat) {
-            if ($cat->slug === 'dat-cong-nghiep') {
-                $cat_name = 'Đất Công Nghiệp';
-                $cat_url = home_url('/dat-cong-nghiep/');
-                $loai_hinh_default = 'Đất Công Nghiệp';
-                break;
-            } elseif ($cat->slug === 'kho-xuong') {
-                $cat_name = 'Kho Xưởng';
-                $cat_url = home_url('/kho-xuong/');
-                $loai_hinh_default = 'Kho Xưởng Cho Thuê';
-                break;
+    // 1. Nhận diện Chuyên mục & Loại hình thông minh
+    $raw_loai_hinh = get_post_meta($post_id, 'loai_hinh', true) ?: (function_exists('get_field') ? get_field('loai_hinh') : '');
+    $text_to_check = mb_strtolower($title . ' ' . $raw_loai_hinh, 'UTF-8');
+    $is_dat = (strpos($text_to_check, 'đất') !== false || strpos($text_to_check, 'dat') !== false);
+
+    if ($is_dat) {
+        $cat_name = 'Đất Công Nghiệp';
+        $cat_url = home_url('/dat-cong-nghiep/');
+        $loai_hinh_default = 'Đất Công Nghiệp';
+    } else {
+        $cat_name = 'Kho Xưởng';
+        $cat_url = home_url('/kho-xuong/');
+        $loai_hinh_default = 'Kho Xưởng Cho Thuê';
+    }
+    $loai_hinh = $raw_loai_hinh ?: $loai_hinh_default;
+
+    // 2. Mã tin
+    $ma_tin = get_post_meta($post_id, 'ma_tin', true) ?: (function_exists('get_field') ? get_field('ma_tin') : '');
+    if (!$ma_tin) {
+        $ma_tin = 'BDS-' . $post_id;
+    }
+
+    // 3. Diện tích thông minh (xử lý số nguyên thô, chuỗi có đơn vị, mét vuông, ha, dải số)
+    $raw_dien_tich = get_post_meta($post_id, 'dien_tich', true) ?: (function_exists('get_field') ? get_field('dien_tich') : '');
+    $dien_tich = 'Đang cập nhật';
+    if ($raw_dien_tich) {
+        $raw_dien_tich = trim((string)$raw_dien_tich);
+        if (preg_match('/^\d+$/', $raw_dien_tich)) {
+            $dien_tich = number_format((float)$raw_dien_tich, 0, ',', '.') . ' m²';
+        } elseif (preg_match('/^(\d+)(?:-(\d+))+$/', $raw_dien_tich)) {
+            $nums = explode('-', $raw_dien_tich);
+            $min_n = number_format((float)$nums[0], 0, ',', '.');
+            $max_n = number_format((float)end($nums), 0, ',', '.');
+            $dien_tich = $min_n . ' - ' . $max_n . ' m²';
+        } elseif (preg_match('/([\d,.]+\s*(?:m[²2]|mét vuông|hecta|ha))/iu', $raw_dien_tich, $m_dt)) {
+            $matched_dt = trim($m_dt[1]);
+            $matched_dt = preg_replace('/mét\s*vuông/iu', 'm²', $matched_dt);
+            $dien_tich = $matched_dt;
+        } elseif (mb_strlen($raw_dien_tich, 'UTF-8') > 30) {
+            $dien_tich = mb_substr($raw_dien_tich, 0, 26, 'UTF-8') . '...';
+        } else {
+            $dien_tich = $raw_dien_tich;
+            if (!preg_match('/(m[²2]|ha|hecta|mét)/iu', $dien_tich)) {
+                $dien_tich .= ' m²';
             }
         }
     }
 
-    // Lấy dữ liệu ACF hoặc meta
-    $ma_tin = get_field('ma_tin') ? get_field('ma_tin') : 'KXD-' . get_the_ID();
-    $dien_tich = get_field('dien_tich') ? get_field('dien_tich') : (get_field('fact_cang_bien') ? get_field('fact_cang_bien') : '3.000 m²');
-    $gia_thue = get_field('gia_thue') ? get_field('gia_thue') : 'Liên hệ báo giá';
-    $don_vi_tinh = get_field('don_vi_tinh') ? get_field('don_vi_tinh') : 'Giá thuê tham khảo';
-    $loai_hinh = get_field('loai_hinh') ? get_field('loai_hinh') : $loai_hinh_default;
-    $khu_vuc = get_field('tinh_thanh') ? get_field('tinh_thanh') : 'Đà Nẵng';
-    $vi_tri = get_field('vi_tri') ? get_field('vi_tri') : get_the_title();
-    $trang_thai = get_field('trang_thai') ? get_field('trang_thai') : 'CÒN TRỐNG';
+    // 4. Mức giá & Đơn vị tính thông minh (chuẩn hóa tỷ / triệu)
+    $raw_gia = get_post_meta($post_id, 'gia', true) ?: get_post_meta($post_id, 'gia_thue', true) ?: (function_exists('get_field') ? (get_field('gia') ?: get_field('gia_thue')) : '');
+    $raw_gia = trim((string)$raw_gia);
 
-    // Tiện ích Checklist
-    $tien_ich_raw = get_field('tien_ich_list');
-    if (!$tien_ich_raw) {
-        $tien_ich_raw = get_field('nganh_nghe_thu_hut');
-    }
-    if (!$tien_ich_raw) {
-        $tien_ich_arr = array(
-            'Hệ thống PCCC tự động đầy đủ',
-            'Đường xe container 24/24',
-            'Trạm biến áp riêng / Điện 3 pha',
-            'Sàn bê tông chịu lực / Sơn Epoxy',
-            'Văn phòng làm việc đi kèm',
-            'Pháp lý hoàn chỉnh, ký hợp đồng nhanh'
-        );
-    } else {
-        $tien_ich_arr = is_array($tien_ich_raw) ? $tien_ich_raw : explode(',', $tien_ich_raw);
+    $gia_thue = 'Liên hệ báo giá';
+    $don_vi_tinh = 'Giá tham khảo';
+
+    if ($raw_gia && !in_array(mb_strtolower($raw_gia, 'UTF-8'), array('liên hệ', 'thỏa thuận', 'thoa thuan', 'lien he', 'đang cập nhật', 'dang cap nhat'))) {
+        $num_clean = str_replace(array('.', ',', ' '), '', $raw_gia);
+        if (is_numeric($num_clean)) {
+            $num = (float)$num_clean;
+            if ($num >= 1000000000) {
+                $ty = $num / 1000000000;
+                $gia_thue = rtrim(rtrim(number_format($ty, 2, ',', '.'), '0'), ',') . ' tỷ';
+                $don_vi_tinh = number_format($num, 0, ',', '.') . ' VNĐ';
+            } elseif ($num >= 1000000) {
+                $trieu = $num / 1000000;
+                $gia_thue = rtrim(rtrim(number_format($trieu, 1, ',', '.'), '0'), ',') . ' triệu';
+                $don_vi_tinh = number_format($num, 0, ',', '.') . ' VNĐ';
+            } else {
+                $gia_thue = number_format($num, 0, ',', '.') . ' VNĐ';
+                $don_vi_tinh = 'Giá tham khảo';
+            }
+        } else {
+            $gia_thue = $raw_gia;
+            $don_vi_tinh = 'Giá tham khảo';
+        }
     }
 
-    // Ảnh đại diện
-    $thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-    if (!$thumb_url) {
-        $thumb_url = get_field('anh_thuc_te');
+    // 5. Khu vực & Vị trí
+    $khu_vuc = get_post_meta($post_id, 'khu_vuc', true) ?: (function_exists('get_field') ? get_field('khu_vuc') : '') ?: get_post_meta($post_id, 'vi_tri', true) ?: (function_exists('get_field') ? get_field('vi_tri') : '') ?: 'Long An';
+    $vi_tri = $khu_vuc;
+    $trang_thai = 'CÒN TRỐNG';
+
+    // 6. Tiện ích Checklist làm sạch (loại bỏ tiêu đề mục thừa)
+    $tien_ich_raw = get_post_meta($post_id, 'tien_ich', true) ?: (function_exists('get_field') ? get_field('tien_ich') : '');
+    $tien_ich_arr = array();
+    if ($tien_ich_raw) {
+        $lines = is_array($tien_ich_raw) ? $tien_ich_raw : explode("\n", (string)$tien_ich_raw);
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if (empty($line)) continue;
+            // Loại bỏ dòng là tiêu đề rác của trang nguồn
+            if (preg_match('/^(tiện\s*ích|đặc\s*điểm\s*nổi\s*bật|vị\s*trí|bản\s*đồ|mô\s*tả\s*chi\s*tiết|thông\s*tin\s*tổng\s*quan)/iu', $line)) {
+                continue;
+            }
+            if (mb_strlen($line, 'UTF-8') > 120) continue;
+            $tien_ich_arr[] = $line;
+        }
     }
-    if (!$thumb_url) {
-        $thumb_url = get_field('anh_quy_hoach');
+    if (empty($tien_ich_arr)) {
+        if ($is_dat) {
+            $tien_ich_arr = array(
+                'Pháp lý hoàn chỉnh, ký hợp đồng nhanh',
+                'Hạ tầng đồng bộ, đường xe container 24/24',
+                'Trạm điện công suất lớn, nguồn nước ổn định',
+                'Thuận tiện mở nhà máy, kho bãi, logistics',
+                'Chính sách ưu đãi thuế đầu tư tốt',
+                'Hỗ trợ xin cấp phép xây dựng & ĐTM'
+            );
+        } else {
+            $tien_ich_arr = array(
+                'Hệ thống PCCC nghiệm thu tự động',
+                'Đường xe container ra vào 24/24',
+                'Trạm biến áp riêng / Điện 3 pha',
+                'Sàn bê tông chịu lực / Sơn Epoxy',
+                'Văn phòng làm việc đi kèm',
+                'Pháp lý đầy đủ, bàn giao sử dụng ngay'
+            );
+        }
     }
+
+    // 7. Mô tả chi tiết làm sạch (xóa khoảng trống thừa)
+    $mo_ta_chi_tiet = get_post_meta($post_id, 'mo_ta_chi_tiet', true) ?: (function_exists('get_field') ? get_field('mo_ta_chi_tiet') : '');
+    if ($mo_ta_chi_tiet) {
+        $mo_ta_chi_tiet = preg_replace('/^\s*mô\s*tả\s*chi\s*tiết\s*/iu', '', $mo_ta_chi_tiet);
+        $mo_ta_chi_tiet = preg_replace("/[\r\n]{3,}/u", "\n\n", trim($mo_ta_chi_tiet));
+    }
+
+    // 8. Ảnh đại diện
+    $thumb_url = get_the_post_thumbnail_url($post_id, 'full');
     if (!$thumb_url) {
         $thumb_url = 'https://khoxuongdep.com.vn/wp-content/uploads/2026/08/cho-thue-kho-xuong-3000m2-kcn-hoa-khanh-da-nang.jpg';
     }
 
-    // Map Embed
-    $google_map = get_field('google_map_embed');
-    if (!$google_map) {
-        $google_map = '<iframe src="https://maps.google.com/maps?q=16.07,108.15&z=13&output=embed"></iframe>';
+    // 9. Thư viện ảnh Gallery (đa nguồn: _kcn_gallery_ids, attached media, ACF, query theo slug)
+    $gallery_images = array();
+    $raw_gallery_ids = get_post_meta($post_id, '_kcn_gallery_ids', true);
+    if ($raw_gallery_ids) {
+        $ids = array_filter(array_map('intval', explode(',', (string)$raw_gallery_ids)));
+        foreach ($ids as $img_id) {
+            $img_url = wp_get_attachment_image_url($img_id, 'full');
+            if ($img_url && !in_array($img_url, $gallery_images)) {
+                $gallery_images[] = $img_url;
+            }
+        }
+    }
+    if (empty($gallery_images)) {
+        $attached = get_attached_media('image', $post_id);
+        if (!empty($attached)) {
+            foreach ($attached as $att) {
+                $img_url = wp_get_attachment_image_url($att->ID, 'full');
+                if ($img_url && !in_array($img_url, $gallery_images)) {
+                    $gallery_images[] = $img_url;
+                }
+            }
+        }
+    }
+    if (empty($gallery_images) && function_exists('get_field')) {
+        $acf_gallery = get_field('gallery_anh');
+        if (is_array($acf_gallery)) {
+            foreach ($acf_gallery as $g) {
+                $g_url = is_array($g) ? ($g['url'] ?? '') : $g;
+                if ($g_url && !in_array($g_url, $gallery_images)) $gallery_images[] = $g_url;
+            }
+        }
+    }
+    // Quét bổ sung trong Media Library theo stem của post slug nếu gallery đang trống
+    if (empty($gallery_images)) {
+        $post_slug = get_post_field('post_name', $post_id);
+        if ($post_slug) {
+            global $wpdb;
+            $stem = preg_replace('/-\d+$/', '', $post_slug);
+            $results = $wpdb->get_col($wpdb->prepare(
+                "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'attachment' AND post_mime_type LIKE 'image/%' AND post_name LIKE %s ORDER BY ID ASC LIMIT 10",
+                $wpdb->esc_like($stem) . '%'
+            ));
+            if (!empty($results)) {
+                foreach ($results as $att_id) {
+                    $u = wp_get_attachment_image_url($att_id, 'full');
+                    if ($u && !in_array($u, $gallery_images)) {
+                        $gallery_images[] = $u;
+                    }
+                }
+            }
+        }
+    }
+    // Đảm bảo ảnh đại diện luôn có mặt đầu tiên nếu gallery có nhiều ảnh
+    if (!empty($gallery_images) && !in_array($thumb_url, $gallery_images)) {
+        array_unshift($gallery_images, $thumb_url);
+    }
+
+    // 10. Bản đồ Google Maps thông minh (dùng tọa độ hoặc địa chỉ khu vực)
+    $lat = get_post_meta($post_id, 'lat', true) ?: (function_exists('get_field') ? get_field('lat') : '');
+    $lng = get_post_meta($post_id, 'lng', true) ?: (function_exists('get_field') ? get_field('lng') : '');
+    if ($lat && $lng && is_numeric($lat) && is_numeric($lng)) {
+        $google_map = '<iframe src="https://maps.google.com/maps?q=' . esc_attr($lat) . ',' . esc_attr($lng) . '&z=14&output=embed" style="width:100%;height:100%;border:0;"></iframe>';
+    } else {
+        $map_query = (!empty($khu_vuc) && $khu_vuc !== 'Đang cập nhật') ? ($khu_vuc . ', Việt Nam') : 'Long An, Việt Nam';
+        $google_map = '<iframe src="https://maps.google.com/maps?q=' . rawurlencode($map_query) . '&z=13&output=embed" style="width:100%;height:100%;border:0;"></iframe>';
     }
 ?>
 
@@ -942,12 +1222,37 @@ get_header(); ?>
             <!-- CỘT TRÁI: NỘI DUNG CHI TIẾT -->
             <div class="kxd-stack">
 
-                <!-- 1. ẢNH THỰC TẾ DỰ ÁN -->
-                <div class="kxd-section-card" style="padding:0; overflow:hidden; border:none;">
+                <!-- 1. ẢNH THỰC TẾ DỰ ÁN & THUMBNAILS -->
+                <div class="kxd-section-card" style="padding:0; overflow:hidden; border:none; background:transparent;">
                     <div class="kxd-gallery-main">
-                        <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>">
+                        <img id="kxd-main-image" src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>">
                         <span class="kxd-gallery-badge">📸 Ảnh thực tế bất động sản</span>
                     </div>
+                    <?php if (!empty($gallery_images) && count($gallery_images) > 1): ?>
+                    <div class="kxd-gallery-thumbs">
+                        <?php foreach ($gallery_images as $idx => $img_full): ?>
+                            <div class="kxd-thumb-item <?php echo ($idx === 0) ? 'active' : ''; ?>"
+                                 onclick="kxdSelectGalleryImage(this, '<?php echo esc_js($img_full); ?>');">
+                                <img src="<?php echo esc_url($img_full); ?>" alt="<?php the_title(); ?>">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <script>
+                    function kxdSelectGalleryImage(el, src) {
+                        var mainImg = document.getElementById('kxd-main-image');
+                        if (mainImg) {
+                            mainImg.style.opacity = '0.3';
+                            setTimeout(function() {
+                                mainImg.src = src;
+                                mainImg.style.opacity = '1';
+                            }, 150);
+                        }
+                        var items = document.querySelectorAll('.kxd-thumb-item');
+                        items.forEach(function(item) { item.classList.remove('active'); });
+                        if (el) el.classList.add('active');
+                    }
+                    </script>
+                    <?php endif; ?>
                 </div>
 
                 <!-- 2. THÔNG TIN TỔNG QUAN -->
@@ -985,8 +1290,96 @@ get_header(); ?>
                 <section class="kxd-section-card">
                     <h2>📝 Mô tả chi tiết</h2>
                     <div class="kxd-entry-content">
-                        <?php if ( get_the_content() ) : ?>
-                            <?php the_content(); ?>
+                        <?php if ( !empty($mo_ta_chi_tiet) ) : 
+                            // Làm sạch mô tả chi tiết: bỏ tiêu đề trùng lặp, bỏ link đối thủ, bóc tách bullet points và hotline
+                            $desc_clean = preg_replace('/👉?\s*Xem\s*thêm\s*tại\s*(?:www\.)?khoxuongdep\.com\.vn[^\n\r]*/iu', '', $mo_ta_chi_tiet);
+                            $desc_clean = preg_replace('/(?:www\.)?khoxuongdep\.com\.vn/iu', 'batdongsankhucongnghiep.vn', $desc_clean);
+                            $desc_clean = preg_replace('/^\s*mô\s*tả\s*chi\s*tiết\s*/iu', '', $desc_clean);
+                            
+                            $desc_lines = explode("\n", str_replace("\r", "", $desc_clean));
+                            $title_raw = function_exists('wp_specialchars_decode') ? wp_specialchars_decode(get_the_title(), ENT_QUOTES) : html_entity_decode(get_the_title(), ENT_QUOTES, 'UTF-8');
+                            $title_norm = preg_replace('/[^\p{L}\p{N}]+/u', '', mb_strtolower($title_raw, 'UTF-8'));
+                            
+                            $valid_lines = array();
+                            foreach ($desc_lines as $dl) {
+                                $line = trim($dl);
+                                if ($line === '') continue;
+                                $line_raw = function_exists('wp_specialchars_decode') ? wp_specialchars_decode($line, ENT_QUOTES) : html_entity_decode($line, ENT_QUOTES, 'UTF-8');
+                                $line_norm = preg_replace('/[^\p{L}\p{N}]+/u', '', mb_strtolower($line_raw, 'UTF-8'));
+                                if (!empty($title_norm) && ($line_norm === $title_norm || (strpos($title_norm, $line_norm) !== false && mb_strlen($line_norm, 'UTF-8') > 20) || (strpos($line_norm, $title_norm) !== false && mb_strlen($title_norm, 'UTF-8') > 20))) {
+                                    continue;
+                                }
+                                // Bỏ dòng chỉ chứa icon emoji đơn độc
+                                if (preg_match('/^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{FE00}-\x{FE0F}\s]+$/u', $line)) {
+                                    continue;
+                                }
+                                $valid_lines[] = $line;
+                            }
+                            
+                            $pending_bullets = array();
+                            foreach ($valid_lines as $vl):
+                                if (preg_match('/(?:hotline|zalo|liên\s*hệ|mr\s*lương|\b09\d{8}\b)/iu', $vl)):
+                                    if (!empty($pending_bullets)): ?>
+                                        <div class="kxd-desc-highlights">
+                                            <?php foreach ($pending_bullets as $pb): ?>
+                                                <div class="kxd-desc-point">
+                                                    <span class="kxd-point-icon">✓</span>
+                                                    <span><?php echo esc_html($pb); ?></span>
+                                                </div>
+                                            <?php endforeach; $pending_bullets = array(); ?>
+                                        </div>
+                                    <?php endif; 
+                                    $phone_clean = '0909 161 824';
+                                    if (preg_match('/(0\d{9,10})/', $vl, $pm)) $phone_clean = $pm[1];
+                                    $contact_text = trim(preg_replace('/^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{FE00}-\x{FE0F}\s]+/u', '', $vl));
+                                    ?>
+                                    <div class="kxd-desc-contact-card">
+                                        <div class="kxd-dcc-icon">📞</div>
+                                        <div class="kxd-dcc-body">
+                                            <div class="kxd-dcc-title">Liên Hệ Trực Tiếp & Xem Thực Địa</div>
+                                            <div class="kxd-dcc-text"><?php echo esc_html($contact_text); ?></div>
+                                        </div>
+                                        <a href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $phone_clean)); ?>" class="kxd-dcc-btn">Gọi Tư Vấn</a>
+                                    </div>
+                                <?php elseif (preg_match('/^(?:[–\-+*•]|\d+[.)\/])\s*(.*)$/u', $vl, $bm)):
+                                    $pending_bullets[] = trim(preg_replace('/^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{FE00}-\x{FE0F}\s]+/u', '', $bm[1]));
+                                else:
+                                    if (!empty($pending_bullets)): ?>
+                                        <div class="kxd-desc-highlights">
+                                            <?php foreach ($pending_bullets as $pb): ?>
+                                                <div class="kxd-desc-point">
+                                                    <span class="kxd-point-icon">✓</span>
+                                                    <span><?php echo esc_html($pb); ?></span>
+                                                </div>
+                                            <?php endforeach; $pending_bullets = array(); ?>
+                                        </div>
+                                    <?php endif; 
+                                    $para_clean = trim(preg_replace('/^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{FE00}-\x{FE0F}\s]+/u', '', $vl));
+                                    if (!empty($para_clean)):
+                                    ?>
+                                        <p class="kxd-desc-para"><?php echo esc_html($para_clean); ?></p>
+                                    <?php endif; ?>
+                                <?php endif;
+                            endforeach;
+                            if (!empty($pending_bullets)): ?>
+                                <div class="kxd-desc-highlights">
+                                    <?php foreach ($pending_bullets as $pb): ?>
+                                        <div class="kxd-desc-point">
+                                            <span class="kxd-point-icon">✓</span>
+                                            <span><?php echo esc_html($pb); ?></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php elseif ( get_the_content() ) : ?>
+                            <?php
+                            $prod_content = get_the_content();
+                            $prod_content = preg_replace('/<(style|script)\b[^>]*>(.*?)<\/\1>/isu', '', $prod_content);
+                            $prod_content = preg_replace('/<style\b[^>]*>.*?$/isu', '', $prod_content);
+                            $prod_content = preg_replace('/<div class="kxd-kxd-banner".*?<\/div>\s*<\/div>/isu', '', $prod_content);
+                            $prod_content = preg_replace('/<!--.*?-->/su', '', $prod_content);
+                            echo apply_filters('the_content', $prod_content);
+                            ?>
                         <?php else: ?>
                             <p><strong><?php the_title(); ?></strong></p>
                             <p>– <strong>Vị trí:</strong> <?php echo esc_html($vi_tri); ?></p>
@@ -994,7 +1387,7 @@ get_header(); ?>
                             <p>– <strong>Giá tham khảo:</strong> <?php echo esc_html($gia_thue); ?> (<?php echo esc_html($don_vi_tinh); ?>)</p>
                             <p>– <strong>Hiện trạng:</strong> Mặt bằng tiêu chuẩn, sạch đẹp, hệ thống PCCC nghiệm thu, trạm biến áp công suất lớn, nền bê tông chịu tải cao.</p>
                             <p>– <strong>Pháp lý:</strong> Đầy đủ giấy tờ hợp lệ, hỗ trợ ký hợp đồng và bàn giao mặt bằng nhanh chóng.</p>
-                            <p>– <strong>Liên hệ:</strong> BatdongsanKhuCongNghiep.vn – Hotline/Zalo: <strong>0909 161 824</strong></p>
+                            <p>– <strong>Liên hệ:</strong> BDS24H / Kho Xưởng Đẹp – Hotline/Zalo: <strong>0909 161 824</strong></p>
                         <?php endif; ?>
                     </div>
                 </section>
@@ -1022,7 +1415,7 @@ get_header(); ?>
                     </div>
                     <div class="ipb-content-grid">
                         <div class="ipb-main-info">
-                            <h3>Liên hệ <span>Phòng Xúc Tiến Đầu Tư</span> Bất Động Sản Khu Công Nghiệp</h3>
+                            <h3>Liên hệ <span>Phòng Xúc Tiến Đầu Tư</span> BDS24H</h3>
                             <p class="ipb-intro-desc">Đầu mối chuyên trách hỗ trợ tìm kiếm kho xưởng, quỹ đất công nghiệp theo tiêu chuẩn riêng và đồng hành hoàn thiện thủ tục pháp lý, cấp phép đầu tư trọn gói.</p>
                             <div class="ipb-feature-list">
                                 <div class="ipb-feature-item">
@@ -1088,16 +1481,16 @@ get_header(); ?>
                         💬 Tư Vấn Nhanh Qua Zalo
                     </a>
                     
-                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" class="cta-btn facebook" target="_blank" rel="noopener">
+                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" class="cta-btn" style="background:#1877f2;color:#ffffff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;" target="_blank" rel="noopener">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage
                     </a>
                 </div>
 
                 <div class="kxd-agent-card">
                     <div class="kxd-agent-head">
-                        <div class="kxd-agent-avatar">KCN</div>
+                        <div class="kxd-agent-avatar">BDS</div>
                         <div>
-                            <h3>BatdongsanKhuCongNghiep.vn</h3>
+                            <h3>BDS24H – Kho Xưởng Đẹp</h3>
                             <p>Chuyên gia tư vấn BĐS Công Nghiệp</p>
                         </div>
                     </div>

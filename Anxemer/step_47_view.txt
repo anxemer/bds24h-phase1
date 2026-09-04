@@ -1,0 +1,259 @@
+Created At: 2026-09-03T21:40:47+07:00
+Completed At: 2026-09-03T21:40:47+07:00
+File Path: `file:///c:/Users/ACER/Downloads/Anxemer/single-khu-cong-nghiep.php`
+Total Lines: 1362
+Total Bytes: 39672
+Showing lines 800 to 1050
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+800: 		border-radius: 6px !important;
+801: 		display: flex !important;
+802: 		align-items: center !important;
+803: 		justify-content: center !important;
+804: 		font-size: 13px !important;
+805: 		flex-shrink: 0 !important;
+806: 		margin-top: 1px !important;
+807: 	}
+808: 
+809: 	.ipb-feature-item strong {
+810: 		color: #ffffff !important;
+811: 		font-weight: 700 !important;
+812: 	}
+813: 
+814: 	.ipb-feature-item span {
+815: 		color: #cbd5e1 !important;
+816: 	}
+817: 
+818: 	.ipb-action-card {
+819: 		background: rgba(0, 0, 0, 0.38) !important;
+820: 		border: 1px solid rgba(255, 255, 255, 0.16) !important;
+821: 		border-radius: 10px !important;
+822: 		padding: 20px 20px !important;
+823: 		text-align: center !important;
+824: 		backdrop-filter: blur(4px) !important;
+825: 	}
+826: 
+827: 	.ipb-action-card-tag {
+828: 		font-family: 'Roboto', sans-serif !important;
+829: 		font-size: 11.5px !important;
+830: 		font-weight: 700 !important;
+831: 		text-transform: uppercase !important;
+832: 		letter-spacing: 0.06em !important;
+833: 		color: #cbd5e1 !important;
+834: 		margin-bottom: 4px !important;
+835: 	}
+836: 
+837: 	.ipb-phone-highlight {
+838: 		font-family: 'Oswald', sans-serif !important;
+839: 		font-size: 28px !important;
+840: 		font-weight: 700 !important;
+841: 		color: #ffffff !important;
+842: 		letter-spacing: 1px !important;
+843: 		margin-bottom: 4px !important;
+844: 		display: block !important;
+845: 		text-decoration: none !important;
+846: 		text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+847: 		transition: color 0.2s, transform 0.2s !important;
+848: 	}
+849: 
+850: 	.ipb-phone-highlight:hover {
+851: 		color: #ffd166 !important;
+852: 		transform: scale(1.03) !important;
+853: 	}
+854: 
+855: 	.ipb-phone-desc {
+856: 		font-size: 12px !important;
+857: 		color: #94a3b8 !important;
+858: 		margin-bottom: 14px !important;
+859: 	}
+860: 
+861: 	.ipb-buttons {
+862: 		display: flex !important;
+863: 		flex-direction: column !important;
+864: 		gap: 9px !important;
+865: 	}
+866: 
+867: 	.ipb-btn-hotline {
+868: 		display: flex !important;
+869: 		align-items: center !important;
+870: 		justify-content: center !important;
+871: 		gap: 8px !important;
+872: 		background: var(--red) !important;
+873: 		color: #ffffff !important;
+874: 		font-family: 'Roboto', sans-serif !important;
+875: 		font-size: 14px !important;
+876: 		font-weight: 700 !important;
+877: 		text-transform: uppercase !important;
+878: 		letter-spacing: 0.5px !important;
+879: 		padding: 11px 16px !important;
+880: 		border-radius: 6px !important;
+881: 		text-decoration: none !important;
+882: 		transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
+883: 		box-shadow: 0 4px 14px rgba(255, 127, 42, 0.35) !important;
+884: 	}
+885: 
+886: 	.ipb-btn-hotline:hover {
+887: 		background: #e66a1a !important;
+888: 		transform: translateY(-1px) !important;
+889: 		box-shadow: 0 6px 18px rgba(255, 127, 42, 0.45) !important;
+890: 		color: #ffffff !important;
+891: 	}
+892: 
+893: 	.ipb-btn-zalo {
+894: 		display: flex !important;
+895: 		align-items: center !important;
+896: 		justify-content: center !important;
+897: 		gap: 8px !important;
+898: 		background: #0284c7 !important;
+899: 		color: #ffffff !important;
+900: 		font-family: 'Roboto', sans-serif !important;
+901: 		font-size: 14px !important;
+902: 		font-weight: 700 !important;
+903: 		padding: 10px 16px !important;
+904: 		border-radius: 6px !important;
+905: 		text-decoration: none !important;
+906: 		transition: background 0.2s, transform 0.15s !important;
+907: 	}
+908: 
+909: 	.ipb-btn-zalo:hover {
+910: 		background: #0369a1 !important;
+911: 		transform: translateY(-1px) !important;
+912: 		color: #ffffff !important;
+913: 	}
+914: 
+915: 	.ipb-footer-note {
+916: 		margin-top: 12px !important;
+917: 		font-size: 11.5px !important;
+918: 		color: #94a3b8 !important;
+919: 		display: flex !important;
+920: 		align-items: center !important;
+921: 		justify-content: center !important;
+922: 		gap: 5px !important;
+923: 	}
+924: 
+925: 	@media (max-width: 768px) {
+926: 		.ipb-content-grid {
+927: 			grid-template-columns: 1fr !important;
+928: 			gap: 18px !important;
+929: 		}
+930: 		.invest-promo-banner {
+931: 			padding: 20px 16px !important;
+932: 		}
+933: 		.ipb-main-info h3 {
+934: 			font-size: 19px !important;
+935: 		}
+936: 		.ipb-phone-highlight {
+937: 			font-size: 24px !important;
+938: 		}
+939: 	}
+940: </style>
+941: 
+942: 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+943: 		// Xác định Chuyên mục (Kho xưởng / Đất công nghiệp / Khu công nghiệp)
+944: 		$categories = get_the_category();
+945: 		$cat_slug = 'kcn';
+946: 		$cat_name = 'Khu công nghiệp';
+947: 		$cat_url = home_url('/kcn/');
+948: 		$eyebrow_prefix = 'Khu công nghiệp';
+949: 
+950: 		if ( !empty($categories) ) {
+951: 			foreach ($categories as $cat) {
+952: 				if ($cat->slug === 'kho-xuong') {
+953: 					$cat_slug = 'kho-xuong';
+954: 					$cat_name = 'Kho xưởng';
+955: 					$cat_url = home_url('/kho-xuong/');
+956: 					$eyebrow_prefix = 'Kho xưởng';
+957: 					break;
+958: 				} elseif ($cat->slug === 'dat-cong-nghiep') {
+959: 					$cat_slug = 'dat-cong-nghiep';
+960: 					$cat_name = 'Đất công nghiệp';
+961: 					$cat_url = home_url('/dat-cong-nghiep/');
+962: 					$eyebrow_prefix = 'Đất công nghiệp';
+963: 					break;
+964: 				}
+965: 			}
+966: 		}
+967: 
+968: 		// Lấy dữ liệu — dùng bộ field ĐƠN GIẢN, khớp đúng với "fields_detected" mà
+969: 		// crawl_kcn.py thực tế trích xuất được (không phải bộ field chi tiết cũ như
+970: 		// phí điện/nước/hạ tầng riêng lẻ — crawler hiện chưa tách được các số liệu đó).
+971: 		$khu_vuc = get_field('khu_vuc') ? get_field('khu_vuc') : 'Đang cập nhật';
+972: 		$vi_tri = $khu_vuc;
+973: 		$trang_thai = 'ĐANG HOẠT ĐỘNG'; // chưa có nguồn dữ liệu riêng, để mặc định
+974: 		$gia_thue = get_field('gia') ? get_field('gia') : 'Liên hệ báo giá';
+975: 		$don_vi_tinh = 'Giá tham khảo';
+976: 		$chu_dau_tu = get_field('chu_dau_tu') ? get_field('chu_dau_tu') : '';
+977: 		$dien_tich = get_field('dien_tich') ? get_field('dien_tich') : '';
+978: 		$ty_le_lap_day = get_field('ty_le_lap_day') ? get_field('ty_le_lap_day') : '';
+979: 		$nganh_nghe_text = get_field('nganh_nghe') ? get_field('nganh_nghe') : '';
+980: 		$ha_tang_text = get_field('ha_tang') ? get_field('ha_tang') : ''; // mô tả hạ tầng dạng đoạn văn, KHÔNG tách riêng điện/nước/viễn thông như bản cũ
+981: 
+982: 		// Ảnh — dùng gallery đầy đủ (field "gallery_anh") thay vì 3 vị trí cố định
+983: 		// (ảnh chính/quy hoạch/hạ tầng) như bản cũ, vì crawler không phân loại được
+984: 		// ảnh nào là quy hoạch/hạ tầng riêng biệt.
+985: 		$thumb_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+986: 		if (!$thumb_url) {
+987: 			$thumb_url = 'https://khoxuongdep.com.vn/wp-content/uploads/2026/08/khu-cong-nghiep-cau-cang-phuoc-dong-long-an.jpg';
+988: 		}
+989: 		$gallery_images = get_field('gallery_anh');
+990: 		if (!is_array($gallery_images)) {
+991: 			$gallery_images = array();
+992: 		}
+993: 
+994: 		// Liên hệ (thông tin công ty cố định, không phụ thuộc dữ liệu crawl)
+995: 		$hotline = get_field('hotline');
+996: 		if (!$hotline || strpos($hotline, '0901') !== false || strpos($hotline, '626248') !== false) {
+997: 			$hotline = '0909 161 824';
+998: 		}
+999: 		$zalo = get_field('link_zalo');
+1000: 		if (!$zalo || strpos($zalo, '0901') !== false || strpos($zalo, '626248') !== false) {
+1001: 			$zalo = 'https://zalo.me/0909161824';
+1002: 		}
+1003: 		$file_brochure = null; // chưa có nguồn dữ liệu, luôn ẩn khối tải brochure
+1004: 	?>
+1005: 
+1006: 	<main class="wrap detail-shell">
+1007: 		<nav class="crumb" aria-label="Breadcrumb">
+1008: 			<a href="<?php echo home_url(); ?>">Trang chủ</a> / 
+1009: 			<a href="<?php echo esc_url($cat_url); ?>"><?php echo esc_html($cat_name); ?></a> / 
+1010: 			<span><?php the_title(); ?></span>
+1011: 		</nav>
+1012: 
+1013: 		<article class="detail-view">
+1014: 			<!-- HERO BANNER VỚI ẢNH ĐẠI DIỆN + DẢI THUMBNAIL (không còn tách quy hoạch/hạ
+1015: 			     tầng riêng — crawler không phân loại được ảnh nào thuộc loại nào) -->
+1016: 			<div class="hero">
+1017: 				<div class="gallery">
+1018: 					<div class="cover" role="img" aria-label="Ảnh toàn cảnh <?php the_title(); ?>" style="background-image:url('<?php echo esc_url($thumb_url); ?>')">
+1019: 						<span class="photo-label">Ảnh dự án · <?php the_title(); ?></span>
+1020: 					</div>
+1021: 					<?php if (!empty($gallery_images)): ?>
+1022: 					<div class="side">
+1023: 						<?php
+1024: 						$side_images = array_slice($gallery_images, 0, 2);
+1025: 						foreach ($side_images as $img):
+1026: 							$img_url = is_array($img) ? ($img['sizes']['medium'] ?? $img['url']) : $img;
+1027: 						?>
+1028: 							<div role="img" aria-label="Ảnh thêm <?php the_title(); ?>" style="background-image:url('<?php echo esc_url($img_url); ?>')"></div>
+1029: 						<?php endforeach; ?>
+1030: 					</div>
+1031: 					<?php endif; ?>
+1032: 				</div>
+1033: 				<?php if (count($gallery_images) > 2): ?>
+1034: 				<div class="kxd-gallery-thumbs" style="display:flex; gap:8px; padding:10px; flex-wrap:wrap;">
+1035: 					<?php foreach ($gallery_images as $img):
+1036: 						$img_url = is_array($img) ? $img['url'] : $img;
+1037: 						$img_thumb = is_array($img) ? ($img['sizes']['medium'] ?? $img['url']) : $img;
+1038: 					?>
+1039: 						<img src="<?php echo esc_url($img_thumb); ?>" alt="<?php the_title(); ?>"
+1040: 							 style="width:110px; height:80px; object-fit:cover; border-radius:6px; cursor:pointer;"
+1041: 							 onclick="document.querySelector('.gallery .cover').style.backgroundImage='url(<?php echo esc_url($img_url); ?>)';">
+1042: 					<?php endforeach; ?>
+1043: 				</div>
+1044: 				<?php endif; ?>
+1045: 				<div class="heading">
+1046: 					<div>
+1047: 						<div class="eyebrow"><?php echo esc_html($eyebrow_prefix); ?> · <?php echo esc_html($khu_vuc); ?></div>
+1048: 						<h1 class="heading-h2"><?php the_title(); ?></h1>
+1049: 						<div class="location"><?php echo esc_html($vi_tri); ?></div>
+1050: 					</div>
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

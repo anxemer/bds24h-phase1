@@ -105,7 +105,490 @@ function pearl_glob_wpdb(){
 }
 
 // =========================================================================
-// HÀM AN TOÀN CHỐNG LỖI THEME PEARL
+// ĐĂNG KÝ CUSTOM POST TYPE: KHU CÔNG NGHIỆP
+// =========================================================================
+add_action('init', 'bds24h_register_kcn_post_type', 0);
+function bds24h_register_kcn_post_type() {
+    $labels = array(
+        'name'               => 'Khu Công Nghiệp',
+        'singular_name'      => 'Khu Công Nghiệp',
+        'menu_name'          => 'Khu Công Nghiệp',
+        'add_new'            => 'Thêm mới',
+        'add_new_item'       => 'Thêm KCN mới',
+        'edit_item'          => 'Sửa KCN',
+        'view_item'          => 'Xem KCN',
+        'search_items'       => 'Tìm KCN',
+        'not_found'          => 'Không tìm thấy KCN',
+    );
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => '', 'with_front' => false ),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'menu_icon'          => 'dashicons-building',
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+        'show_in_rest'       => true,
+    );
+    register_post_type( 'khu-cong-nghiep', $args );
+
+    // Cho phép WP REST API nhận và lưu _kcn_gallery_ids (dành cho script Python)
+    register_post_meta('khu-cong-nghiep', '_kcn_gallery_ids', array(
+        'show_in_rest'  => true,
+        'single'        => true,
+        'type'          => 'string',
+        'auth_callback' => function() { return current_user_can('edit_posts'); }
+    ));
+    register_post_meta('post', '_kcn_gallery_ids', array(
+        'show_in_rest'  => true,
+        'single'        => true,
+        'type'          => 'string',
+        'auth_callback' => function() { return current_user_can('edit_posts'); }
+    ));
+}
+
+// =========================================================================
+// TEMPLATE LOADER: Phân biệt single-product.php và single-khu-cong-nghiep.php
+// =========================================================================
+add_filter('single_template', 'bds24h_kcn_single_template');
+function bds24h_kcn_single_template( $template ) {
+    if ( is_singular() ) {
+        $post_id = get_the_ID();
+        $tmpl = get_post_meta( $post_id, '_wp_page_template', true );
+
+        // 1. Tự động nhận diện Sản phẩm Kho Xưởng / Đất Công Nghiệp:
+        $is_product = ( $tmpl === 'single-product.php' );
+        if ( ! $is_product ) {
+            $loai_hinh = get_post_meta( $post_id, 'loai_hinh', true ) ?: ( function_exists('get_field') ? get_field('loai_hinh', $post_id) : '' );
+            $ma_tin    = get_post_meta( $post_id, 'ma_tin', true ) ?: ( function_exists('get_field') ? get_field('ma_tin', $post_id) : '' );
+            if ( $loai_hinh || $ma_tin ) {
+                $is_product = true;
+            } else {
+                $title = get_the_title( $post_id );
+                if ( preg_match('/(kho\s*xưởng|nhà\s*xưởng|cho\s*thuê\s*kho|bán\s*đất|bán\s*kho)/iu', $title) && ! preg_match('/^(khu|cụm)\s*công\s*nghiệp/iu', $title) ) {
+                    $is_product = true;
+                }
+            }
+        }
+
+        if ( $is_product ) {
+            $custom_prod = get_template_directory() . '/single-product.php';
+            if ( file_exists($custom_prod) ) {
+                return $custom_prod;
+            }
+        }
+
+        // 2. Mặc định CPT khu-cong-nghiep -> Dùng giao diện Khu Công Nghiệp
+        if ( is_singular('khu-cong-nghiep') || $tmpl === 'single-khu-cong-nghiep.php' ) {
+            $custom_kcn = get_template_directory() . '/single-khu-cong-nghiep.php';
+            if ( file_exists($custom_kcn) ) {
+                return $custom_kcn;
+            }
+        }
+    }
+    return $template;
+}
+
+add_filter('template_include', 'bds24h_kcn_template_include');
+function bds24h_kcn_template_include( $template ) {
+    if ( is_singular() ) {
+        $post_id = get_the_ID();
+        $tmpl    = get_post_meta( $post_id, '_wp_page_template', true );
+
+        $is_product = ( $tmpl === 'single-product.php' );
+        if ( ! $is_product ) {
+            $loai_hinh = get_post_meta( $post_id, 'loai_hinh', true ) ?: ( function_exists('get_field') ? get_field('loai_hinh', $post_id) : '' );
+            $ma_tin    = get_post_meta( $post_id, 'ma_tin', true ) ?: ( function_exists('get_field') ? get_field('ma_tin', $post_id) : '' );
+            if ( $loai_hinh || $ma_tin ) {
+                $is_product = true;
+            } else {
+                $title = get_the_title( $post_id );
+                if ( preg_match('/(kho\s*xưởng|nhà\s*xưởng|cho\s*thuê\s*kho|bán\s*đất|bán\s*kho)/iu', $title) && ! preg_match('/^(khu|cụm)\s*công\s*nghiệp/iu', $title) ) {
+                    $is_product = true;
+                }
+            }
+        }
+
+        if ( $is_product ) {
+            $custom_prod = get_template_directory() . '/single-product.php';
+            if ( file_exists($custom_prod) ) return $custom_prod;
+        }
+
+        if ( is_singular('khu-cong-nghiep') || $tmpl === 'single-khu-cong-nghiep.php' ) {
+            $custom = get_template_directory() . '/single-khu-cong-nghiep.php';
+            if ( file_exists($custom) ) return $custom;
+        }
+    }
+    return $template;
+}
+
+
+// =========================================================================
+// ĐĂNG KÝ ACF FIELDS CHO KHU CÔNG NGHIỆP (hoạt động với ACF Free)
+// Tất cả fields sẽ hiện trong WP Admin khi tạo/sửa bài Khu Công Nghiệp
+// =========================================================================
+add_action('acf/init', 'bds24h_register_kcn_acf_fields');
+function bds24h_register_kcn_acf_fields() {
+    if (!function_exists('acf_add_local_field_group')) return;
+
+    acf_add_local_field_group(array(
+        'key'      => 'group_kcn_main',
+        'title'    => 'Thông tin Khu Công Nghiệp',
+        'fields'   => array(
+
+
+            // ---- THƯ VIỆN ẢNH ĐƯỢC QUẢN LÝ BỞI METABOX NATIVE BÊN DƯỚI ----
+            // (Không dùng ACF field riêng lẻ để cho phép chọn KHÔNG GIỚI HẠN số lượng ảnh)
+
+            // ---- THÔNG TIN CƠ BẢN ----
+
+            array(
+                'key'          => 'field_kcn_vi_tri',
+                'label'        => 'Vị trí / Tỉnh thành',
+                'name'         => 'vi_tri',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: Long An, hoặc KCN Phước Đông, Gò Dầu, Tây Ninh',
+            ),
+            array(
+                'key'          => 'field_kcn_chu_dau_tu',
+                'label'        => 'Chủ đầu tư',
+                'name'         => 'chu_dau_tu',
+                'type'         => 'text',
+            ),
+            array(
+                'key'          => 'field_kcn_gia_thue',
+                'label'        => 'Giá thuê đất',
+                'name'         => 'gia_thue',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 120 USD/m²/chu kỳ hoặc Liên hệ báo giá',
+            ),
+            array(
+                'key'          => 'field_kcn_don_vi_tinh',
+                'label'        => 'Đơn vị tính',
+                'name'         => 'don_vi_tinh',
+                'type'         => 'text',
+                'default_value'=> 'Giá tham khảo',
+            ),
+            array(
+                'key'          => 'field_kcn_dien_tich',
+                'label'        => 'Diện tích KCN',
+                'name'         => 'dien_tich',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 1.000 ha',
+            ),
+            array(
+                'key'          => 'field_kcn_ty_le_lap_day',
+                'label'        => 'Tỷ lệ lấp đầy',
+                'name'         => 'ty_le_lap_day',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 95%',
+            ),
+            array(
+                'key'          => 'field_kcn_trang_thai',
+                'label'        => 'Trạng thái',
+                'name'         => 'trang_thai',
+                'type'         => 'select',
+                'choices'      => array(
+                    'ĐANG HOẠT ĐỘNG' => 'Đang hoạt động',
+                    'ĐANG MỞ RỘNG'   => 'Đang mở rộng',
+                    'QUY HOẠCH'      => 'Quy hoạch',
+                ),
+                'default_value'=> 'ĐANG HOẠT ĐỘNG',
+            ),
+            array(
+                'key'          => 'field_kcn_nganh_nghe',
+                'label'        => 'Ngành nghề thu hút',
+                'name'         => 'nganh_nghe_thu_hut',
+                'type'         => 'textarea',
+                'instructions' => 'Ngăn cách bằng dấu phẩy. Ví dụ: Điện tử, May mặc, Thực phẩm',
+                'rows'         => 3,
+            ),
+
+            // ---- HẠ TẦNG ----
+            array(
+                'key'          => 'field_kcn_ht_dien',
+                'label'        => 'Hạ tầng — Điện',
+                'name'         => 'ht_dien',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 110kV · 2 trạm biến áp 250MVA',
+            ),
+            array(
+                'key'          => 'field_kcn_ht_nuoc_sach',
+                'label'        => 'Hạ tầng — Nước sạch',
+                'name'         => 'ht_nuoc_sach',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 40.000 m³/ngày',
+            ),
+            array(
+                'key'          => 'field_kcn_ht_nuoc_thai',
+                'label'        => 'Hạ tầng — Xử lý nước thải',
+                'name'         => 'ht_nuoc_thai',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 10.000 m³/ngày (chuẩn QCVN 40:2011)',
+            ),
+            array(
+                'key'          => 'field_kcn_ht_vien_thong',
+                'label'        => 'Hạ tầng — Viễn thông',
+                'name'         => 'ht_vien_thong',
+                'type'         => 'text',
+            ),
+            array(
+                'key'          => 'field_kcn_ht_duong_bo',
+                'label'        => 'Hạ tầng — Đường bộ',
+                'name'         => 'ht_duong_bo',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: Đường nội khu 36m · 4 làn xe',
+            ),
+            array(
+                'key'          => 'field_kcn_ht_duong_thuy',
+                'label'        => 'Hạ tầng — Đường thủy',
+                'name'         => 'ht_duong_thuy',
+                'type'         => 'text',
+            ),
+
+            // ---- CHI PHÍ VẬN HÀNH ----
+            array(
+                'key'          => 'field_kcn_phi_quan_ly',
+                'label'        => 'Phí quản lý hạ tầng',
+                'name'         => 'phi_quan_ly',
+                'type'         => 'text',
+                'instructions' => 'Ví dụ: 0,5 USD/m²/năm',
+            ),
+            array(
+                'key'          => 'field_kcn_gia_dien',
+                'label'        => 'Giá điện',
+                'name'         => 'gia_dien',
+                'type'         => 'text',
+            ),
+            array(
+                'key'          => 'field_kcn_gia_nuoc',
+                'label'        => 'Giá nước',
+                'name'         => 'gia_nuoc',
+                'type'         => 'text',
+            ),
+            array(
+                'key'          => 'field_kcn_phi_nuoc_thai',
+                'label'        => 'Phí xử lý nước thải',
+                'name'         => 'phi_xuly_nuocthai',
+                'type'         => 'text',
+            ),
+
+            // ---- ƯU ĐÃI ----
+            array(
+                'key'          => 'field_kcn_uu_dai_thue',
+                'label'        => 'Ưu đãi thuế & đầu tư',
+                'name'         => 'uu_dai_thue',
+                'type'         => 'textarea',
+                'rows'         => 3,
+                'instructions' => 'Mô tả ưu đãi thuế, chính sách hỗ trợ đầu tư của KCN này',
+            ),
+
+            // ---- MÔ TẢ CHI TIẾT ----
+            array(
+                'key'          => 'field_kcn_mo_ta',
+                'label'        => 'Mô tả chi tiết',
+                'name'         => 'mo_ta_chi_tiet',
+                'type'         => 'textarea',
+                'rows'         => 8,
+            ),
+
+            // ---- BẢN ĐỒ ----
+            array(
+                'key'          => 'field_kcn_google_map',
+                'label'        => 'Google Map Embed',
+                'name'         => 'google_map_embed',
+                'type'         => 'textarea',
+                'rows'         => 3,
+                'instructions' => 'Dán thẻ <iframe src="..."> từ Google Maps vào đây',
+            ),
+
+            // ---- LIÊN HỆ (để trống = dùng số mặc định 0909 161 824) ----
+            array(
+                'key'          => 'field_kcn_hotline',
+                'label'        => 'Hotline riêng (tùy chọn)',
+                'name'         => 'hotline',
+                'type'         => 'text',
+                'instructions' => 'Để trống = tự động dùng 0909 161 824',
+            ),
+            array(
+                'key'          => 'field_kcn_zalo',
+                'label'        => 'Link Zalo riêng (tùy chọn)',
+                'name'         => 'link_zalo',
+                'type'         => 'url',
+                'instructions' => 'Để trống = tự động dùng https://zalo.me/0909161824',
+            ),
+        ),
+        'location' => array(
+            array(
+                // Hiện khi post type = khu-cong-nghiep
+                array(
+                    'param'    => 'post_type',
+                    'operator' => '==',
+                    'value'    => 'khu-cong-nghiep',
+                ),
+            ),
+            array(
+                // HOẶC: post thông thường có template single-khu-cong-nghiep.php
+                array(
+                    'param'    => 'post_type',
+                    'operator' => '==',
+                    'value'    => 'post',
+                ),
+                array(
+                    'param'    => 'page_template',
+                    'operator' => '==',
+                    'value'    => 'single-khu-cong-nghiep.php',
+                ),
+            ),
+        ),
+        'menu_order'     => 0,
+        'position'       => 'normal',
+        'style'          => 'default',
+        'label_placement'=> 'top',
+        'active'         => true,
+    ));
+}
+
+// =========================================================================
+// METABOX NATIVE WORDPRESS: THƯ VIỆN ẢNH KCN (KHÔNG CẦN ACF PRO, KHÔNG GIỚI HẠN ẢNH)
+// =========================================================================
+add_action('add_meta_boxes', 'bds_kcn_register_gallery_metabox');
+function bds_kcn_register_gallery_metabox() {
+    $screens = array('khu-cong-nghiep', 'post');
+    foreach ($screens as $screen) {
+        add_meta_box(
+            'bds_kcn_gallery_box',
+            '📸 Thư viện ảnh KCN (Không giới hạn số lượng)',
+            'bds_kcn_gallery_metabox_render',
+            $screen,
+            'side',
+            'low'
+        );
+    }
+}
+
+function bds_kcn_gallery_metabox_render($post) {
+    wp_nonce_field('bds_kcn_gallery_nonce_action', 'bds_kcn_gallery_nonce');
+    $raw_ids = get_post_meta($post->ID, '_kcn_gallery_ids', true);
+    $image_ids = array_filter(array_map('intval', explode(',', (string)$raw_ids)));
+    ?>
+    <div id="bds-gallery-container">
+        <ul id="bds-gallery-thumbs" style="display:flex; flex-wrap:wrap; gap:8px; margin:0 0 10px 0; padding:0; list-style:none;">
+            <?php foreach ($image_ids as $id) :
+                $thumb = wp_get_attachment_image_src($id, 'thumbnail');
+                if (!$thumb) continue;
+            ?>
+                <li data-id="<?php echo esc_attr($id); ?>" style="position:relative; width:68px; height:68px; border-radius:6px; overflow:hidden; border:1px solid #cbd5e1; cursor:move; background:#f1f5f9;">
+                    <img src="<?php echo esc_url($thumb[0]); ?>" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <button type="button" class="bds-del-img" title="Xóa ảnh này" style="position:absolute; top:2px; right:2px; width:18px; height:18px; background:rgba(220,38,38,0.9); color:#fff; border:none; border-radius:50%; font-size:11px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;">×</button>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <input type="hidden" id="bds_kcn_gallery_ids" name="bds_kcn_gallery_ids" value="<?php echo esc_attr(implode(',', $image_ids)); ?>">
+        <button type="button" class="button button-primary" id="bds-add-gallery-btn" style="width:100%; text-align:center; padding:6px 0; font-weight:600;">
+            ➕ Thêm ảnh vào thư viện
+        </button>
+        <p style="font-size:11px; color:#64748b; margin:6px 0 0 0; line-height:1.4;">
+            * Giữ <strong>Shift</strong> hoặc <strong>Ctrl</strong> để chọn nhiều ảnh cùng lúc. Kéo thả để đổi thứ tự ảnh.
+        </p>
+    </div>
+
+    <script>
+    jQuery(document).ready(function($) {
+        var frame;
+        var $thumbs = $('#bds-gallery-thumbs');
+        var $input  = $('#bds_kcn_gallery_ids');
+
+        function updateIds() {
+            var ids = [];
+            $thumbs.find('li').each(function() {
+                ids.push($(this).data('id'));
+            });
+            $input.val(ids.join(','));
+        }
+
+        // Kéo thả sắp xếp
+        if ($.fn.sortable) {
+            $thumbs.sortable({
+                items: 'li',
+                cursor: 'move',
+                stop: updateIds
+            });
+        }
+
+        // Mở WordPress Media modal
+        $('#bds-add-gallery-btn').on('click', function(e) {
+            e.preventDefault();
+            if (frame) { frame.open(); return; }
+
+            frame = wp.media({
+                title: 'Chọn ảnh cho Thư viện KCN (chọn được nhiều ảnh)',
+                button: { text: 'Thêm vào thư viện' },
+                multiple: true
+            });
+
+            frame.on('select', function() {
+                var selection = frame.state().get('selection');
+                selection.map(function(attachment) {
+                    attachment = attachment.toJSON();
+                    var thumbUrl = (attachment.sizes && attachment.sizes.thumbnail) ? attachment.sizes.thumbnail.url : attachment.url;
+                    if ($thumbs.find('li[data-id="' + attachment.id + '"]').length === 0) {
+                        var $li = $('<li data-id="' + attachment.id + '" style="position:relative; width:68px; height:68px; border-radius:6px; overflow:hidden; border:1px solid #cbd5e1; cursor:move; background:#f1f5f9;">' +
+                            '<img src="' + thumbUrl + '" style="width:100%; height:100%; object-fit:cover; display:block;">' +
+                            '<button type="button" class="bds-del-img" title="Xóa ảnh này" style="position:absolute; top:2px; right:2px; width:18px; height:18px; background:rgba(220,38,38,0.9); color:#fff; border:none; border-radius:50%; font-size:11px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;">×</button>' +
+                        '</li>');
+                        $thumbs.append($li);
+                    }
+                });
+                updateIds();
+            });
+
+            frame.open();
+        });
+
+        // Xóa ảnh
+        $thumbs.on('click', '.bds-del-img', function(e) {
+            e.preventDefault();
+            $(this).closest('li').remove();
+            updateIds();
+        });
+    });
+    </script>
+    <?php
+}
+
+// Nạp media script trong admin cho post types
+add_action('admin_enqueue_scripts', 'bds_kcn_gallery_admin_assets');
+function bds_kcn_gallery_admin_assets($hook) {
+    if (in_array($hook, array('post.php', 'post-new.php'))) {
+        wp_enqueue_media();
+        wp_enqueue_script('jquery-ui-sortable');
+    }
+}
+
+// Lưu danh sách ID ảnh vào post meta khi bấm Lưu bài viết
+add_action('save_post', 'bds_kcn_gallery_save');
+function bds_kcn_gallery_save($post_id) {
+    if (!isset($_POST['bds_kcn_gallery_nonce']) || !wp_verify_nonce($_POST['bds_kcn_gallery_nonce'], 'bds_kcn_gallery_nonce_action')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['bds_kcn_gallery_ids'])) {
+        $raw_ids = sanitize_text_field($_POST['bds_kcn_gallery_ids']);
+        $cleaned_ids = array_filter(array_map('intval', explode(',', $raw_ids)));
+        update_post_meta($post_id, '_kcn_gallery_ids', implode(',', $cleaned_ids));
+    }
+}
+
+
 // =========================================================================
 if (!function_exists('pearl_body_bg')) {
     function pearl_body_bg() { return ''; }
@@ -1816,3 +2299,246 @@ function bds24h_global_menu_script() {
     </script>
     <?php
 }
+
+// =========================================================================
+// SHORTCODES HIỂN THỊ DANH SÁCH ĐỘNG TOÀN BỘ SẢN PHẨM & KCN CÓ PHÂN TRANG
+// Dùng trong Elementor hoặc WordPress Page:
+// [bds_listing_kcn]          -> Hiển thị toàn bộ KCN
+// [bds_listing_kho_xuong]    -> Hiển thị toàn bộ Kho Xưởng
+// [bds_listing_dat_cn]       -> Hiển thị toàn bộ Đất Công Nghiệp
+// =========================================================================
+
+function bds_shortcode_listing_kcn($atts) {
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
+    $args = array(
+        'post_type'      => 'khu-cong-nghiep',
+        'post_status'    => 'publish',
+        'posts_per_page' => 12,
+        'paged'          => $paged,
+        'meta_query'     => array(
+            'relation' => 'OR',
+            array('key' => 'loai_hinh', 'compare' => 'NOT EXISTS'),
+            array('key' => 'loai_hinh', 'value' => '', 'compare' => '='),
+            array('key' => '_wp_page_template', 'value' => 'single-khu-cong-nghiep.php')
+        )
+    );
+    $q = new WP_Query($args);
+    ob_start();
+    if ($q->have_posts()) {
+        echo '<div class="lp-grid">';
+        while ($q->have_posts()) {
+            $q->the_post();
+            $pid = get_the_ID();
+            $title = get_the_title();
+            $link = get_permalink();
+            $thumb = get_the_post_thumbnail_url($pid, 'medium_large') ?: 'https://khoxuongdep.com.vn/wp-content/uploads/2026/08/khu-cong-nghiep-cau-cang-phuoc-dong-long-an.jpg';
+            $vi_tri = get_post_meta($pid, 'vi_tri', true) ?: 'Việt Nam';
+            $gia_thue = get_post_meta($pid, 'gia_thue', true) ?: 'Liên hệ báo giá';
+            ?>
+            <a href="<?php echo esc_url($link); ?>" class="lp-card">
+                <div class="lp-card-thumb">
+                    <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>">
+                    <span class="lp-card-badge">Đang hoạt động</span>
+                    <span class="lp-card-label"><?php echo esc_html(mb_substr($title, 0, 20)); ?></span>
+                </div>
+                <div class="lp-card-body">
+                    <div class="lp-card-kicker"><span>Khu công nghiệp</span><span><?php echo esc_html($vi_tri); ?></span></div>
+                    <div class="lp-card-title"><?php echo esc_html($title); ?></div>
+                    <div class="lp-card-loc">📍 <?php echo esc_html($vi_tri); ?></div>
+                    <div class="lp-card-specs">
+                        <span class="lp-card-spec">Hạ tầng chuẩn</span>
+                        <span class="lp-card-spec">PCCC & GPXD</span>
+                        <span class="lp-card-spec">Logistics</span>
+                    </div>
+                    <div class="lp-card-price">
+                        <strong><?php echo esc_html($gia_thue); ?></strong>
+                        <span class="lp-card-cta">Xem chi tiết →</span>
+                    </div>
+                </div>
+            </a>
+            <?php
+        }
+        echo '</div>';
+
+        // Phân trang
+        $total_pages = $q->max_num_pages;
+        if ($total_pages > 1) {
+            echo '<div class="lp-pagination" style="display:flex;justify-content:center;gap:8px;margin-top:36px;">';
+            echo paginate_links(array(
+                'base'      => get_pagenum_link(1) . '%_%',
+                'format'    => 'page/%#%/',
+                'current'   => max(1, $paged),
+                'total'     => $total_pages,
+                'prev_text' => '« Trước',
+                'next_text' => 'Sau »',
+                'type'      => 'plain',
+            ));
+            echo '</div>';
+        }
+    } else {
+        echo '<p style="text-align:center;padding:40px;">Chưa có dữ liệu khu công nghiệp.</p>';
+    }
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode('bds_listing_kcn', 'bds_shortcode_listing_kcn');
+add_shortcode('bds_danh_sach_kcn', 'bds_shortcode_listing_kcn');
+
+function bds_shortcode_listing_kho_xuong($atts) {
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
+    $args = array(
+        'post_type'      => 'khu-cong-nghiep',
+        'post_status'    => 'publish',
+        'posts_per_page' => 12,
+        'paged'          => $paged,
+        'meta_query'     => array(
+            array(
+                'key'     => 'loai_hinh',
+                'value'   => 'kho',
+                'compare' => 'LIKE'
+            )
+        )
+    );
+    $q = new WP_Query($args);
+    ob_start();
+    if ($q->have_posts()) {
+        echo '<div class="lp-grid">';
+        while ($q->have_posts()) {
+            $q->the_post();
+            $pid = get_the_ID();
+            $title = get_the_title();
+            $link = get_permalink();
+            $thumb = get_the_post_thumbnail_url($pid, 'medium_large') ?: 'https://khoxuongdep.com.vn/wp-content/uploads/2026/08/cho-thue-kho-xuong-3000m2-kcn-hoa-khanh-da-nang.jpg';
+            $dien_tich = get_post_meta($pid, 'dien_tich', true) ?: (function_exists('get_field') ? get_field('dien_tich', $pid) : '3.000 m²');
+            $khu_vuc = get_post_meta($pid, 'khu_vuc', true) ?: (function_exists('get_field') ? get_field('khu_vuc', $pid) : 'Long An');
+            $gia = get_post_meta($pid, 'gia', true) ?: (function_exists('get_field') ? get_field('gia', $pid) : 'Thỏa thuận');
+            ?>
+            <a href="<?php echo esc_url($link); ?>" class="lp-card">
+                <div class="lp-card-thumb">
+                    <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>">
+                    <span class="lp-card-badge">Mới nhất</span>
+                    <span class="lp-card-area"><?php echo esc_html($dien_tich); ?></span>
+                </div>
+                <div class="lp-card-body">
+                    <div class="lp-card-kicker"><span>Kho xưởng</span><span>Mới cập nhật</span></div>
+                    <div class="lp-card-title"><?php echo esc_html($title); ?></div>
+                    <div class="lp-card-loc">📍 <?php echo esc_html($khu_vuc); ?></div>
+                    <div class="lp-card-specs">
+                        <span class="lp-card-spec"><?php echo esc_html($dien_tich); ?></span>
+                        <span class="lp-card-spec">PCCC tự động</span>
+                        <span class="lp-card-spec">Container 24/24</span>
+                    </div>
+                    <div class="lp-card-price">
+                        <strong><?php echo esc_html($gia); ?></strong>
+                        <span class="lp-card-cta">Xem chi tiết →</span>
+                    </div>
+                </div>
+            </a>
+            <?php
+        }
+        echo '</div>';
+
+        $total_pages = $q->max_num_pages;
+        if ($total_pages > 1) {
+            echo '<div class="lp-pagination" style="display:flex;justify-content:center;gap:8px;margin-top:36px;">';
+            echo paginate_links(array(
+                'base'      => get_pagenum_link(1) . '%_%',
+                'format'    => 'page/%#%/',
+                'current'   => max(1, $paged),
+                'total'     => $total_pages,
+                'prev_text' => '« Trước',
+                'next_text' => 'Sau »',
+                'type'      => 'plain',
+            ));
+            echo '</div>';
+        }
+    } else {
+        echo '<p style="text-align:center;padding:40px;">Chưa có dữ liệu kho xưởng.</p>';
+    }
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode('bds_listing_kho_xuong', 'bds_shortcode_listing_kho_xuong');
+add_shortcode('bds_danh_sach_kho_xuong', 'bds_shortcode_listing_kho_xuong');
+
+function bds_shortcode_listing_dat_cn($atts) {
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
+    $args = array(
+        'post_type'      => 'khu-cong-nghiep',
+        'post_status'    => 'publish',
+        'posts_per_page' => 12,
+        'paged'          => $paged,
+        'meta_query'     => array(
+            array(
+                'key'     => 'loai_hinh',
+                'value'   => 'đất',
+                'compare' => 'LIKE'
+            )
+        )
+    );
+    $q = new WP_Query($args);
+    ob_start();
+    if ($q->have_posts()) {
+        echo '<div class="lp-list">';
+        while ($q->have_posts()) {
+            $q->the_post();
+            $pid = get_the_ID();
+            $title = get_the_title();
+            $link = get_permalink();
+            $thumb = get_the_post_thumbnail_url($pid, 'medium_large') ?: 'https://khoxuongdep.com.vn/wp-content/uploads/2026/08/kcn-huu-thanh-long-an.jpg';
+            $dien_tich = get_post_meta($pid, 'dien_tich', true) ?: (function_exists('get_field') ? get_field('dien_tich', $pid) : '10.000 m²');
+            $khu_vuc = get_post_meta($pid, 'khu_vuc', true) ?: (function_exists('get_field') ? get_field('khu_vuc', $pid) : 'Long An');
+            $gia = get_post_meta($pid, 'gia', true) ?: (function_exists('get_field') ? get_field('gia', $pid) : 'Thỏa thuận');
+            ?>
+            <a href="<?php echo esc_url($link); ?>" class="lp-list-card">
+                <div class="lp-list-thumb">
+                    <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>">
+                    <span class="lp-list-badge" style="background: #16a34a;">Đất công nghiệp</span>
+                </div>
+                <div class="lp-list-body">
+                    <div>
+                        <div class="lp-list-kicker"><span>Đất công nghiệp</span><span>•</span><span><?php echo esc_html($khu_vuc); ?></span><span>•</span><span>Mới cập nhật</span></div>
+                        <div class="lp-list-title"><?php echo esc_html($title); ?></div>
+                        <div class="lp-list-loc">📍 <?php echo esc_html($khu_vuc); ?></div>
+                        <div class="lp-list-specs">
+                            <span class="lp-list-spec"><strong><?php echo esc_html($dien_tich); ?></strong></span>
+                            <span class="lp-list-spec">Pháp lý đầy đủ</span>
+                            <span class="lp-list-spec">Đường xe container</span>
+                            <span class="lp-list-spec">Hạ tầng hoàn chỉnh</span>
+                        </div>
+                    </div>
+                    <div class="lp-list-footer">
+                        <div class="lp-list-price">
+                            <?php echo esc_html($gia); ?>
+                            <small>Giá thuê tham khảo</small>
+                        </div>
+                        <span class="lp-list-cta">Xem chi tiết →</span>
+                    </div>
+                </div>
+            </a>
+            <?php
+        }
+        echo '</div>';
+
+        $total_pages = $q->max_num_pages;
+        if ($total_pages > 1) {
+            echo '<div class="lp-pagination" style="display:flex;justify-content:center;gap:8px;margin-top:36px;">';
+            echo paginate_links(array(
+                'base'      => get_pagenum_link(1) . '%_%',
+                'format'    => 'page/%#%/',
+                'current'   => max(1, $paged),
+                'total'     => $total_pages,
+                'prev_text' => '« Trước',
+                'next_text' => 'Sau »',
+                'type'      => 'plain',
+            ));
+            echo '</div>';
+        }
+    } else {
+        echo '<p style="text-align:center;padding:40px;">Chưa có dữ liệu đất công nghiệp.</p>';
+    }
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode('bds_listing_dat_cn', 'bds_shortcode_listing_dat_cn');
+add_shortcode('bds_danh_sach_dat_cn', 'bds_shortcode_listing_dat_cn');
