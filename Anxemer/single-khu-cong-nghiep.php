@@ -564,61 +564,116 @@ get_header();
 			z-index: 90;
 		}
 
+		/* SIDEBAR PRICE CARD THEO CHUẨN ẢNH 1 */
 		.price-card {
-			border-top: 4px solid var(--navy);
+			background: #ffffff;
+			border: 1px solid #e2e8f0;
+			border-top: 4px solid #0f7f2f !important;
+			border-radius: 12px;
+			padding: 24px 22px;
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 		}
 
 		.price-label {
-			font-family: 'Roboto', sans-serif;
-			font-size: 12.5px;
-			font-weight: 700;
+			font-family: 'Roboto', 'Inter', sans-serif;
+			font-size: 12px;
+			font-weight: 800;
 			color: #000000;
 			text-transform: uppercase;
-			letter-spacing: 0.04em;
+			letter-spacing: 0.06em;
+			margin-bottom: 6px;
+			display: block;
 		}
 
 		.price {
 			font-family: 'Oswald', sans-serif;
 			font-weight: 700;
 			font-size: 32px;
-			line-height: 1.1;
-			color: var(--navy);
-			letter-spacing: 0.5px;
-			margin: 6px 0 2px;
+			line-height: 1.15;
+			color: #0f7f2f !important;
+			letter-spacing: 0.3px;
+			margin: 4px 0 2px;
 		}
 
 		.unit {
-			font-family: 'Roboto', sans-serif;
+			font-family: 'Roboto', 'Inter', sans-serif;
 			font-size: 13.5px;
-			color: #000000;
+			color: #475569;
+			margin-bottom: 18px;
+			display: block;
 		}
 
 		.cta {
-			display: block;
+			display: flex !important;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			width: 100%;
+			box-sizing: border-box;
 			text-align: center;
 			text-decoration: none;
-			padding: 12px 14px;
-			border-radius: 6px;
-			background: var(--red);
-			color: #fff;
-			font-family: 'Roboto', sans-serif;
+			padding: 13px 14px;
+			border-radius: 8px;
+			font-family: 'Roboto', 'Inter', sans-serif;
 			font-size: 14.5px;
 			font-weight: 700;
 			text-transform: uppercase;
-			letter-spacing: 0.5px;
+			letter-spacing: 0.02em;
 			margin-top: 10px;
 			margin-bottom: 10px;
-			transition: opacity 0.2s, transform 0.15s;
+			transition: all 0.2s ease;
+			border: none !important;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 		}
 
 		.cta:hover {
-			opacity: 0.9;
+			transform: translateY(-2px);
+			opacity: 1 !important;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		}
 
-		.cta.alt {
-			background: var(--navy);
-			margin-top: 10px;
-			margin-bottom: 10px;
+		.cta.cta-orange {
+			background: #f26522 !important;
+			color: #ffffff !important;
+		}
+
+		.cta.cta-green {
+			background: #0f7f2f !important;
+			color: #ffffff !important;
+		}
+
+		.cta.cta-fb {
+			background: #1877f2 !important;
+			color: #ffffff !important;
+			margin-bottom: 16px;
+		}
+
+		.agent {
+			border-top: 1px solid #e2e8f0;
+			margin-top: 18px;
+			padding-top: 16px;
+			font-family: 'Roboto', 'Inter', sans-serif;
+		}
+
+		.agent strong {
+			display: block;
+			font-size: 15px;
+			font-weight: 700;
+			color: #000000;
+			margin-bottom: 5px;
+		}
+
+		.agent-hotline {
+			font-size: 13.5px;
+			color: #1e293b;
+			margin-bottom: 4px;
+			font-weight: 500;
+		}
+
+		.agent-desc {
+			font-size: 13px;
+			color: #475569;
+			line-height: 1.45;
 		}
 
 		/* MỤC LỤC ĐIỀU HƯỚNG NHANH */
@@ -931,49 +986,118 @@ get_header();
 			outline-offset: -3px;
 		}
 
+		/* KHÓA CUỘN TRANG VÀ ẨN HOÀN TOÀN THANH MENU HEADER KHI MỞ LIGHTBOX (CHỐNG ĐÈ 100%) */
+		html.lightbox-open,
+		body.lightbox-open {
+			overflow: hidden !important;
+			height: 100% !important;
+		}
+		html.lightbox-open #kx-header,
+		body.lightbox-open #kx-header,
+		html.lightbox-open .kx-sticky,
+		body.lightbox-open .kx-sticky,
+		html.lightbox-open .stm-header,
+		body.lightbox-open .stm-header,
+		html.lightbox-open .stm_mobile__header,
+		body.lightbox-open .stm_mobile__header,
+		html.lightbox-open header,
+		body.lightbox-open header,
+		html.lightbox-open #wpadminbar,
+		body.lightbox-open #wpadminbar {
+			display: none !important;
+			visibility: hidden !important;
+			opacity: 0 !important;
+			pointer-events: none !important;
+			z-index: -1 !important;
+		}
+
+		/* LIGHTBOX MODAL BẬT XEM ẢNH PHÓNG TO (Z-INDEX TỐI ĐA CHỐNG ĐÈ MENU) */
 		.image-lightbox {
-			position: fixed;
-			inset: 0;
-			z-index: 1000;
+			position: fixed !important;
+			top: 0 !important;
+			left: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			width: 100vw !important;
+			height: 100vh !important;
+			z-index: 2147483647 !important;
 			display: none;
-			align-items: center;
-			justify-content: center;
-			padding: 28px;
-			background: rgba(10, 18, 23, 0.88);
+			align-items: center !important;
+			justify-content: center !important;
+			padding: 24px !important;
+			background: rgba(8, 14, 11, 0.95) !important;
+			backdrop-filter: blur(10px) !important;
+			-webkit-backdrop-filter: blur(10px) !important;
+			cursor: zoom-out;
+			box-sizing: border-box !important;
 		}
 
 		.image-lightbox.is-open {
-			display: flex;
+			display: flex !important;
+		}
+
+		.image-lightbox * {
+			z-index: 2147483647 !important;
 		}
 
 		.image-lightbox img {
-			display: block;
-			max-width: min(1100px, 92vw);
-			max-height: 86vh;
-			width: auto;
-			height: auto;
-			object-fit: contain;
-			box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+			display: block !important;
+			max-width: min(1200px, 92vw) !important;
+			max-height: 85vh !important;
+			width: auto !important;
+			height: auto !important;
+			object-fit: contain !important;
+			border-radius: 8px !important;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+			cursor: default;
 		}
 
 		.image-lightbox-close {
-			position: absolute;
-			top: 18px;
-			right: 22px;
-			width: 42px;
-			height: 42px;
-			border: 1px solid rgba(255, 255, 255, 0.45);
-			border-radius: 50%;
-			background: rgba(0, 0, 0, 0.3);
-			color: #fff;
-			font-size: 28px;
-			line-height: 1;
-			cursor: pointer;
+			position: absolute !important;
+			top: 20px !important;
+			right: 24px !important;
+			width: 46px !important;
+			height: 46px !important;
+			border: 1px solid rgba(255, 255, 255, 0.3) !important;
+			border-radius: 50% !important;
+			background: rgba(255, 255, 255, 0.15) !important;
+			color: #ffffff !important;
+			font-size: 32px !important;
+			font-weight: 300 !important;
+			line-height: 1 !important;
+			cursor: pointer !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			transition: all 0.2s ease !important;
+			z-index: 2147483647 !important;
 		}
 
 		.image-lightbox-close:hover {
-			background: var(--red);
-			border-color: var(--red);
+			background: #e11d48 !important;
+			border-color: #e11d48 !important;
+			transform: scale(1.08) !important;
+		}
+
+		.image-lightbox-caption {
+			position: absolute !important;
+			bottom: 20px !important;
+			left: 50% !important;
+			transform: translateX(-50%) !important;
+			background: rgba(0, 0, 0, 0.75) !important;
+			color: #ffffff !important;
+			padding: 8px 20px !important;
+			border-radius: 20px !important;
+			font-family: 'Roboto', 'Inter', sans-serif !important;
+			font-size: 13.5px !important;
+			font-weight: 500 !important;
+			letter-spacing: 0.02em !important;
+			max-width: 90vw !important;
+			text-align: center !important;
+			white-space: nowrap !important;
+			overflow: hidden !important;
+			text-overflow: ellipsis !important;
+			pointer-events: none !important;
 		}
 
 		/* =================================================
@@ -1258,42 +1382,62 @@ get_header();
 			.ipb-phone-highlight {
 				font-size: 24px;
 			}
+		}
+
 		/* =========================================================
 		   HỒ SƠ THUYẾT MINH DỰ ÁN (PROFESSIONAL DOSSIER STYLES)
 		========================================================= */
 		.kcn-dossier-badge {
 			display: inline-flex;
 			align-items: center;
-			gap: 6px;
+			gap: 8px;
 			background: #f0fdf4;
 			color: #166534;
 			border: 1px solid #bbf7d0;
-			padding: 4px 14px;
+			padding: 6px 16px;
 			border-radius: 9999px;
-			font-size: 13px;
+			font-family: 'Roboto', 'Inter', sans-serif;
+			font-size: 13.5px;
 			font-weight: 600;
-			margin-bottom: 14px;
+			margin-bottom: 16px;
+			box-shadow: 0 1px 3px rgba(15, 127, 47, 0.08);
+		}
+
+		.kcn-dossier-badge span.check-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 18px;
+			height: 18px;
+			background: #16a34a;
+			color: #ffffff;
+			border-radius: 50%;
+			font-size: 11px;
+			font-weight: 900;
 		}
 
 		.kcn-dossier-wrap {
 			display: flex;
 			flex-direction: column;
-			gap: 16px;
-			margin-top: 14px;
+			gap: 18px;
+			margin-top: 18px;
 		}
 
 		.kcn-dossier-card {
 			background: #ffffff;
 			border: 1px solid #e2e8f0;
-			border-radius: 10px;
-			padding: 18px 22px;
-			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-			transition: border-color 0.2s, box-shadow 0.2s;
+			border-left: 4px solid #0f7f2f;
+			border-radius: 12px;
+			padding: 20px 24px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+			transition: all 0.25s ease;
 		}
 
 		.kcn-dossier-card:hover {
 			border-color: #cbd5e1;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+			border-left-color: #0f7f2f;
+			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+			transform: translateY(-1px);
 		}
 
 		.kcn-dossier-card-title {
@@ -1301,72 +1445,108 @@ get_header();
 			font-size: 18px;
 			font-weight: 700;
 			color: #0f172a;
-			margin: 0 0 12px 0;
-			padding-bottom: 8px;
-			border-bottom: 2px solid #f1f5f9;
+			margin: 0 0 14px 0;
+			padding-bottom: 10px;
+			border-bottom: 1.5px solid #f1f5f9;
 			display: flex;
 			align-items: center;
 			gap: 10px;
-			letter-spacing: 0.3px;
+			letter-spacing: 0.4px;
+			text-transform: uppercase;
 		}
 
-		.kcn-dossier-card-title::before {
-			content: '';
-			display: inline-block;
-			width: 4px;
-			height: 18px;
-			background: #2563eb;
-			border-radius: 2px;
+		.kcn-dossier-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 32px;
+			height: 32px;
+			background: #ecfdf5;
+			border-radius: 8px;
+			font-size: 16px;
+			flex-shrink: 0;
 		}
 
-		.kcn-dossier-table {
+		.kcn-dossier-grid {
 			display: grid;
-			grid-template-columns: 1fr;
-			gap: 8px;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 10px 14px;
 		}
 
 		.kcn-dossier-row {
-			display: grid;
-			grid-template-columns: 220px 1fr;
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
 			gap: 14px;
-			padding: 9px 14px;
+			padding: 10px 14px;
 			background: #f8fafc;
-			border-radius: 6px;
-			font-size: 14.5px;
-			line-height: 1.6;
+			border: 1px solid #edf2f7;
+			border-radius: 8px;
+			font-size: 14px;
+			line-height: 1.55;
 		}
 
 		@media(max-width: 640px) {
-			.kcn-dossier-row {
+			.kcn-dossier-grid {
 				grid-template-columns: 1fr;
-				gap: 3px;
+			}
+			.kcn-dossier-row {
+				flex-direction: column;
+				gap: 4px;
+			}
+			.kcn-dossier-val {
+				text-align: left !important;
 			}
 		}
 
 		.kcn-dossier-key {
-			font-weight: 600;
+			font-weight: 700;
 			color: #334155;
+			flex-shrink: 0;
+			max-width: 45%;
 		}
 
 		.kcn-dossier-val {
 			color: #0f172a;
+			font-weight: 600;
+			text-align: right;
+			word-break: break-word;
+		}
+
+		.kcn-dossier-list {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin-top: 4px;
 		}
 
 		.kcn-dossier-p {
-			margin: 6px 0;
+			margin: 0;
 			font-size: 14.5px;
 			line-height: 1.7;
 			color: #334155;
-			padding-left: 14px;
-			position: relative;
+			display: flex;
+			align-items: flex-start;
+			gap: 10px;
+			padding: 8px 12px;
+			background: #fafafa;
+			border-radius: 6px;
 		}
 
-		.kcn-dossier-p::before {
-			content: '•';
-			position: absolute;
-			left: 0;
-			color: #2563eb;
-			font-weight: bold;
+		.kcn-dossier-bullet {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 18px;
+			height: 18px;
+			background: #ecfdf5;
+			color: #0f7f2f;
+			border: 1px solid #a7f3d0;
+			border-radius: 50%;
+			font-size: 11px;
+			font-weight: 900;
+			flex-shrink: 0;
+			margin-top: 3px;
 		}
 	
 </style>
@@ -1882,6 +2062,11 @@ if (!empty($raw_mota)) :
     $text = preg_replace('/(?i)0901\s*626\s*248|0932\s*238\s*248|\( Mr Lương \)/u', '', $text);
     $text = preg_replace('/(?i)(?:www\.)?khoxuongdep(?:\.com\.vn)?/u', 'batdongsankhucongnghiep.vn', $text);
     $text = preg_replace('/(?i)(?:WeChat\s*ID|WhatsApp)[^\n]*/u', '', $text);
+
+    // Chuyển đổi các thẻ HTML sang ngắt dòng
+    $text = preg_replace('/<\s*br[^>]*>/iu', "\n", $text);
+    $text = preg_replace('/<\/(p|div|li|h[1-6])>/iu', "\n", $text);
+    $text = strip_tags($text);
     
     $raw_lines = array_filter(array_map('trim', explode("\n", str_replace("\r", "", $text))));
     
@@ -1906,7 +2091,7 @@ if (!empty($raw_mota)) :
         $valid_lines[] = $l;
     }
     
-    // 3. Gom nhãn và giá trị nằm trên 2 dòng kế tiếp thành các thẻ hồ sơ
+    // 3. Gom nhãn và giá trị thành các thẻ hồ sơ chuyên nghiệp
     $doc_blocks = array();
     $current_card = null;
     $i = 0;
@@ -1915,7 +2100,7 @@ if (!empty($raw_mota)) :
     while ($i < $total_lines) {
         $line = $valid_lines[$i];
         
-        // Nhận diện tiêu đề La Mã (I. , II. , ...)
+        // Nhận diện tiêu đề La Mã (I. , II. , ...) hoặc số (1. , 2. ...)
         if (preg_match('/^[IVXLCDM]+\.\s+(.+)/u', $line, $h_match)) {
             if ($current_card) {
                 $doc_blocks[] = $current_card;
@@ -1929,7 +2114,7 @@ if (!empty($raw_mota)) :
         }
         
         // Nếu dòng kết thúc bằng dấu : và dòng sau là giá trị
-        if (mb_substr($line, -1) === ':' && mb_strlen($line) < 45 && ($i + 1 < $total_lines)) {
+        if (mb_substr($line, -1) === ':' && mb_strlen($line) < 50 && ($i + 1 < $total_lines)) {
             $next_line = $valid_lines[$i + 1];
             if (!preg_match('/^[IVXLCDM]+\.\s+/u', $next_line) && mb_substr($next_line, -1) !== ':') {
                 $item = array('type' => 'kv', 'key' => rtrim($line, ':'), 'val' => $next_line);
@@ -1943,10 +2128,10 @@ if (!empty($raw_mota)) :
             }
         }
         
-        // Nếu dòng có dấu : ở giữa
+        // Nếu dòng có dấu : ở giữa (vd: "Tên dự án: Khu công nghiệp Tân Phú Trung")
         if (strpos($line, ':') !== false && !preg_match('/^https?:\/\//i', $line)) {
             $parts = explode(':', $line, 2);
-            if (mb_strlen(trim($parts[0])) < 40 && trim($parts[1]) !== '') {
+            if (mb_strlen(trim($parts[0])) < 50 && trim($parts[1]) !== '') {
                 $item = array('type' => 'kv', 'key' => trim($parts[0]), 'val' => trim($parts[1]));
                 if ($current_card) {
                     $current_card['rows'][] = $item;
@@ -1958,7 +2143,7 @@ if (!empty($raw_mota)) :
             }
         }
         
-        // Cự ly (vd "TP. Hồ Chí Minh" dòng sau "15 km")
+        // Cự ly (vd "Sân bay Quốc tế Tân Sơn Nhất" dòng sau "15 km")
         if ($i + 1 < $total_lines && preg_match('/^\d+[\s\w,.-]+(?:km|m|ha|m2|m²)$/ui', $valid_lines[$i + 1])) {
             $item = array('type' => 'kv', 'key' => $line, 'val' => $valid_lines[$i + 1]);
             if ($current_card) {
@@ -1968,6 +2153,21 @@ if (!empty($raw_mota)) :
             }
             $i += 2;
             continue;
+        }
+
+        // Nếu dòng có chứa dấu chấm phẩy ; nối nhiều ý cự ly/kết nối
+        if (strpos($line, ';') !== false && mb_strlen($line) > 35) {
+            $sub_items = array_filter(array_map('trim', explode(';', $line)));
+            if (count($sub_items) > 1) {
+                $item = array('type' => 'bullets', 'items' => $sub_items);
+                if ($current_card) {
+                    $current_card['rows'][] = $item;
+                } else {
+                    $doc_blocks[] = array('title' => 'Thông tin bổ sung', 'rows' => array($item));
+                }
+                $i++;
+                continue;
+            }
         }
         
         // Đoạn văn thuyết minh
@@ -1985,25 +2185,66 @@ if (!empty($raw_mota)) :
 ?>
 <?php if (!empty($doc_blocks)): ?>
 <section class="panel" id="sec-bo-sung">
-<div class="kcn-dossier-badge">✓ Hồ sơ thuyết minh kinh tế - kỹ thuật dự án · Xác thực bởi BDS24H</div>
+<div class="kcn-dossier-badge"><span class="check-icon">✓</span><span>Hồ sơ thuyết minh kinh tế - kỹ thuật dự án · Xác thực bởi BDS24H</span></div>
 <h2>Hồ sơ chi tiết &amp; Thuyết minh dự án</h2>
 
 <div class="kcn-dossier-wrap">
-<?php foreach ($doc_blocks as $card): ?>
+<?php foreach ($doc_blocks as $card): 
+    $card_title = $card['title'];
+    $card_icon = '📋';
+    if (preg_match('/(giao\s*thông|logistic|kết\s*nối|cảng|sân\s*bay)/iu', $card_title)) {
+        $card_icon = '🚛';
+    } elseif (preg_match('/(hạ\s*tầng|kỹ\s*thuật|điện|nước|xử\s*lý)/iu', $card_title)) {
+        $card_icon = '⚡';
+    } elseif (preg_match('/(lĩnh\s*vực|ngành\s*nghề|thu\s*hút|ưu\s*tiên)/iu', $card_title)) {
+        $card_icon = '🏭';
+    } elseif (preg_match('/(tổng\s*quan|quy\s*mô|pháp\s*lý|chủ\s*đầu\s*tư)/iu', $card_title)) {
+        $card_icon = '🏢';
+    } elseif (preg_match('/(chính\s*sách|ưu\s*đãi|hỗ\s*trợ|thuế)/iu', $card_title)) {
+        $card_icon = '🎁';
+    }
+
+    $kv_rows = array();
+    $text_rows = array();
+    foreach ($card['rows'] as $r) {
+        if ($r['type'] === 'kv') {
+            $kv_rows[] = $r;
+        } elseif ($r['type'] === 'bullets') {
+            foreach ($r['items'] as $bi) {
+                $text_rows[] = $bi;
+            }
+        } else {
+            $text_rows[] = $r['text'];
+        }
+    }
+?>
     <div class="kcn-dossier-card">
-        <div class="kcn-dossier-card-title"><?php echo esc_html($card['title']); ?></div>
-        <div class="kcn-dossier-table">
-        <?php foreach ($card['rows'] as $r): ?>
-            <?php if ($r['type'] === 'kv'): ?>
+        <div class="kcn-dossier-card-title">
+            <span class="kcn-dossier-icon"><?php echo $card_icon; ?></span>
+            <span><?php echo esc_html($card_title); ?></span>
+        </div>
+        
+        <?php if (!empty($kv_rows)): ?>
+        <div class="kcn-dossier-grid">
+            <?php foreach ($kv_rows as $r): ?>
                 <div class="kcn-dossier-row">
                     <span class="kcn-dossier-key"><?php echo esc_html($r['key']); ?>:</span>
                     <span class="kcn-dossier-val"><?php echo esc_html($r['val']); ?></span>
                 </div>
-            <?php else: ?>
-                <p class="kcn-dossier-p"><?php echo esc_html($r['text']); ?></p>
-            <?php endif; ?>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
+        <?php endif; ?>
+
+        <?php if (!empty($text_rows)): ?>
+        <div class="kcn-dossier-list" style="<?php echo !empty($kv_rows) ? 'margin-top:12px;' : ''; ?>">
+            <?php foreach ($text_rows as $txt): ?>
+                <p class="kcn-dossier-p">
+                    <span class="kcn-dossier-bullet">✓</span>
+                    <span><?php echo esc_html($txt); ?></span>
+                </p>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
     </div>
 <?php endforeach; ?>
 </div>
@@ -2074,22 +2315,25 @@ if (!empty($raw_mota)) :
 <!-- CỘT PHẢI CỐ ĐỊNH SIDEBAR -->
 <aside class="sticky">
 <section class="panel price-card">
-<div class="price-label">Giá tham khảo</div>
+<div class="price-label">GIÁ THAM KHẢO</div>
 <div class="price"><?php echo esc_html($gia_thue); ?></div>
 <div class="unit"><?php echo esc_html($don_vi_tinh); ?></div>
 
-<a class="cta" href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>">📞 Nhận tư vấn &amp; khảo sát</a>
-<a class="cta alt" href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">💬 Chat Zalo tư vấn</a>
-<a class="cta alt" style="background:#1877f2;color:#ffffff;border:none;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:0;" href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage</a>
+<a class="cta cta-orange" href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $hotline)); ?>">📞 NHẬN TƯ VẤN &amp; KHẢO SÁT</a>
+<a class="cta cta-green" href="<?php echo esc_url($zalo); ?>" target="_blank" rel="noopener">💬 CHAT ZALO TƯ VẤN</a>
+<a class="cta cta-fb" href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>FACEBOOK FANPAGE</span>
+</a>
 
 <?php if ( $file_brochure ) : ?>
-<a class="cta alt" style="background:#27ae60;" href="<?php echo esc_url(is_array($file_brochure) ? $file_brochure['url'] : $file_brochure); ?>" target="_blank" download>📄 Tải Brochure PDF</a>
+<a class="cta" style="background:#27ae60;color:#ffffff;" href="<?php echo esc_url(is_array($file_brochure) ? $file_brochure['url'] : $file_brochure); ?>" target="_blank" download>📄 Tải Brochure PDF</a>
 <?php endif; ?>
 
 <div class="agent">
 <strong>Chuyên viên BDS24H</strong>
-Hotline / Zalo: <?php echo esc_html($hotline); ?><br>
-Hỗ trợ hồ sơ pháp lý và kết nối chủ đầu tư
+<div class="agent-hotline">Hotline / Zalo: <?php echo esc_html($hotline); ?></div>
+<div class="agent-desc">Hỗ trợ hồ sơ pháp lý và kết nối chủ đầu tư</div>
 </div>
 </section>
 <section class="panel source" style="background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:12px 16px;">
@@ -2117,6 +2361,12 @@ Hỗ trợ hồ sơ pháp lý và kết nối chủ đầu tư
 (function () {
 var lightbox = document.getElementById('image-lightbox');
 if (!lightbox) return;
+
+// Đưa modal trực tiếp ra thẻ <body> để thoát khỏi mọi stacking context hạn chế của theme
+if (lightbox.parentNode !== document.body) {
+	document.body.appendChild(lightbox);
+}
+
 var preview = lightbox.querySelector('img');
 var caption = lightbox.querySelector('.image-lightbox-caption');
 var closeButton = lightbox.querySelector('.image-lightbox-close');
@@ -2124,28 +2374,44 @@ var lastTrigger;
 
 function getImageUrl(element) {
 var match = (element.style.backgroundImage || '').match(/url\(["']?(.*?)["']?\)/);
-return match ? match[1] : '';
+return match ? match[1] : (element.getAttribute('data-img') || '');
 }
 
 function closeLightbox() {
 lightbox.classList.remove('is-open');
 preview.removeAttribute('src');
+document.documentElement.classList.remove('lightbox-open');
+document.body.classList.remove('lightbox-open');
+document.body.style.overflow = '';
 if (lastTrigger) lastTrigger.focus();
 }
 
-document.querySelectorAll('.gallery .cover, .gallery .side div').forEach(function (image) {
+function openLightbox(url, altText, trigger) {
+if (!url) return;
+lastTrigger = trigger;
+preview.src = url;
+preview.alt = altText || 'Ảnh dự án';
+caption.textContent = preview.alt;
+lightbox.classList.add('is-open');
+document.documentElement.classList.add('lightbox-open');
+document.body.classList.add('lightbox-open');
+document.body.style.overflow = 'hidden';
+closeButton.focus();
+}
+
+document.querySelectorAll('.gallery .cover, .gallery .side div, .kxd-thumb-item').forEach(function (image) {
 image.setAttribute('tabindex', '0');
 image.setAttribute('role', 'button');
 image.setAttribute('aria-label', 'Mở ảnh phóng to');
-image.addEventListener('click', function () {
+image.addEventListener('click', function (e) {
+// Nếu là thumbnail click, không mở lightbox ngay nếu chỉ muốn đổi ảnh, nhưng nếu nhấp 2 lần hoặc nhấp ảnh chính thì mở
+if (image.classList.contains('kxd-thumb-item')) {
+    return; // thumbnail đổi cover
+}
 var url = getImageUrl(image);
 if (!url) return;
-lastTrigger = image;
-preview.src = url;
-preview.alt = image.querySelector('.photo-label') ? image.querySelector('.photo-label').textContent : 'Ảnh dự án';
-caption.textContent = preview.alt;
-lightbox.classList.add('is-open');
-closeButton.focus();
+var title = image.querySelector('.photo-label') ? image.querySelector('.photo-label').textContent : 'Ảnh dự án · <?php echo esc_js(get_the_title()); ?>';
+openLightbox(url, title, image);
 });
 image.addEventListener('keydown', function (event) {
 if (event.key === 'Enter' || event.key === ' ') {
@@ -2162,6 +2428,14 @@ if (event.target === lightbox) closeLightbox();
 document.addEventListener('keydown', function (event) {
 if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
 });
+
+// Chặn cuộn nền khi đang mở lightbox
+lightbox.addEventListener('wheel', function (e) {
+	e.preventDefault();
+}, { passive: false });
+lightbox.addEventListener('touchmove', function (e) {
+	e.preventDefault();
+}, { passive: false });
 }());
 
 // SCRIPT DÍNH SIDEBAR STICKY DỘNG

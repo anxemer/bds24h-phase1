@@ -348,39 +348,60 @@ get_header(); ?>
         gap: 10px;
     }
 
-    /* GALLERY MAIN */
-    .kxd-gallery-main {
-        position: relative;
+    /* UNIFIED GALLERY */
+    .gallery {
+        display: grid;
+        grid-template-columns: 1.55fr 1fr;
+        height: 340px;
+        gap: 4px;
+        background: #0f172a;
         border-radius: var(--kxd-radius);
         overflow: hidden;
-        background: #0f172a;
-        aspect-ratio: 16 / 10;
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
-    .kxd-gallery-main img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: opacity 0.25s ease-in-out;
+    .gallery.no-side {
+        grid-template-columns: 1fr !important;
     }
-    .kxd-gallery-badge {
+    .gallery.no-side .cover {
+        width: 100% !important;
+    }
+    .gallery .cover,
+    .gallery .side div {
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        cursor: zoom-in;
+        transition: transform 0.25s ease;
+    }
+    .gallery .cover:hover,
+    .gallery .side div:hover {
+        opacity: 0.96;
+    }
+    .side {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 4px;
+    }
+    .side:empty {
+        display: none;
+    }
+    .photo-label {
         position: absolute;
-        bottom: 16px;
-        left: 16px;
+        left: 14px;
+        bottom: 14px;
         background: rgba(0, 0, 0, 0.75);
-        color: #ffffff;
-        font-size: 13px;
-        font-weight: 600;
-        padding: 6px 14px;
+        color: #fff;
+        padding: 5px 12px;
         border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
         backdrop-filter: blur(4px);
         z-index: 2;
     }
     .kxd-gallery-thumbs {
         display: flex;
-        gap: 10px;
-        padding: 12px;
+        gap: 8px;
+        padding: 10px 14px;
         background: #ffffff;
         border: 1px solid var(--kxd-border);
         border-top: none;
@@ -398,27 +419,128 @@ get_header(); ?>
         border-radius: 3px;
     }
     .kxd-thumb-item {
-        width: 110px;
-        height: 76px;
-        flex-shrink: 0;
+        flex: 0 0 auto;
+        width: 100px;
+        height: 68px;
         border-radius: 6px;
         overflow: hidden;
-        border: 2px solid transparent;
+        border: 2px solid #cbd5e1;
         cursor: pointer;
-        opacity: 0.7;
-        transition: all 0.2s ease;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.15s, border-color 0.15s;
     }
     .kxd-thumb-item:hover, .kxd-thumb-item.active {
-        opacity: 1;
         border-color: var(--kxd-green);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(15, 127, 47, 0.25);
+        transform: scale(1.04);
     }
-    .kxd-thumb-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+
+    /* KHÓA CUỘN TRANG VÀ ẨN HOÀN TOÀN THANH MENU HEADER KHI MỞ LIGHTBOX (CHỐNG ĐÈ 100%) */
+    html.lightbox-open,
+    body.lightbox-open {
+        overflow: hidden !important;
+        height: 100% !important;
+    }
+    html.lightbox-open #kx-header,
+    body.lightbox-open #kx-header,
+    html.lightbox-open .kx-sticky,
+    body.lightbox-open .kx-sticky,
+    html.lightbox-open .stm-header,
+    body.lightbox-open .stm-header,
+    html.lightbox-open .stm_mobile__header,
+    body.lightbox-open .stm_mobile__header,
+    html.lightbox-open header,
+    body.lightbox-open header,
+    html.lightbox-open #wpadminbar,
+    body.lightbox-open #wpadminbar {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        z-index: -1 !important;
+    }
+
+    /* LIGHTBOX MODAL BẬT XEM ẢNH PHÓNG TO (Z-INDEX TỐI ĐA CHỐNG ĐÈ MENU) */
+    .image-lightbox {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 2147483647 !important;
+        display: none;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 24px !important;
+        background: rgba(8, 14, 11, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        cursor: zoom-out;
+        box-sizing: border-box !important;
+    }
+    .image-lightbox.is-open {
+        display: flex !important;
+    }
+    .image-lightbox * {
+        z-index: 2147483647 !important;
+    }
+    .image-lightbox img {
+        display: block !important;
+        max-width: min(1200px, 92vw) !important;
+        max-height: 85vh !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 8px !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+        cursor: default;
+    }
+    .image-lightbox-close {
+        position: absolute !important;
+        top: 20px !important;
+        right: 24px !important;
+        width: 46px !important;
+        height: 46px !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 50% !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        font-size: 32px !important;
+        font-weight: 300 !important;
+        line-height: 1 !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.2s ease !important;
+        z-index: 2147483647 !important;
+    }
+    .image-lightbox-close:hover {
+        background: #e11d48 !important;
+        border-color: #e11d48 !important;
+        transform: scale(1.08) !important;
+    }
+    .image-lightbox-caption {
+        position: absolute !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        background: rgba(0, 0, 0, 0.75) !important;
+        color: #ffffff !important;
+        padding: 8px 20px !important;
+        border-radius: 20px !important;
+        font-family: 'Roboto', 'Inter', sans-serif !important;
+        font-size: 13.5px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.02em !important;
+        max-width: 90vw !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        pointer-events: none !important;
     }
 
     /* FEATURE OVERVIEW GRID */
@@ -631,105 +753,105 @@ get_header(); ?>
         position: sticky;
         top: 80px;
     }
-    .kxd-price-box {
+    /* SIDEBAR PRICE CARD THEO CHUẨN ẢNH 1 */
+    .price-card {
         background: #ffffff;
         border: 1px solid var(--kxd-border);
+        border-top: 4px solid #0f7f2f !important;
         border-radius: var(--kxd-radius);
-        padding: 24px;
+        padding: 24px 22px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
         margin-bottom: 20px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.05);
     }
-    .kxd-price-box .label {
+    .price-label {
+        font-family: 'Roboto', 'Inter', sans-serif;
         font-size: 12px;
+        font-weight: 800;
+        color: #000000;
         text-transform: uppercase;
-        color: var(--kxd-text-muted);
-        font-weight: 700;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
         display: block;
-        margin-bottom: 6px;
     }
-    .kxd-price-box .price-display {
+    .price {
         font-family: 'Oswald', sans-serif;
-        font-size: 30px;
         font-weight: 700;
-        color: var(--kxd-green);
-        line-height: 1.2;
-        margin-bottom: 6px;
+        font-size: 32px;
+        line-height: 1.15;
+        color: #0f7f2f !important;
+        letter-spacing: 0.3px;
+        margin: 4px 0 2px;
     }
-    .kxd-price-box .price-unit {
+    .unit {
+        font-family: 'Roboto', 'Inter', sans-serif;
         font-size: 13.5px;
-        color: var(--kxd-text-muted);
+        color: #475569;
         margin-bottom: 18px;
         display: block;
     }
-    .kxd-price-box .cta-btn {
-        display: flex;
+    .cta {
+        display: flex !important;
         align-items: center;
         justify-content: center;
         gap: 8px;
         width: 100%;
-        height: 46px;
-        border-radius: 8px;
-        font-size: 15px;
-        font-weight: 700;
+        box-sizing: border-box;
+        text-align: center;
         text-decoration: none;
-        cursor: pointer;
-        transition: all .2s;
+        padding: 13px 14px;
+        border-radius: 8px;
+        font-family: 'Roboto', 'Inter', sans-serif;
+        font-size: 14.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        margin-top: 10px;
         margin-bottom: 10px;
-        border: none;
+        transition: all 0.2s ease;
+        border: none !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
-    .kxd-price-box .cta-btn.primary {
-        background: var(--kxd-green);
-        color: #ffffff;
-    }
-    .kxd-price-box .cta-btn.primary:hover {
-        background: var(--kxd-green-dark);
+    .cta:hover {
         transform: translateY(-2px);
+        opacity: 1 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-    .kxd-price-box .cta-btn.zalo {
-        background: #0068FF;
-        color: #ffffff;
+    .cta.cta-orange {
+        background: #f26522 !important;
+        color: #ffffff !important;
     }
-    .kxd-price-box .cta-btn.zalo:hover {
-        background: #0052cc;
-        transform: translateY(-2px);
+    .cta.cta-green {
+        background: #0f7f2f !important;
+        color: #ffffff !important;
     }
-
-    .kxd-agent-card {
-        background: #ffffff;
-        border: 1px solid var(--kxd-border);
-        border-radius: var(--kxd-radius);
-        padding: 20px;
+    .cta.cta-fb {
+        background: #1877f2 !important;
+        color: #ffffff !important;
+        margin-bottom: 16px;
     }
-    .kxd-agent-head {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        margin-bottom: 14px;
+    .agent {
+        border-top: 1px solid #e2e8f0;
+        margin-top: 18px;
+        padding-top: 16px;
+        font-family: 'Roboto', 'Inter', sans-serif;
     }
-    .kxd-agent-avatar {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, var(--kxd-green), #16a34a);
-        color: #ffffff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        font-size: 16px;
-        flex-shrink: 0;
-    }
-    .kxd-agent-head h3 {
+    .agent strong {
+        display: block;
         font-size: 15px;
         font-weight: 700;
-        margin: 0 0 4px;
         color: #000000;
+        margin-bottom: 5px;
     }
-    .kxd-agent-head p {
-        font-size: 12.5px;
-        color: var(--kxd-text-muted);
-        margin: 0;
+    .agent-hotline {
+        font-size: 13.5px;
+        color: #1e293b;
+        margin-bottom: 4px;
+        font-weight: 500;
+    }
+    .agent-desc {
+        font-size: 13px;
+        color: #475569;
+        line-height: 1.45;
     }
 
     /* =================================================
@@ -1223,35 +1345,44 @@ get_header(); ?>
             <div class="kxd-stack">
 
                 <!-- 1. ẢNH THỰC TẾ DỰ ÁN & THUMBNAILS -->
+                <?php 
+                $sub_gallery = array();
+                if (!empty($gallery_images)) {
+                    foreach ($gallery_images as $g_img) {
+                        if ($g_img !== $thumb_url) {
+                            $sub_gallery[] = $g_img;
+                        }
+                    }
+                }
+                ?>
                 <div class="kxd-section-card" style="padding:0; overflow:hidden; border:none; background:transparent;">
-                    <div class="kxd-gallery-main">
-                        <img id="kxd-main-image" src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title(); ?>">
-                        <span class="kxd-gallery-badge">📸 Ảnh thực tế bất động sản</span>
+                    <div class="gallery<?php echo !empty($sub_gallery) ? ' has-side' : ' no-side'; ?>">
+                        <div class="cover" role="img" aria-label="Ảnh thực tế <?php the_title(); ?>" style="background-image:url('<?php echo esc_url($thumb_url); ?>')">
+                            <span class="photo-label">📸 Ảnh thực tế · <?php the_title(); ?></span>
+                        </div>
+                        <?php if (!empty($sub_gallery)): ?>
+                        <div class="side">
+                            <?php 
+                            $side_images = array_slice($sub_gallery, 0, 2);
+                            foreach ($side_images as $img):
+                                $img_u = is_array($img) ? ($img['sizes']['medium'] ?? $img['url']) : $img;
+                            ?>
+                            <div role="img" aria-label="Ảnh thêm <?php the_title(); ?>" style="background-image:url('<?php echo esc_url($img_u); ?>')" onclick="document.querySelector('.gallery .cover').style.backgroundImage='url(<?php echo esc_url($img_u); ?>)';"></div>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
-                    <?php if (!empty($gallery_images) && count($gallery_images) > 1): ?>
+                    <?php if (count($gallery_images) > 1): ?>
                     <div class="kxd-gallery-thumbs">
-                        <?php foreach ($gallery_images as $idx => $img_full): ?>
-                            <div class="kxd-thumb-item <?php echo ($idx === 0) ? 'active' : ''; ?>"
-                                 onclick="kxdSelectGalleryImage(this, '<?php echo esc_js($img_full); ?>');">
-                                <img src="<?php echo esc_url($img_full); ?>" alt="<?php the_title(); ?>">
-                            </div>
+                        <?php foreach ($gallery_images as $img):
+                            $img_u = is_array($img) ? $img['url'] : $img;
+                        ?>
+                        <div class="kxd-thumb-item" style="background-image:url('<?php echo esc_url($img_u); ?>');"
+                             onclick="document.querySelector('.gallery .cover').style.backgroundImage='url(<?php echo esc_url($img_u); ?>)';"
+                             title="Nhấn để xem ảnh này">
+                        </div>
                         <?php endforeach; ?>
                     </div>
-                    <script>
-                    function kxdSelectGalleryImage(el, src) {
-                        var mainImg = document.getElementById('kxd-main-image');
-                        if (mainImg) {
-                            mainImg.style.opacity = '0.3';
-                            setTimeout(function() {
-                                mainImg.src = src;
-                                mainImg.style.opacity = '1';
-                            }, 150);
-                        }
-                        var items = document.querySelectorAll('.kxd-thumb-item');
-                        items.forEach(function(item) { item.classList.remove('active'); });
-                        if (el) el.classList.add('active');
-                    }
-                    </script>
                     <?php endif; ?>
                 </div>
 
@@ -1468,42 +1599,124 @@ get_header(); ?>
 
             <!-- CỘT PHẢI: SIDEBAR BÁO GIÁ & LIÊN HỆ -->
             <aside class="kxd-sidebar">
-                <div class="kxd-price-box">
-                    <span class="label">Mức giá tham khảo</span>
-                    <div class="price-display"><?php echo esc_html($gia_thue); ?></div>
-                    <span class="price-unit"><?php echo esc_html($don_vi_tinh); ?></span>
-                    
-                    <a href="tel:0909161824" class="cta-btn primary">
-                        📞 Nhận Báo Giá & Khảo Sát
-                    </a>
-                    
-                    <a href="https://zalo.me/0909161824" class="cta-btn zalo" target="_blank" rel="noopener">
-                        💬 Tư Vấn Nhanh Qua Zalo
-                    </a>
-                    
-                    <a href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" class="cta-btn" style="background:#1877f2;color:#ffffff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;" target="_blank" rel="noopener">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook Fanpage
-                    </a>
-                </div>
+                <section class="panel price-card">
+                    <div class="price-label">GIÁ THAM KHẢO</div>
+                    <div class="price"><?php echo esc_html($gia_thue); ?></div>
+                    <div class="unit"><?php echo esc_html($don_vi_tinh); ?></div>
 
-                <div class="kxd-agent-card">
-                    <div class="kxd-agent-head">
-                        <div class="kxd-agent-avatar">BDS</div>
-                        <div>
-                            <h3>BDS24H – Kho Xưởng Đẹp</h3>
-                            <p>Chuyên gia tư vấn BĐS Công Nghiệp</p>
-                        </div>
+                    <a class="cta cta-orange" href="tel:0909161824">📞 NHẬN TƯ VẤN &amp; KHẢO SÁT</a>
+                    <a class="cta cta-green" href="https://zalo.me/0909161824" target="_blank" rel="noopener">💬 CHAT ZALO TƯ VẤN</a>
+                    <a class="cta cta-fb" href="https://www.facebook.com/share/18skMpo77a/?mibextid=wwXIfr" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        <span>FACEBOOK FANPAGE</span>
+                    </a>
+
+                    <div class="agent">
+                        <strong>Chuyên viên BDS24H</strong>
+                        <div class="agent-hotline">Hotline / Zalo: 0909 161 824</div>
+                        <div class="agent-desc">Hỗ trợ hồ sơ pháp lý và kết nối chủ đầu tư</div>
                     </div>
-                    <p style="font-size:13px; color:#000000; margin:0 0 12px;">
-                        Hotline / Zalo: <strong style="color:var(--kxd-green); font-size:14.5px;">0909 161 824</strong><br>
-                        Hỗ trợ thẩm định pháp lý, hồ sơ thuê & kết nối làm việc trực tiếp chủ đầu tư.
-                    </p>
-                </div>
+                </section>
+                <section class="panel source" style="background:#ffffff; border:1px solid var(--kxd-border); border-radius:var(--kxd-radius); padding:14px 18px; margin-top:14px; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+                    <div style="font-size:12.5px; color:#475569; display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--kxd-green); font-weight:700;">✔</span>
+                        <span>Thông tin bất động sản xác thực bởi <strong>BDS24H</strong></span>
+                    </div>
+                </section>
             </aside>
 
         </div>
     </div>
 </main>
+
+<!-- LIGHTBOX MODAL BẬT XEM ẢNH PHÓNG TO -->
+<div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to">
+    <button class="image-lightbox-close" type="button" aria-label="Đóng ảnh phóng to">×</button>
+    <img src="" alt="">
+    <div class="image-lightbox-caption"></div>
+</div>
+
+<script>
+// SCRIPT XEM ẢNH LIGHTBOX
+(function () {
+    var lightbox = document.getElementById('image-lightbox');
+    if (!lightbox) return;
+
+    // Đưa modal trực tiếp ra thẻ <body> để thoát khỏi mọi stacking context hạn chế của theme
+    if (lightbox.parentNode !== document.body) {
+        document.body.appendChild(lightbox);
+    }
+
+    var preview = lightbox.querySelector('img');
+    var caption = lightbox.querySelector('.image-lightbox-caption');
+    var closeButton = lightbox.querySelector('.image-lightbox-close');
+    var lastTrigger;
+
+    function getImageUrl(element) {
+        var match = (element.style.backgroundImage || '').match(/url\(["']?(.*?)["']?\)/);
+        return match ? match[1] : (element.getAttribute('data-img') || '');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        preview.removeAttribute('src');
+        document.documentElement.classList.remove('lightbox-open');
+        document.body.classList.remove('lightbox-open');
+        document.body.style.overflow = '';
+        if (lastTrigger) lastTrigger.focus();
+    }
+
+    function openLightbox(url, altText, trigger) {
+        if (!url) return;
+        lastTrigger = trigger;
+        preview.src = url;
+        preview.alt = altText || 'Ảnh bất động sản';
+        caption.textContent = preview.alt;
+        lightbox.classList.add('is-open');
+        document.documentElement.classList.add('lightbox-open');
+        document.body.classList.add('lightbox-open');
+        document.body.style.overflow = 'hidden';
+        closeButton.focus();
+    }
+
+    document.querySelectorAll('.gallery .cover, .gallery .side div, .kxd-thumb-item').forEach(function (image) {
+        image.setAttribute('tabindex', '0');
+        image.setAttribute('role', 'button');
+        image.setAttribute('aria-label', 'Mở ảnh phóng to');
+        image.addEventListener('click', function (e) {
+            if (image.classList.contains('kxd-thumb-item')) {
+                return;
+            }
+            var url = getImageUrl(image);
+            if (!url) return;
+            var title = image.querySelector('.photo-label') ? image.querySelector('.photo-label').textContent : 'Ảnh thực tế · <?php echo esc_js(get_the_title()); ?>';
+            openLightbox(url, title, image);
+        });
+        image.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                image.click();
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    });
+
+    // Chặn cuộn nền khi đang mở lightbox
+    lightbox.addEventListener('wheel', function (e) {
+        e.preventDefault();
+    }, { passive: false });
+    lightbox.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, { passive: false });
+}());
+</script>
 
 <?php endwhile; endif; ?>
 

@@ -787,49 +787,118 @@
 			outline-offset: -3px;
 		}
 
+		/* KHÓA CUỘN TRANG VÀ ẨN HOÀN TOÀN THANH MENU HEADER KHI MỞ LIGHTBOX (CHỐNG ĐÈ 100%) */
+		html.lightbox-open,
+		body.lightbox-open {
+			overflow: hidden !important;
+			height: 100% !important;
+		}
+		html.lightbox-open #kx-header,
+		body.lightbox-open #kx-header,
+		html.lightbox-open .kx-sticky,
+		body.lightbox-open .kx-sticky,
+		html.lightbox-open .stm-header,
+		body.lightbox-open .stm-header,
+		html.lightbox-open .stm_mobile__header,
+		body.lightbox-open .stm_mobile__header,
+		html.lightbox-open header,
+		body.lightbox-open header,
+		html.lightbox-open #wpadminbar,
+		body.lightbox-open #wpadminbar {
+			display: none !important;
+			visibility: hidden !important;
+			opacity: 0 !important;
+			pointer-events: none !important;
+			z-index: -1 !important;
+		}
+
+		/* LIGHTBOX MODAL BẬT XEM ẢNH PHÓNG TO (Z-INDEX TỐI ĐA CHỐNG ĐÈ MENU) */
 		.image-lightbox {
-			position: fixed;
-			inset: 0;
-			z-index: 1000;
+			position: fixed !important;
+			top: 0 !important;
+			left: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			width: 100vw !important;
+			height: 100vh !important;
+			z-index: 2147483647 !important;
 			display: none;
-			align-items: center;
-			justify-content: center;
-			padding: 28px;
-			background: rgba(10, 18, 23, 0.88);
+			align-items: center !important;
+			justify-content: center !important;
+			padding: 24px !important;
+			background: rgba(8, 14, 11, 0.95) !important;
+			backdrop-filter: blur(10px) !important;
+			-webkit-backdrop-filter: blur(10px) !important;
+			cursor: zoom-out;
+			box-sizing: border-box !important;
 		}
 
 		.image-lightbox.is-open {
-			display: flex;
+			display: flex !important;
+		}
+
+		.image-lightbox * {
+			z-index: 2147483647 !important;
 		}
 
 		.image-lightbox img {
-			display: block;
-			max-width: min(1100px, 92vw);
-			max-height: 86vh;
-			width: auto;
-			height: auto;
-			object-fit: contain;
-			box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+			display: block !important;
+			max-width: min(1200px, 92vw) !important;
+			max-height: 85vh !important;
+			width: auto !important;
+			height: auto !important;
+			object-fit: contain !important;
+			border-radius: 8px !important;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+			cursor: default;
 		}
 
 		.image-lightbox-close {
-			position: absolute;
-			top: 18px;
-			right: 22px;
-			width: 42px;
-			height: 42px;
-			border: 1px solid rgba(255, 255, 255, 0.45);
-			border-radius: 50%;
-			background: rgba(0, 0, 0, 0.3);
-			color: #fff;
-			font-size: 28px;
-			line-height: 1;
-			cursor: pointer;
+			position: absolute !important;
+			top: 20px !important;
+			right: 24px !important;
+			width: 46px !important;
+			height: 46px !important;
+			border: 1px solid rgba(255, 255, 255, 0.3) !important;
+			border-radius: 50% !important;
+			background: rgba(255, 255, 255, 0.15) !important;
+			color: #ffffff !important;
+			font-size: 32px !important;
+			font-weight: 300 !important;
+			line-height: 1 !important;
+			cursor: pointer !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			transition: all 0.2s ease !important;
+			z-index: 2147483647 !important;
 		}
 
 		.image-lightbox-close:hover {
-			background: var(--red);
-			border-color: var(--red);
+			background: #e11d48 !important;
+			border-color: #e11d48 !important;
+			transform: scale(1.08) !important;
+		}
+
+		.image-lightbox-caption {
+			position: absolute !important;
+			bottom: 20px !important;
+			left: 50% !important;
+			transform: translateX(-50%) !important;
+			background: rgba(0, 0, 0, 0.75) !important;
+			color: #ffffff !important;
+			padding: 8px 20px !important;
+			border-radius: 20px !important;
+			font-family: 'Roboto', 'Inter', sans-serif !important;
+			font-size: 13.5px !important;
+			font-weight: 500 !important;
+			letter-spacing: 0.02em !important;
+			max-width: 90vw !important;
+			text-align: center !important;
+			white-space: nowrap !important;
+			overflow: hidden !important;
+			text-overflow: ellipsis !important;
+			pointer-events: none !important;
 		}
 
 		/* =================================================
@@ -2397,6 +2466,12 @@
 		(function () {
 			var lightbox = document.getElementById('image-lightbox');
 			if (!lightbox) return;
+
+			// Đưa modal trực tiếp ra thẻ <body> để thoát khỏi mọi stacking context hạn chế của theme
+			if (lightbox.parentNode !== document.body) {
+				document.body.appendChild(lightbox);
+			}
+
 			var preview = lightbox.querySelector('img');
 			var caption = lightbox.querySelector('.image-lightbox-caption');
 			var closeButton = lightbox.querySelector('.image-lightbox-close');
@@ -2410,7 +2485,23 @@
 			function closeLightbox() {
 				lightbox.classList.remove('is-open');
 				preview.removeAttribute('src');
+				document.documentElement.classList.remove('lightbox-open');
+				document.body.classList.remove('lightbox-open');
+				document.body.style.overflow = '';
 				if (lastTrigger) lastTrigger.focus();
+			}
+
+			function openLightbox(url, altText, trigger) {
+				if (!url) return;
+				lastTrigger = trigger;
+				preview.src = url;
+				preview.alt = altText || 'Ảnh dự án';
+				caption.textContent = preview.alt;
+				lightbox.classList.add('is-open');
+				document.documentElement.classList.add('lightbox-open');
+				document.body.classList.add('lightbox-open');
+				document.body.style.overflow = 'hidden';
+				closeButton.focus();
 			}
 
 			document.querySelectorAll('.gallery .cover, .gallery .side div').forEach(function (image) {
@@ -2420,12 +2511,8 @@
 				image.addEventListener('click', function () {
 					var url = getImageUrl(image);
 					if (!url) return;
-					lastTrigger = image;
-					preview.src = url;
-					preview.alt = image.querySelector('.photo-label') ? image.querySelector('.photo-label').textContent : 'Ảnh dự án';
-					caption.textContent = preview.alt;
-					lightbox.classList.add('is-open');
-					closeButton.focus();
+					var title = image.querySelector('.photo-label') ? image.querySelector('.photo-label').textContent : 'Ảnh dự án';
+					openLightbox(url, title, image);
 				});
 				image.addEventListener('keydown', function (event) {
 					if (event.key === 'Enter' || event.key === ' ') {
@@ -2442,6 +2529,14 @@
 			document.addEventListener('keydown', function (event) {
 				if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
 			});
+
+			// Chặn cuộn nền khi đang mở lightbox
+			lightbox.addEventListener('wheel', function (e) {
+				e.preventDefault();
+			}, { passive: false });
+			lightbox.addEventListener('touchmove', function (e) {
+				e.preventDefault();
+			}, { passive: false });
 		}());
 	</script>
 	<script>

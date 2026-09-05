@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Chi Tiet Tin Tuc (Chuan 100% news-detail.html)
- * Post Type: tin-tuc, post
+ * Template Post Type: post, tin-tuc, page
  * Description: Template chi tiet bai tin tuc dong - an Header mac dinh Theme, mo rong 1180px chuan news-detail.html
  */
 

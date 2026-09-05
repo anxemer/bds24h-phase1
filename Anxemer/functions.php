@@ -154,38 +154,47 @@ function bds24h_register_kcn_post_type() {
 }
 
 // =========================================================================
-// TEMPLATE LOADER: Phân biệt single-product.php và single-khu-cong-nghiep.php
+// TEMPLATE LOADER: Phân biệt single-tin-tuc.php, single-product.php và single-khu-cong-nghiep.php
 // =========================================================================
-add_filter('single_template', 'bds24h_kcn_single_template');
-function bds24h_kcn_single_template( $template ) {
+function bds24h_custom_template_loader( $template ) {
     if ( is_singular() ) {
-        $post_id = get_the_ID();
-        $tmpl = get_post_meta( $post_id, '_wp_page_template', true );
+        $post_id   = get_the_ID();
+        $post_type = get_post_type( $post_id );
+        $tmpl      = get_post_meta( $post_id, '_wp_page_template', true );
 
-        // 1. Tự động nhận diện Sản phẩm Kho Xưởng / Đất Công Nghiệp:
-        $is_product = ( $tmpl === 'single-product.php' );
-        if ( ! $is_product ) {
-            $loai_hinh = get_post_meta( $post_id, 'loai_hinh', true ) ?: ( function_exists('get_field') ? get_field('loai_hinh', $post_id) : '' );
-            $ma_tin    = get_post_meta( $post_id, 'ma_tin', true ) ?: ( function_exists('get_field') ? get_field('ma_tin', $post_id) : '' );
-            if ( $loai_hinh || $ma_tin ) {
-                $is_product = true;
-            } else {
-                $title = get_the_title( $post_id );
-                if ( preg_match('/(kho\s*xưởng|nhà\s*xưởng|cho\s*thuê\s*kho|bán\s*đất|bán\s*kho)/iu', $title) && ! preg_match('/^(khu|cụm)\s*công\s*nghiệp/iu', $title) ) {
+        // 1. TẤT CẢ BÀI VIẾT TIN TỨC (post_type = 'post' hoặc template single-tin-tuc.php)
+        // -> BẮT BUỘC DÙNG single-tin-tuc.php (Không bao giờ bị nhận diện nhầm thành sản phẩm)
+        if ( $post_type === 'post' || is_singular('post') || $tmpl === 'single-tin-tuc.php' ) {
+            $custom_news = get_template_directory() . '/single-tin-tuc.php';
+            if ( file_exists($custom_news) ) {
+                return $custom_news;
+            }
+        }
+
+        // 2. PHÂN LOẠI CPT KHU-CONG-NGHIEP (Sản phẩm vs Dự án KCN)
+        if ( $post_type === 'khu-cong-nghiep' || is_singular('khu-cong-nghiep') ) {
+            $is_product = ( $tmpl === 'single-product.php' );
+            if ( ! $is_product ) {
+                $loai_hinh = get_post_meta( $post_id, 'loai_hinh', true ) ?: ( function_exists('get_field') ? get_field('loai_hinh', $post_id) : '' );
+                $ma_tin    = get_post_meta( $post_id, 'ma_tin', true ) ?: ( function_exists('get_field') ? get_field('ma_tin', $post_id) : '' );
+                if ( $loai_hinh || $ma_tin ) {
                     $is_product = true;
+                } else {
+                    $title = get_the_title( $post_id );
+                    if ( preg_match('/(kho\s*xưởng|nhà\s*xưởng|cho\s*thuê\s*kho|bán\s*đất|bán\s*kho)/iu', $title) && ! preg_match('/^(khu|cụm)\s*công\s*nghiệp/iu', $title) ) {
+                        $is_product = true;
+                    }
                 }
             }
-        }
 
-        if ( $is_product ) {
-            $custom_prod = get_template_directory() . '/single-product.php';
-            if ( file_exists($custom_prod) ) {
-                return $custom_prod;
+            if ( $is_product ) {
+                $custom_prod = get_template_directory() . '/single-product.php';
+                if ( file_exists($custom_prod) ) {
+                    return $custom_prod;
+                }
             }
-        }
 
-        // 2. Mặc định CPT khu-cong-nghiep -> Dùng giao diện Khu Công Nghiệp
-        if ( is_singular('khu-cong-nghiep') || $tmpl === 'single-khu-cong-nghiep.php' ) {
+            // Mặc định CPT khu-cong-nghiep là Khu Công Nghiệp
             $custom_kcn = get_template_directory() . '/single-khu-cong-nghiep.php';
             if ( file_exists($custom_kcn) ) {
                 return $custom_kcn;
@@ -194,39 +203,8 @@ function bds24h_kcn_single_template( $template ) {
     }
     return $template;
 }
-
-add_filter('template_include', 'bds24h_kcn_template_include');
-function bds24h_kcn_template_include( $template ) {
-    if ( is_singular() ) {
-        $post_id = get_the_ID();
-        $tmpl    = get_post_meta( $post_id, '_wp_page_template', true );
-
-        $is_product = ( $tmpl === 'single-product.php' );
-        if ( ! $is_product ) {
-            $loai_hinh = get_post_meta( $post_id, 'loai_hinh', true ) ?: ( function_exists('get_field') ? get_field('loai_hinh', $post_id) : '' );
-            $ma_tin    = get_post_meta( $post_id, 'ma_tin', true ) ?: ( function_exists('get_field') ? get_field('ma_tin', $post_id) : '' );
-            if ( $loai_hinh || $ma_tin ) {
-                $is_product = true;
-            } else {
-                $title = get_the_title( $post_id );
-                if ( preg_match('/(kho\s*xưởng|nhà\s*xưởng|cho\s*thuê\s*kho|bán\s*đất|bán\s*kho)/iu', $title) && ! preg_match('/^(khu|cụm)\s*công\s*nghiệp/iu', $title) ) {
-                    $is_product = true;
-                }
-            }
-        }
-
-        if ( $is_product ) {
-            $custom_prod = get_template_directory() . '/single-product.php';
-            if ( file_exists($custom_prod) ) return $custom_prod;
-        }
-
-        if ( is_singular('khu-cong-nghiep') || $tmpl === 'single-khu-cong-nghiep.php' ) {
-            $custom = get_template_directory() . '/single-khu-cong-nghiep.php';
-            if ( file_exists($custom) ) return $custom;
-        }
-    }
-    return $template;
-}
+add_filter('single_template', 'bds24h_custom_template_loader', 99);
+add_filter('template_include', 'bds24h_custom_template_loader', 99);
 
 
 // =========================================================================
@@ -1283,6 +1261,18 @@ function bds24h_global_custom_styles() {
             display: block !important;
         }
         #kx-header.kx-sticky { position: sticky !important; top: 0 !important; }
+
+        /* ẨN HEADER KHI MỞ LIGHTBOX XEM ẢNH */
+        html.lightbox-open #kx-header,
+        body.lightbox-open #kx-header,
+        html.lightbox-open .kx-sticky,
+        body.lightbox-open .kx-sticky {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+        }
 
         /* TƯƠNG THÍCH VỚI THANH WORDPRESS ADMIN BAR */
         body.admin-bar #kx-header.kx-sticky {
